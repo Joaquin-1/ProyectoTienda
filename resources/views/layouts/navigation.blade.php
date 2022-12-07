@@ -41,6 +41,10 @@
                     <x-nav-link :href="route('completados')" :active="request()->routeIs('completados')">
                         {{ __('Pedidos Completados') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('contactos')" :active="request()->routeIs('contactos')">
+                        {{ __('Contactos') }}
+                    </x-nav-link>
                     @endif
                 </div>
             </div>

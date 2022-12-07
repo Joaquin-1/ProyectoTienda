@@ -50,7 +50,7 @@
                     </div>
                     <div class="col-span-2 row-span-4 text-right mr-36 mt-10">
                         <p class="text-2xl">¿Tienes alguna duda? </p>
-                        <p class="text-xl mr-3 mt-2"> <a class="text-black" href="#">Contacta</a> con nosotros </p>
+                        <p class="text-xl mr-3 mt-2"> <a class="text-black" href="/contactos/create">Contacta</a> con nosotros </p>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,7 @@
             {{ __('CONTACTO') }}
         </h2>
     </x-slot>
-    <section class="mb-56 text-center text-gray-800 ">
+    <section class="mb-56 text-center text-gray-800">
         <div class="max-w-[700px] mx-auto px-3 lg:px-6 mt-24 ">
           <h2 class="text-3xl font-bold mt-6 mb-12">Contacta con nosotros</h2>
             <form>
@@ -34,15 +34,17 @@
                 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-orange-700 active:shadow-lg
                 transition duration-150 ease-in-out">Send</button>
 
-                <a href="/productos"
-                    class="text-white border-green-700 border-2 bg-green-700 focus:ring-blue-300 font-medium
-                    rounded-lg text-sm px-5 py-2.5 text-center">Volver</a>
-
             </form>
 
-
         </div>
+
+        <a href="/productos"
+                    class=" ml-80 text-white border-green-700 border-2 bg-green-700 focus:ring-blue-300 font-medium
+                    rounded-lg text-sm px-5 py-2.5 text-center">Volver</a>
+
       </section>
+
+
       <!-- Section: Design Block -->
 
     </div>

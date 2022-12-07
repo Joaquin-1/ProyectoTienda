@@ -8,6 +8,7 @@ use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\PedidoAdminController;
 use App\Http\Controllers\StripeController;
+use App\Http\Controllers\ContactoController;
 use App\Models\Producto;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -35,9 +36,14 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('carritos', CarritoController::class);
 
+    Route::get('/contactos', [ContactoController::class, 'index'])->name('contactos');
+    Route::get('/contactos/create', [ContactoController::class, 'create']);
+    Route::post('/contactos', [ContactoController::class, 'store'])->name('contactos.store');
+
     Route::get('/productos', [ProductoController::class, 'index'])->name('productos');
 
     Route::get('/contacto', [DireccionController::class, 'contacto'])->name('contacto');
+
 
     Route::post('/anadircomentario', [ComentarioController::class, 'anadircomentario'])
         ->name('anadircomentario');
@@ -86,13 +92,14 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth', 'can:solo-admin'])->group(function () {
 
+
+
     Route::get('/todosLosPedidos', [PedidoAdminController::class, 'index'])->name('todosLosPedidos');
     Route::get('/completados', [PedidoAdminController::class, 'completados'])->name('completados');
 
     Route::get('/productos/index', [ProductoController::class, 'edit']);
     Route::get('/productos/create', [ProductoController::class, 'create']);
-    Route::post('/productos', [ProductoController::class, 'store'])
-        ->name('productos.store');
+    Route::post('/productos', [ProductoController::class, 'store'])->name('productos.store');
 
         Route::get('/productos/{id}/anadirImagen', [ProductoController::class, 'setImagen']);
 

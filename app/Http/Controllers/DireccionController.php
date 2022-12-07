@@ -24,6 +24,8 @@ class DireccionController extends Controller
 
     public function contacto()
     {
+
+
         return view('contact'
         );
 
