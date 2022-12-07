@@ -15,7 +15,7 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex text-xl">
                     @if (Auth::user()->rol == "admin")
                     <x-nav-link class="ml-20" :href="route('productos')" :active="request()->routeIs('productos')">
-                        {{ __('Products') }}
+                        {{ __('Productos') }}
                     </x-nav-link>
                     @else
                     <x-nav-link class="ml-20" :href="route('productos')" :active="request()->routeIs('productos')">
@@ -49,7 +49,7 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="flex items-center text-m font-medium text-white hover:text-orange-400 hover:border-orange-300 focus:outline-none focus:text-orange-500 focus:border-orange-300 transition duration-150 ease-in-out">
+                        <button class="flex items-center text-m font-medium text-[#9F8152] hover:text-[#4C3F2B] hover:border-orange-300 focus:outline-none focus:text-orange-500 focus:border-orange-300 transition duration-150 ease-in-out">
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ml-1">
