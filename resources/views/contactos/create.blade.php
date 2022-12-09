@@ -7,7 +7,9 @@
     <section class="mb-56 text-center text-gray-800">
         <div class="max-w-[700px] mx-auto px-3 lg:px-6 mt-24 ">
           <h2 class="text-3xl font-bold mt-6 mb-12">Contacta con nosotros</h2>
-            <form>
+            <form action="{{ route('contactos.store', [], false) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+
                 <div class="form-group mb-6">
                     <input type="text" name="nombre" id="nombre" required class="form-control block w-full px-3 py-1.5 text-base font-normal
                     text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded

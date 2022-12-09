@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreContactoRequest;
 use App\Http\Requests\UpdateContactoRequest;
 use App\Models\Contacto;
+use Illuminate\Support\Facades\Auth;
 
 class ContactoController extends Controller
 {
@@ -55,6 +56,8 @@ class ContactoController extends Controller
         $contacto->nombre = $validados['nombre'];
         $contacto->email = $validados['email'];
         $contacto->mensaje = $validados['mensaje'];
+        $contacto->user_id = Auth::id();
+
 
         $contacto->save();
 

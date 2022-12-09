@@ -74,7 +74,7 @@
                                                     <form action="/productos/{{ $producto->id }}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button onclick="return confirm('¿Seguro? Borrarás todas las imágenes')" class="px-4 py-1 mt-5 text-sm text-white bg-red-600 rounded" type="submit">Borrar</button>
+                                                        <button onclick="return confirm('¿Seguro? Borrarás todos los datos de esta película')" class="px-4 py-1 mt-5 text-sm text-white bg-red-600 rounded" type="submit">Borrar</button>
                                                     </form>
                                                     @endif
                                                 </td>
