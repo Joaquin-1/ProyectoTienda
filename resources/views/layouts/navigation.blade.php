@@ -19,16 +19,16 @@
                     </x-nav-link>
                     @else
                     <x-nav-link class="ml-20" :href="route('productos')" :active="request()->routeIs('productos')">
-                        {{ __('Products') }}
+                        {{ __('Productos') }}
                     </x-nav-link>
                     <x-nav-link :href="route('carritos.index')" :active="request()->routeIs('carritos.index')">
-                        {{ __('Cart') }} ({{ Auth::user()->carritos()->sum('cantidad') }})
+                        {{ __('Carrito') }} ({{ Auth::user()->carritos()->sum('cantidad') }})
                     </x-nav-link>
                     <x-nav-link :href="route('facturas.index')" :active="request()->routeIs('facturas.index')">
-                        {{ __('My orders') }}
+                        {{ __('Mis Pedidos') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('contacto')" :active="request()->routeIs('contacto')">
-                        {{ __('Contact') }}
+                    <x-nav-link :href="route('contactos')" :active="request()->routeIs('contactos')">
+                        {{ __('Contactos') }}
                     </x-nav-link>
 
                     @endif
@@ -71,6 +71,9 @@
 
                             <x-dropdown-link :href="route('completadosUser')" :active="request()->routeIs('completadosUser')">
                                 {{ __('Purchase history') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('completadosUser')" :active="request()->routeIs('completadosUser')">
+                                {{ __('Mi Perfil') }}
                             </x-dropdown-link>
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
