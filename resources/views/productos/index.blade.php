@@ -6,6 +6,8 @@
     </x-slot>
 
     <div class="py-12">
+        <p style="float: left; padding-bottom: 5%; padding-left: 15%;">Insertar Categorias</p>
+        <p style="padding-bottom: 5%; padding-left: 80%;">Insertar Ordenar Por Fecha</p>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-[#B99A66] border-b border-gray-200">

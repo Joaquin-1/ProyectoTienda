@@ -39,7 +39,7 @@
 
     <div style="padding-left:25%; padding-right:25%;">
         <p class="text-xl text-center">Ubicación</p>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3199.4045114454934!2d-6.100251585829398!3d36.68881633906864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0dc71797e8eba1%3A0x1acdabef5bb2e494!2sVideoclub%20Rotonda%207!5e0!3m2!1ses!2ses!4v1670836906268!5m2!1ses!2ses" width="600" height="450" style="border: 24px solid #4C3F2B; border-radius:20px; " allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3199.4045114454934!2d-6.100251585829398!3d36.68881633906864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0dc71797e8eba1%3A0x1acdabef5bb2e494!2sVideoclub%20Rotonda%207!5e0!3m2!1ses!2ses!4v1670836906268!5m2!1ses!2ses" width="600" height="450" style="border: 24px solid #4C3F2B; border-radius:20px; margin: 0 auto;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 </x-app-layout>
 
