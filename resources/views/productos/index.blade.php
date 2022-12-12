@@ -6,8 +6,20 @@
     </x-slot>
 
     <div class="py-12">
-        <p style="float: left; padding-bottom: 5%; padding-left: 15%;">Insertar Categorias</p>
-        <p style="padding-bottom: 5%; padding-left: 80%;">Insertar Ordenar Por Fecha</p>
+        {{-- Meter las categorias desde livewire --}}
+        <select name="select" style="display:flex; float: left; margin-left: 15%; margin-bottom:5%;">
+            <option value="value1" selected>Selecciona una categoria</option>
+            <option value="value2">Value 2</option>
+            <option value="value3">Value 3</option>
+        </select>
+
+        <select name="select" style="display:flex; margin-left: 80%; margin-bottom:5%;">
+            <option value="value1" selected>Ordenar por</option>
+            <option value="value2">Value 2</option>
+            <option value="value3">Value 3</option>
+        </select>
+
+
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-[#B99A66] border-b border-gray-200">

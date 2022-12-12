@@ -50,12 +50,12 @@
                     </div>
                     <div class="col-span-2 row-span-4 text-right mr-36 mt-10">
                         <p class="text-2xl">¿Tienes alguna duda? </p>
-                        <p class="text-xl mr-3 mt-2"> <a class="text-black" href="/contactos/create">Contacta</a> con nosotros </p>
+                        <p class="text-xl mr-3 mt-2"> <a class="text-black hover:text-[#4C3F2B]" href="/contactos/create">Contacta</a> con nosotros </p>
                     </div>
                 </div>
             </div>
             <div class="w-full absolute mt-28">
-                <p class="text-center text-3xl"><a class="hover:text-orange-500 text-white" href="{{ route('productos') }}"> Our products</a>
+                <p class="text-center text-3xl"><a class="hover:text-[#4C3F2B] text-white" href="{{ route('productos') }}"> Nuestras Películas</a>
                 </p>
             </div>
             <div class="w-50 h-auto absolute mt-40">
