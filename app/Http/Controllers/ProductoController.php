@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductoRequest;
 use App\Http\Requests\UpdateProductoRequest;
+use App\Models\Categoria;
 use App\Models\Imagen;
 use App\Models\Producto;
+
 
 class ProductoController extends Controller
 {
@@ -34,8 +36,12 @@ class ProductoController extends Controller
     {
         $producto = new Producto();
 
+        $categorias = Categoria::all();;
+
+
         return view('productos.create', [
             'producto' => $producto,
+            'categorias' => $categorias,
         ]);
     }
 
@@ -52,6 +58,7 @@ class ProductoController extends Controller
             'descripcion'=> 'required',
             'precio'=> 'required',
             'video'=> 'required',
+            'categoria_id'=> 'required|exists:categorias,id',
         ]);
 
         $producto = new Producto();
@@ -69,6 +76,8 @@ class ProductoController extends Controller
         $producto->descripcion = $validados['descripcion'];
         $producto->precio = $validados['precio'];
         $producto->video = $validados['video'];
+        $producto->categoria_id = $validados['categoria_id'];
+
 
         $producto->save();
         $imagen->producto_id = Producto::whereRaw('id = (select max(id) from productos)')->get()[0]->id;

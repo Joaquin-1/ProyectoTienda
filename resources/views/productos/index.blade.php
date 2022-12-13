@@ -34,6 +34,7 @@
 
                                 <a href="/productos/{{ $producto->id }}/anadirImagen"
                                     class="px-4 py-1 text-sm text-white bg-blue-600 rounded">Añadir imagen</a>
+
                                     <form action="/productos/{{ $producto->id }}" method="POST">
                                         @csrf
                                         @method('DELETE')
@@ -63,6 +64,7 @@
                                     </td>
 
                                         <td class="px-6 py-2">{{ $producto->precio }} &euro;</td>
+                                        <td class="px-6 py-2">{{ $producto->categoria->nombre }}</td>
                                         <td>
                                             <div class="text-sm text-gray-900 ">
                                                 <form action="{{ route('anadiralcarrito', $producto) }}" method="POST">

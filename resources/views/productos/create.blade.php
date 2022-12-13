@@ -19,7 +19,16 @@
                 class="w-80 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 @error('nombre') border-red-500 @enderror"
                 value="{{ old('nombre', $producto->nombre) }}">
 
+            <label for="categoria"
+                class="text-sm font-medium text-gray-900 block mb-2 @error('categoria') text-red-500 @enderror">
+                Categoria
+            </label>
 
+                <select class="categorias" name="categoria_id">
+                    @foreach($categorias as $categoria)
+                      <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
+                    @endforeach
+                </select>
 
 
             <label for="imagen"
