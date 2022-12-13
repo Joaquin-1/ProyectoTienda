@@ -17,8 +17,13 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+
+        @livewireStyles
     </head>
     <body class="font-sans antialiased">
+
+        <livewire:counter />
+
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
 
@@ -63,5 +68,6 @@
                     src="{{ URL('img/logo.png') }}" alt="logo"></a>
             </div>
         </footer>
+        @livewireScripts
     </body>
 </html>
