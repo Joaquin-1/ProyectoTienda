@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('email');
-            $table->text('mensaje');
+            $table->text('pregunta');
+            $table->text('respuesta')->default('No respondido');
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });

@@ -49,20 +49,21 @@ class ContactoController extends Controller
         $validados = request()->validate([
             'nombre'=> 'required|string|max:255',
             'email'=> 'required',
-            'mensaje'=> 'required',
+            'pregunta'=> 'required',
         ]);
 
         $contacto = new Contacto();
         $contacto->nombre = $validados['nombre'];
         $contacto->email = $validados['email'];
-        $contacto->mensaje = $validados['mensaje'];
+        $contacto->pregunta = $validados['pregunta'];
+
         $contacto->user_id = Auth::id();
 
 
         $contacto->save();
 
-        return redirect('/productos')
-            ->with('success', 'Producto insertado con éxito.');
+        return redirect('/contactos')
+            ->with('success', 'Pregunta realizada con éxito.');
     }
 
     /**
@@ -94,9 +95,21 @@ class ContactoController extends Controller
      * @param  \App\Models\Contacto  $contacto
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateContactoRequest $request, Contacto $contacto)
+    public function update($id)
     {
-        //
+
+        $validados = request()->validate([
+            'respuesta'=> 'required|string',
+        ]);
+
+        $contacto = Contacto::findOrFail($id);
+        $contacto->respuesta = $validados['respuesta'];
+
+        $contacto->save();
+
+        return redirect('/contactos')
+            ->with('success', 'Respuesta enviada con éxito.');
+
     }
 
     /**

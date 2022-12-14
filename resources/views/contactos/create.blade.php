@@ -25,10 +25,10 @@
                     focus:outline-none" value="{{ old('email', $contacto->email) }}" placeholder="Email address">
                 </div>
                 <div class="form-group mb-6">
-                  <textarea required name="mensaje" id="mensaje" class=" form-control block w-full px-3 py-1.5 text-base font-normal
+                  <textarea required name="pregunta" id="pregunta" class=" form-control block w-full px-3 py-1.5 text-base font-normal
                     text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded
                     transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600
-                    focus:outline-none" value="{{ old('mensaje', $contacto->mensaje) }}" rows="3" placeholder="Message"></textarea>
+                    focus:outline-none" value="{{ old('pregunta', $contacto->pregunta) }}" rows="3" placeholder="Pregunta"></textarea>
                 </div>
 
                 <button type="submit" class=" w-full px-6 py-2.5 bg-orange-600 text-white font-medium text-xs

@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\PedidoAdminController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\ContactoController;
+use App\Models\Contacto;
 use App\Models\Producto;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -36,9 +37,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('carritos', CarritoController::class);
 
+    Route::resource('contactos', ContactoController::class);
     Route::get('/contactos', [ContactoController::class, 'index'])->name('contactos');
     Route::get('/contactos/create', [ContactoController::class, 'create']);
     Route::post('/contactos', [ContactoController::class, 'store'])->name('contactos.store');
+
 
     Route::get('/productos', [ProductoController::class, 'index'])->name('productos');
 

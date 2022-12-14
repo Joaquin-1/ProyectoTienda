@@ -24,12 +24,12 @@
                         <tbody>
                             @foreach ($productos as $producto)
 
-                            @if (count($producto->imagenes) == 0)
+                            {{-- @if (count($producto->imagenes) == 0)
                             @if (Auth::user()->rol == 'admin')
                             {{$producto->nombre}} No tiene imagen
 
                             <a href="/productos/{{ $producto->id }}/anadirImagen"
-                                class="px-4 py-1 text-sm text-white bg-blue-600 rounded">Añadir imagen</a>
+                                class="px-4 py-1 text-sm text-white bg-green-600 rounded">Añadir imagen</a>
 
                                 <form action="/productos/{{ $producto->id }}" method="POST">
                                     @csrf
@@ -39,7 +39,7 @@
                                 @else
                                 @endif
 
-                            @else
+                            @else --}}
                             <tr class="border-2 border-grey-700">
                                 @php
                                     $vermas = false;
@@ -74,25 +74,25 @@
                                     <td class="px-6 py-4">
                                         @if (Auth::user()->rol == "admin")
 
-                                        <a href="/productos/{{ $producto->id }}/edit"
-                                            class="px-4 py-1 text-sm text-white bg-blue-600 rounded">Editar</a>
+                                            <a href="/productos/{{ $producto->id }}/edit"
+                                                class="px-4 py-1 text-sm text-white bg-blue-600 rounded">Editar</a>
 
-                                        <p class="mt-5">
-                                            <a href="/productos/{{ $producto->id }}/anadirImagen"
-                                                class="px-4 py-1 text-sm text-white bg-blue-600 rounded">Añadir imagen</a>
-                                        </p>
+                                            <p class="mt-5">
+                                                <a href="/productos/{{ $producto->id }}/anadirImagen"
+                                                    class="px-4 py-1 text-sm text-white bg-green-600 rounded">Añadir imagen</a>
+                                            </p>
 
 
-                                                <form action="/productos/{{ $producto->id }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button onclick="return confirm('¿Seguro? Borrarás todos los datos de esta película')" class="px-4 py-1 mt-5 text-sm text-white bg-red-600 rounded" type="submit">Borrar</button>
-                                                </form>
-                                                @endif
-                                            </td>
+                                            <form action="/productos/{{ $producto->id }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button onclick="return confirm('¿Seguro? Borrarás todos los datos de esta película')" class="px-4 py-1 mt-5 text-sm text-white bg-red-600 rounded" type="submit">Borrar</button>
+                                            </form>
+                                        @endif
+                                    </td>
                                 </tr>
 
-                                @endif
+                               {{--  @endif --}}
                             @endforeach
                             @if (Auth::user()->rol == "admin")
 
