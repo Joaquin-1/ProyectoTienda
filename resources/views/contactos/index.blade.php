@@ -39,7 +39,7 @@
 
                                 </tr>
 
-                                <tr id="tr" class="border-2 border-grey-700 " style="display: none">
+                                <tr id="tr" class="border-2 border-grey-700 " {{-- style="display: none" --}}>
 
                                 <form action="{{ route('contactos.update', $contacto->id, false) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
