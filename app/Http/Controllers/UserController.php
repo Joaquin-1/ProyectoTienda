@@ -32,15 +32,15 @@ class UserController extends Controller
 
         $validados = request()->validate([
             'name'=> 'required|string|max:255',
-            /* 'descripcion'=> 'required',
-            'precio'=> 'required',
+            'descripcion'=> 'required',
+            /*'precio'=> 'required',
             'video'=> 'required', */
         ]);
 
         $user = User::findOrFail($id);
         $user->name = $validados['name'];
-        /* $producto->descripcion = $validados['descripcion'];
-        $producto->precio = $validados['precio'];
+        $user->descripcion = $validados['descripcion'];
+        /*$producto->precio = $validados['precio'];
         $producto->video = $validados['video']; */
 
         $user->save();
