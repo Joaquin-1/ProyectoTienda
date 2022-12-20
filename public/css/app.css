@@ -907,6 +907,9 @@ select {
 .ml-\[190px\] {
   margin-left: 190px;
 }
+.ml-40 {
+  margin-left: 10rem;
+}
 .block {
   display: block;
 }

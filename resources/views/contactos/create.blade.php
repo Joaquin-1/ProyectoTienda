@@ -38,11 +38,12 @@
 
             </form>
 
+            <a href="/productos" class="text-white border-green-700 border-2 bg-green-700 focus:ring-blue-300 font-medium
+            rounded-lg text-sm px-5 py-2.5 text-center" style=" display:flex; width:13%; margin-left:44%; margin-top:2%;">Volver</a>
+
         </div>
 
-        <a href="/productos"
-                    class=" ml-80 text-white border-green-700 border-2 bg-green-700 focus:ring-blue-300 font-medium
-                    rounded-lg text-sm px-5 py-2.5 text-center">Volver</a>
+
 
       </section>
 

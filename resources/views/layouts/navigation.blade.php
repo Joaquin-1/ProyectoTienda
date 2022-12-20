@@ -53,7 +53,7 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="flex items-center text-m font-medium text-[#9F8152] hover:text-[#4C3F2B] hover:border-orange-300 focus:outline-none focus:text-orange-500 focus:border-orange-300 transition duration-150 ease-in-out">
+                        <button class="flex items-center text-m font-medium text-[#9F8152] hover:text-[#4C3F2B] hover:border-brown-300 focus:outline-none focus:text-brown-500 focus:border-brown-300 transition duration-150 ease-in-out">
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ml-1">
@@ -72,7 +72,7 @@
                             <x-dropdown-link :href="route('completadosUser')" :active="request()->routeIs('completadosUser')">
                                 {{ __('Purchase history') }}
                             </x-dropdown-link>
-                            <x-dropdown-link :href="route('completadosUser')" :active="request()->routeIs('completadosUser')">
+                            <x-dropdown-link :href="route('perfiles')" :active="request()->routeIs('perfil')">
                                 {{ __('Mi Perfil') }}
                             </x-dropdown-link>
                             <x-dropdown-link :href="route('logout')"

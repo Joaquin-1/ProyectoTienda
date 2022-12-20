@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\PedidoAdminController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\UserController;
 use App\Models\Contacto;
 use App\Models\Producto;
 use Illuminate\Support\Facades\Auth;
@@ -89,6 +90,12 @@ Route::middleware(['auth'])->group(function () {
         ->name('pedido');
 
         Route::get('/completadosUser', [PedidoAdminController::class, 'completadosUser'])->name('completadosUser');
+
+        Route::get('/perfiles', [UserController::class, 'index'])->name('perfiles');
+        Route::get('/perfiles/{id}/edit', [UserController::class, 'edit']);
+        Route::put('/perfiles/{id}', [UserController::class, 'update'])
+        ->name('perfiles.update');
+
     /* Route::resource('todosLosPedidos', PedidoAdminController::class)
         ->middleware(['auth', 'can:solo-admin']); */
 });
