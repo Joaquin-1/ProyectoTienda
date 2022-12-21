@@ -33,6 +33,7 @@ class UserController extends Controller
         $validados = request()->validate([
             'name'=> 'required|string|max:255',
             'descripcion'=> 'required',
+            'imagen' => 'required',
             /*'precio'=> 'required',
             'video'=> 'required', */
         ]);
@@ -40,6 +41,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->name = $validados['name'];
         $user->descripcion = $validados['descripcion'];
+        $user->imagen = "img/" . $validados['imagen']->getClientOriginalName();
         /*$producto->precio = $validados['precio'];
         $producto->video = $validados['video']; */
 

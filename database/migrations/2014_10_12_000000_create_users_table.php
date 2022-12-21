@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('rol')->default('cliente');
             $table->string('descripcion', 800)->nullable();
+            $table->string('imagen')->default('img/img2.jpg');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
