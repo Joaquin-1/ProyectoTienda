@@ -112,7 +112,7 @@
                                         <td>
                                             <div class="text-sm text-gray-900 ">
 
-                                                <button  onclick="location.href='/login'" class="px-4 py-1 text-sm text-white bg-orange-500 rounded">Add to cart</button>
+                                                <button  onclick="location.href='/login'" class="px-4 py-1 text-sm text-white bg-orange-500 rounded">Añadir al carrito</button>
 
                                             </div>
                                         </td>

@@ -13,19 +13,19 @@
                         <table class="table-auto">
                             <thead>
                                 @if ($carritos->isEmpty())
-                                <p>You have not added anything to the cart yet</p>
+                                <p>No has añadido nada al carrito todavia</p>
                             @else
                                 <th class="px-6 py-2 text-gray-500">
 
                                 </th>
                                 <th class="px-6 py-2 text-gray-500">
-                                    Product
+                                    Producto
                                 </th>
                                 <th class="px-6 py-2 text-gray-500">
-                                    Amount
+                                    Cantidad
                                 </th>
                                 <th class="px-6 py-2 text-gray-500">
-                                    Price
+                                    Precio
                                 </th>
                                 <th class="px-6 py-2 text-gray-500">
 
@@ -35,7 +35,7 @@
                                     <form action="{{route('vaciar')}}" method="post">
                                         @csrf
                                         @method('POST')
-                                        <button class="hover:bg-orange-500 bg-orange-200 text-black border px-7 py-2 rounded-xl" type="submit"> Empty cart</button>
+                                        <button class="hover:bg-orange-500 bg-orange-200 text-black border px-7 py-2 rounded-xl" type="submit"> Vaciar carrito</button>
                                     </form>
                                 </th>
                                 @endif
@@ -85,7 +85,7 @@
                             @if ($carritos->isEmpty() == false)
                             <div class="mt-4 text-right  mr-48">
 
-                                <span class="text-2xl mr-32 font-bold">Amount: </span><span class="font-bold text-xl">{{$total}}&euro;</span>
+                                <span class="text-2xl mr-32 font-bold">Precio Total: </span><span class="font-bold text-xl">{{$total}}&euro;</span>
                             </div>
                             @endif
                         </div>
@@ -100,18 +100,18 @@
                                     @csrf
                                     @method('GET')
 
-                                    <button class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-xl rounded-xl" type="submit"> Set your address</button>
+                                    <button class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-xl rounded-xl" type="submit"> Añade una direccion</button>
                                 </form>
                                 @else
                                 <form action="{{route('pagar', $total)}}" method="get">
                                     @csrf
                                     @method('get')
 
-                                    <button class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-xl rounded-xl" type="submit"> Proceed to buy</button>
+                                    <button class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-xl rounded-xl" type="submit"> Proceder con la compra</button>
                                 </form>
                             </div>
 <div class="w-full ml-52 text-xl mt-20">
-    <p><b> Your address is: </b></p>
+    <p><b> Tu dirección es: </b></p>
     <div class="flex flex-col">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -120,16 +120,16 @@
                 <thead class="border-b">
                   <tr>
                     <th scope="col" class="text-m font-bold text-black px-6 py-4 text-left">
-                        STREET
+                        Calle
                     </th>
                     <th scope="col" class="text-m font-bold text-black px-6 py-4 text-left">
-                        CITY
+                        Ciudad
                     </th>
                     <th scope="col" class="text-m font-bold text-black px-6 py-4 text-left">
-                        POSTAL CODE
+                        Código Postal
                     </th>
                     <th scope="col" class="text-m font-bold text-black px-6 py-4 text-left">
-                        COUNTRY
+                        Pais
                     </th>
                   </tr>
                 </thead>
@@ -161,7 +161,7 @@
                                                             <form action="{{route('editDireccion', Auth::user()->direccion)}}" method="get">
                                                                 @csrf
                                                                 @method('GET')
-                                                            <button type="submit" class="bg-orange-600 text-white px-6 py-2 mt-5 text-xl rounded-xl">Set address</button>
+                                                            <button type="submit" class="bg-orange-600 text-white px-6 py-2 mt-5 text-xl rounded-xl">Cambiar dirección</button>
                                                             </form>
                                                         </div>
                                                             @endif

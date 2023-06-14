@@ -70,7 +70,7 @@
                             @csrf
 
                             <x-dropdown-link :href="route('completadosUser')" :active="request()->routeIs('completadosUser')">
-                                {{ __('Purchase history') }}
+                                {{ __('Historial de compra') }}
                             </x-dropdown-link>
                             <x-dropdown-link :href="route('perfiles')" :active="request()->routeIs('perfil')">
                                 {{ __('Mi Perfil') }}
@@ -78,7 +78,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Salir') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -97,10 +97,10 @@
         </div>
     </div>
 
-    <!-- Responsive Navigation Menu -->
+    <!-- Menu responsive -->
     <div class="sm:bg-white flex" :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1 bg-white h-auto text-black border">
-            <x-responsive-nav-link :href="route('productos')" :active="request()->routeIs('productos')">
+            {{-- <x-responsive-nav-link :href="route('productos')" :active="request()->routeIs('productos')">
                 {{ __('Products') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('carritos.index')" :active="request()->routeIs('carritos.index')">
@@ -117,7 +117,7 @@
                                     this.closest('form').submit();">
                     {{ __('Log Out') }}
                 </x-responsive-nav-link>
-            </form>
+            </form> --}}
         </div>
 
         <!-- Responsive Settings Options -->

@@ -41,7 +41,11 @@
                                     <td class="px-6 py-2">{{ $linea->cantidad }}</td>
                                     <td class="px-6 py-2">{{ $linea->producto->precio * $linea->cantidad }}$</td>
                                     <td class="px-6 py-2">{{ $linea->estado }}</td>
-                                    <td>
+
+
+
+
+                                    {{-- <td>
                                         <div class="text-sm text-gray-900 ">
                                             <form action="{{ route('edit', $linea) }}" method="POST">
                                                 @csrf
@@ -55,7 +59,16 @@
                                                 </select>
                                             </form>
                                         </div>
-                                    </td>
+                                    </td> --}}
+                                </tr>
+
+                                <tr>
+                                    <td class="px-6 py-2">Datos del comprador: </td>
+                                    <td class="px-6 py-2">{{ $linea->factura->user->name }}</td>
+                                    <td class="px-6 py-2">{{ $linea->factura->user->email }}</td>
+                                    <td class="px-6 py-2">{{ $linea->factura->user->direccion->calle }}</td>
+                                    <td class="px-6 py-2">{{ $linea->factura->user->direccion->ciudad }}</td>
+
                                 </tr>
                                 @endif
                                 @endforeach

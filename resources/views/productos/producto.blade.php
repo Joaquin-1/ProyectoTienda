@@ -31,8 +31,8 @@
                                         @csrf
                                         @method('POST')
                                         <button type="submit"
-                                            class=" mt-10 px-6 py-3 text-xl text-white bg-orange-500 hover:bg-orange-600 rounded">Add
-                                            to cart</button>
+                                            class=" mt-10 px-6 py-3 text-xl text-white bg-orange-500 hover:bg-orange-600 rounded">Añadir
+                                            al carrito</button>
                                     </form>
 
 

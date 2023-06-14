@@ -37,7 +37,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row text-center pt-8">
-                        <h3 class="panel-heading">Payment Details</h3>
+                        <h3 class="panel-heading">Detalles del pago</h3>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -57,14 +57,14 @@
 
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
-                                <label class='control-label'>Name on Card</label> <input
-                                    class='form-control' size='4' type='text'>
+                                <label class='control-label'>Nombre de la tarjeta</label> <input
+                                    class='form-control' placeholder='Ej: Visa' size='4' type='text'>
                             </div>
                         </div>
 
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group card required'>
-                                <label class='control-label'>Card Number</label> <input
+                                <label class='control-label'>Numero de tarjeta</label> <input
                                     autocomplete='off' class='form-control card-num' size='20'
                                     type='text'>
                             </div>
@@ -72,17 +72,17 @@
 
                         <div class='form-row row'>
                             <div class='col-xs-12 col-md-4 form-group cvc required'>
-                                <label class='control-label'>CVC</label>
+                                <label class='control-label'>CVC/CVV</label>
                                 <input autocomplete='off' class='form-control card-cvc' placeholder='e.g 415' size='4'
                                     type='text'>
                             </div>
                             <div class='col-xs-12 col-md-4 form-group expiration required'>
-                                <label class='control-label'>Expiration Month</label> <input
+                                <label class='control-label'>Mes de caducidad</label> <input
                                     class='form-control card-expiry-month' placeholder='MM' size='2'
                                     type='text'>
                             </div>
                             <div class='col-xs-12 col-md-4 form-group expiration required'>
-                                <label class='control-label'>Expiration Year</label> <input
+                                <label class='control-label'>Año de caducidad</label> <input
                                     class='form-control card-expiry-year' placeholder='YYYY' size='4'
                                     type='text'>
                             </div>
@@ -90,7 +90,7 @@
 
                         <div class='form-row row'>
                             <div class='col-md-12 hide error form-group'>
-                                <div class='alert-danger alert'>Fix the errors before you begin.</div>
+                                <div class='alert-danger alert'>Corrige los errores antes de prodeceder con la compra.</div>
                             </div>
                         </div>
 
@@ -175,5 +175,5 @@ $(function() {
 
 });
 </script>
-	
+
 </x-app-layout>

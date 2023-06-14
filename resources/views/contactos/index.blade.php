@@ -27,7 +27,7 @@
                                     <td class="px-6 py-2">{{ $contacto->pregunta }}</td>
                                     <td class="px-6 py-2">{{ $contacto->respuesta }}</td>
 
-                                    <td class="px-6 py-4">
+                                    {{-- <td class="px-6 py-4">
                                         @if (Auth::user()->rol == "admin")
 
                                             <div class="respuesta">
@@ -35,7 +35,7 @@
                                             </div>
 
                                         @endif
-                                    </td>
+                                    </td> --}}
 
                                 </tr>
 
@@ -45,6 +45,7 @@
                                     @csrf
                                     @method('PUT')
 
+                                        @if (Auth::user()->rol == "admin")
 
                                         <td class="px-6 py-2 ">
                                             <input type="text" id="respuesta" name="respuesta" required value="{{ old('respuesta', $contacto->respuesta) }}" placeholder="Respuesta">
@@ -55,6 +56,8 @@
                                             class="px-4 py-1 text-sm text-white bg-green-600 rounded ">Enviar</button>
 
                                         </td>
+
+                                        @endif
 
                                 </form>
                                 </tr>

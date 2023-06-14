@@ -1,7 +1,7 @@
 <div class="py-12">
     {{-- Meter las categorias desde livewire --}}
     <select name="categoriaSelect" id="categoriaSelect" wire:model="categoriaSelect" style="display:flex; float: left; margin-left: 15%; margin-bottom:5%;">
-        <option value="All" selected>All</option>
+        <option value="All" selected>Todas</option>
         @foreach ($categorias as $categoria)
        <option value="{{$categoria->nombre}}" >{{$categoria->nombre}}</option>
 
@@ -9,10 +9,10 @@
 
    </select>
 
-    <select name="select" style="display:flex; margin-left: 80%; margin-bottom:5%;">
+     <select {{-- name="ordenarSelect" id="ordenarSelect" wire:model="ordenarSelect" --}} style="display:flex; margin-left: 80%; margin-bottom:5%;">
         <option value="value1" selected>Ordenar por</option>
-        <option value="value2">Value 2</option>
-        <option value="value3">Value 3</option>
+        <option value="value2">Precio Descendente</option>
+        <option value="value3">Precio Ascendente</option>
     </select>
 
 
