@@ -9,9 +9,8 @@
 
    </select>
 
-     <select {{-- name="ordenarSelect" id="ordenarSelect" wire:model="ordenarSelect" --}} style="display:flex; margin-left: 80%; margin-bottom:5%;">
-        <option value="value1" selected>Ordenar por</option>
-        <option value="value2">Precio Descendente</option>
+     <select name="ordenarSelect" id="ordenarSelect" wire:model="ordenarSelect" style="display:flex; margin-left: 80%; margin-bottom:5%;">
+        <option value="Precio descendente" selected>Precio descendente</option>
         <option value="value3">Precio Ascendente</option>
     </select>
 
