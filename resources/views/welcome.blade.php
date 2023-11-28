@@ -25,7 +25,7 @@
             </div>
 
             <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
+            {{-- <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="flex items-center text-m font-medium text-white hover:text-orange-400 hover:border-orange-300 focus:outline-none focus:text-orange-500 focus:border-orange-300 transition duration-150 ease-in-out">
@@ -39,22 +39,22 @@
 
                     </x-slot>
                 </x-dropdown>
-            </div>
+            </div> --}}
 
             <!-- Hamburger -->
-            <div class="-mr-2 flex items-center sm:hidden">
+            {{-- <div class="-mr-2 flex items-center sm:hidden">
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
-            </div>
+            </div> --}}
         </div>
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div class="sm:bg-white flex" :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+    {{-- <div class="sm:bg-white flex" :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 mt-6 h-auto bg-white block border">
             <x-nav-link class="text-[#4C3F2B] bg-white  w-full px-5 py-5 " :href="route('register')" :active="request()->routeIs('register')">
                 {{ __('Register') }}
@@ -74,7 +74,7 @@
                 <!-- Authentication -->
             </div>
         </div>
-    </div>
+    </div> --}}
 </nav>
 
 <div class="bg-[#B99A66] shadow text-center text-4xl text-black pt-7 pb-5 font-semibold">
@@ -85,16 +85,16 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-[#B99A66] border-b border-gray-200">
+                <div class="p-10 bg-[#B99A66] border-b border-gray-200">
                     <x-plantilla>
-                        <table class="table-auto bg-white">
+                        <table class="table-auto bg-white ">
                             <tbody>
                                 @foreach ($productos as $producto)
                                     <tr class="border-2 border-grey-700">
                                         @php
                                         $vermas = false;
-                                            $desCorta = substr($producto->descripcion, 0, 70);
-                                            if (strlen($producto->descripcion) > 70) {
+                                            $desCorta = substr($producto->descripcion, 0, 120);
+                                            if (strlen($producto->descripcion) > 120) {
                                                 $desCorta = $desCorta . '...';
                                                 $vermas = true;
                                             }
@@ -102,20 +102,14 @@
                                                 $vermas = false;
                                             }
                                         @endphp
-                                        <td class="px-6 py-2"><a href="{{route('producto', $producto)}}"> <img class="h-60 w-auto" src="{{ URL($producto->imagenes[0]->imagen) }}" alt="imagen del producto"></a></td>
+                                        <td class="px-6 py-2 w-96"><a href="{{route('producto', $producto)}}"> <img class="h-60 w-auto" src="{{ URL($producto->imagenes[0]->imagen) }}" alt="imagen del producto"></a></td>
                                         <td class="px-6 py-2 w-96"><p class="text-3xl mb-4 ">{{ $producto->nombre }}</p>{{ $desCorta }}
                                         @if ($vermas)
                                             <a class="font-bold hover:text-orange-700" href="{{route('producto', $producto)}}"> More     </a>
                                         @endif
-                                    </td>
-                                        <td class="px-6 py-2">{{ $producto->precio }} &euro;</td>
-                                        <td>
-                                            <div class="text-sm text-gray-900 ">
-
-                                                <button  onclick="location.href='/login'" class="px-4 py-1 text-sm text-white bg-orange-500 rounded">Añadir al carrito</button>
-
-                                            </div>
                                         </td>
+                                        <td class="px-6 py-2">{{ $producto->precio }} &euro;</td>
+
                                         <td class="px-6 py-4">
 
                                         </td>

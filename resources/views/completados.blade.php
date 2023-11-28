@@ -70,8 +70,12 @@
                                     <td class="px-6 py-2">{{ $linea->factura->user->direccion->ciudad }}</td>
 
                                 </tr>
+
                                 @endif
                                 @endforeach
+                                <tr>
+                                    <td colspan="5" class="px-6 py-2">―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――</td>
+                                </tr>
                                 @endforeach
                                 </tbody>
                             </table>

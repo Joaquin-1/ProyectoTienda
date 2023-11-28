@@ -750,6 +750,9 @@ select {
 .m-0 {
   margin: 0px;
 }
+.m-10 {
+  margin: 2.5rem;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -1345,6 +1348,9 @@ select {
 .p-4 {
   padding: 1rem;
 }
+.p-10 {
+  padding: 2.5rem;
+}
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1462,6 +1468,12 @@ select {
 }
 .pl-12 {
   padding-left: 3rem;
+}
+.pt-10 {
+  padding-top: 2.5rem;
+}
+.pl-8 {
+  padding-left: 2rem;
 }
 .text-left {
   text-align: left;
@@ -1988,6 +2000,10 @@ select {
 
   .sm\:ml-6 {
     margin-left: 1.5rem;
+  }
+
+  .sm\:mt-10 {
+    margin-top: 2.5rem;
   }
 
   .sm\:flex {

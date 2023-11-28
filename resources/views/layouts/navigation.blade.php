@@ -18,6 +18,12 @@
                         {{ __('Productos') }}
                     </x-nav-link>
                     @else
+
+                    {{-- <x-nav-link class="ml-20" :href="route('inicio')" :active="request()->routeIs('inicio')">
+                        {{ __('Inicio') }}
+                    </x-nav-link> --}}
+
+
                     <x-nav-link class="ml-20" :href="route('productos')" :active="request()->routeIs('productos')">
                         {{ __('Productos') }}
                     </x-nav-link>
@@ -28,7 +34,7 @@
                         {{ __('Mis Pedidos') }}
                     </x-nav-link>
                     <x-nav-link :href="route('contactos')" :active="request()->routeIs('contactos')">
-                        {{ __('Contactos') }}
+                        {{ __('F&Q') }}
                     </x-nav-link>
 
                     @endif
@@ -43,7 +49,7 @@
                     </x-nav-link>
 
                     <x-nav-link :href="route('contactos')" :active="request()->routeIs('contactos')">
-                        {{ __('Contactos') }}
+                        {{ __('F&Q') }}
                     </x-nav-link>
                     @endif
                 </div>

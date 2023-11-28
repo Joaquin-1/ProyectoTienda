@@ -63,8 +63,8 @@ class ProductoController extends Controller
 
         $producto = new Producto();
         $imagen = new Imagen();
-        $producto->nombre = $validados['nombre'];
 
+        $producto->nombre = $validados['nombre'];
         $image = $request->file('imagen');
             /* Movemos a la carpeta deseada */
             $image->move(public_path('img'), $image->getClientOriginalName());

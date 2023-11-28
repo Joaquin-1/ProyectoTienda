@@ -10,6 +10,7 @@ use App\Http\Controllers\PedidoAdminController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\UserController;
+// use App\Http\Controllers\InicioController;
 use App\Models\Contacto;
 use App\Models\Producto;
 use Illuminate\Support\Facades\Auth;
@@ -45,6 +46,8 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::get('/productos', [ProductoController::class, 'index'])->name('productos');
+
+    // Route::get('/inicio', [InicioController::class, 'index'])->name('inicio');
 
     Route::get('/contacto', [DireccionController::class, 'contacto'])->name('contacto');
 
