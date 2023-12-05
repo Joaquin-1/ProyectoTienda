@@ -26,16 +26,21 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+
 Route::get('/stripe-payment/{total}', [StripeController::class, 'handleGet'])->name('pagar');
 Route::post('/stripe-payment', [StripeController::class, 'handlePost'])->name('stripe.payment');
 
 Route::get('/', function () {
     $productos = Producto::all();
-    return view('welcome', ['productos' => $productos]);
+    return view('welcome1', ['productos' => $productos]);
 });
 
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('carritos', CarritoController::class);
 

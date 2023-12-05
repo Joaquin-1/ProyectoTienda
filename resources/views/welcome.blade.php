@@ -1,5 +1,5 @@
-
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 h-28">
+<x-plantilla>
+<nav x-data="{ open: false }" class="bg-[#B99A66] w-full border-b border-gray-100 h-28">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
         <div class="flex justify-between h-16">
@@ -23,6 +23,7 @@
                 </x-nav-link>
                 </div>
             </div>
+
 
             <!-- Settings Dropdown -->
             {{-- <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -53,6 +54,10 @@
         </div>
     </div>
 
+
+
+
+
     <!-- Responsive Navigation Menu -->
     {{-- <div class="sm:bg-white flex" :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 mt-6 h-auto bg-white block border">
@@ -77,7 +82,7 @@
     </div> --}}
 </nav>
 
-<div class="bg-[#B99A66] shadow text-center text-4xl text-black pt-7 pb-5 font-semibold">
+{{-- <div class="bg-[#B99A66] shadow text-center text-4xl text-black pt-7 pb-5 font-semibold">
     CATÁLOGO
 </div>
 
@@ -124,9 +129,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
-    <footer class="flex justify-center bg-white   w-full h-96 mt-1">
+    {{-- <footer class="flex justify-center bg-white   w-full h-96 mt-1">
         <div class="bg-[#4C3F2B] text-white mt-4 w-full h-5/6">
             <div class="bg-[#B99A66] grid grid-rows-3 grid-flow-col gap-4  h-4/5">
                 <div class="absolute mt-10 flex ml-28">
@@ -145,12 +150,10 @@
                 </div>
             </div>
         </div>
-        <div class="w-full absolute mt-28">
-            <p class="text-center text-3xl"><a class="hover:text-orange-500 text-white" href="{{ route('productos') }}"> Our products</a>
-            </p>
-        </div>
+
         <div class="w-50 h-auto absolute mt-40">
             <a href="{{ route('productos') }}"><img class="h-20 w-32 mt-3 mr-1"
                 src="{{ URL('img/logo.png') }}" alt="logo"></a>
         </div>
-    </footer>
+    </footer> --}}
+</x-plantilla>
