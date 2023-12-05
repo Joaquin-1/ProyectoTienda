@@ -22,7 +22,7 @@ class CarritoController extends Controller
         $carritos = Carrito::all();
 
         return view('carritos.index', [
-            'carritos' => $carritos->where('user_id', Auth::user()->id),
+            'carritos' => $carritos->where('user_id', Auth::user()->id)->sortBy('producto.nombre')
         ]);
     }
 

@@ -57,16 +57,16 @@
                 @method('POST')
                 <button type="submit" class="px-4 py-1 text-sm border text-black mx-2 hover:bg-orange-500 rounded">-</button>
             </form>
-        </div>{{ $carrito->cantidad }}
-
-            <div class="text-sm text-gray-900 inline-block">
-                <form action="{{ route('sumar', $carrito) }}" method="POST">
-                    @csrf
-                    @method('POST')
-                    <button type="submit" class="px-4 py-1 border text-sm mx-2 text-black hover:bg-orange-500 rounded">+</button>
-                </form>
-            </div>
-        </td>
+        </div>
+        {{ $carrito->cantidad }}
+        <div class="text-sm text-gray-900 inline-block">
+            <form action="{{ route('sumar', $carrito) }}" method="POST">
+                @csrf
+                @method('POST')
+                <button type="submit" class="px-4 py-1 border text-sm mx-2 text-black hover:bg-orange-500 rounded">+</button>
+            </form>
+        </div>
+    </td>
 
         <td>
 
