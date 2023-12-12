@@ -13,19 +13,19 @@
                         <table class="table-auto">
                             <thead>
                                 <th class="px-6 py-2 text-gray-500">
-                                    Name
+                                    Nombre
                                 </th>
                                 <th class="px-6 py-2 text-gray-500">
-                                    Amount
+                                    Cantidad
                                 </th>
                                 <th class="px-6 py-2 text-gray-500">
-                                    Price
+                                    Precio
                                 </th>
                                 <th class="px-6 py-2 text-gray-500">
-                                    State
+                                    Estado
                                 </th>
                                 <th class="px-6 py-2 text-gray-500">
-                                    Order placed
+                                    Fecha Pedida
                                 </th>
                             </thead>
                             <tbody>
