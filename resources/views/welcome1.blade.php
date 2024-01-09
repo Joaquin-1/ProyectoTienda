@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
 
-    <title>Bienvenid@ a Newstyles</title>
+    <title>Bienvenid@ a BetweenFilms</title>
 
     <div class=" w-full mx-auto bg-[#B99A66] px-4 pt-4 pb-6">
         <div class="flex justify-between h-16">
@@ -23,7 +23,7 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="flex space-x-8 text-xl items-center ml-36">
+                <div class="flex space-x-8 text-xl  ml-36">
                 <x-nav-link class="ml-[300px] text-[#000] " :href="route('register')" :active="request()->routeIs('register')">
                     {{ __('Register') }}
                 </x-nav-link>
@@ -70,7 +70,7 @@
         </p>
     </div>
     <div class="w-full flex items-center justify-center mb-4">
-        <button class="bg-[#B99A66]"> <a href="{{ route('productos') }}"> Echa un vistazo a nuestro catalogo </button>
+        <button class="bg-[#B99A66]"> <a href="{{ route('productos') }}"> ¡Registrate y echa un vistazo al catálogo! </button>
 
     </div>
         {{-- <div class="grid grid-cols-5 gap-24">
@@ -112,25 +112,22 @@
 
         <div class="grid grid-rows-1 grid-cols-2 gap-96">
             <div class="bg-white p-3 rounded-md w-[400px] h-[600px] overflow-x-auto" style="">
-                <table class="table-auto bg-white ">
+                <table class=" w-full table-auto bg-white ">
                     <tbody>
+                        <tr class="w-full">
+                            <td class="px-8 bg-green-500 col-span-full">
+                              <p class="text-3xl">Mejores Peliculas</p>
+                            </td>
+                          </tr>
                         @foreach ($productos as $producto)
-                            <tr class="border-2 border-grey-700 ">
-                                @php
-                                $vermas = false;
-                                    $desCorta = substr($producto->descripcion, 0, 120);
-                                    if (strlen($producto->descripcion) > 120) {
-                                        $desCorta = $desCorta . '...';
-                                        $vermas = true;
-                                    }
-                                    else {
-                                        $vermas = false;
-                                    }
-                                @endphp
-                                <td class="px-6 py-2 w-96"><a href="{{route('producto', $producto)}}"> <img class="h-60 w-auto" src="{{ URL($producto->imagenes[0]->imagen) }}" alt="imagen del producto"></a></td>
-                                <td class="px-6 py-2 w-96"><p class="text-3xl mb-4 ">{{ $producto->nombre }}</p></td>
 
+                            <tr>
+                                <td class="px-6 py-2 "><p class="text-2xl mb-4 ">{{ $producto->nombre }}</p></td>
+                                <td class="px-6 py-2 "><p class="text-2xl mb-4 ">{{ $producto->precio }}€</p></td>
+                            </tr>
 
+                            <tr >
+                                <td class="px-6 py-2 w-96 "><a href="{{route('producto', $producto)}}"> <img class="h-60 w-auto border-2 border-green-700" src="{{ URL($producto->imagenes[0]->imagen) }}" alt="imagen del producto"></a></td>
                             </tr>
 
                         @endforeach

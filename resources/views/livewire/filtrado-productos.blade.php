@@ -61,6 +61,7 @@
                                     <td class="px-6 py-2">{{ $producto->precio }} &euro;</td>
                                     <td class="px-6 py-2">{{ $producto->categoria->nombre }}</td>
                                     <td>
+                                        @if (Auth::user()->rol == "cliente")
                                         <div class="text-sm text-gray-900 ">
                                             <form action="{{ route('anadiralcarrito', $producto) }}" method="POST">
                                                 @csrf
@@ -68,7 +69,7 @@
                                                 <button type="submit" class="px-4 py-1 text-sm text-white bg-orange-500 rounded">Add to cart</button>
                                             </form>
                                         </div>
-
+                                        @endif
                                     </td>
                                     <td class="px-6 py-4">
                                         @if (Auth::user()->rol == "admin")

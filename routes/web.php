@@ -40,6 +40,10 @@ Route::get('/', function () {
 });
 
 
+
+
+
+
 Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::resource('carritos', CarritoController::class);

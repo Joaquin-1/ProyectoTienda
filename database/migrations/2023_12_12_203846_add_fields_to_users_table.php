@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('telefono')->nullable()->default('');
             $table->string('ciudad')->nullable()->default('');
             $table->string('pais')->nullable()->default('');
+
         });
     }
 

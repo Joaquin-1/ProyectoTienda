@@ -6,7 +6,7 @@
                 <link rel="icon" href="{{ url('img/logo.png') }}">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('productos') }}">
+                    <a href="{{ url('/productos') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-black" />
                     </a>
                 </div>

@@ -67,7 +67,7 @@
             </label>
             <input type="file" name="imagen" id="imagen"
                 class="w-80 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 @error('imagen') border-red-500 @enderror"
-                >
+            >
 
 
             <button type="submit"
