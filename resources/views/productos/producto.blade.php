@@ -24,17 +24,18 @@
                                 <img id="" onclick="cambiarImagen()" class="h-10 mt-44 ml-3 cursor-pointer"
                                     src="{{ URL('img/proximo.png') }}" alt="">
                                 <div class="mt-28 ml-20 ">
-                                    <p class="text-2xl">{{ $producto->descripcion }}</p>
-                                    <p class="text-m mt-10">{{ $producto->precio }} &euro;</p>
+                                    <p class="hidden lg:block text-2xl">{{ $producto->descripcion }}</p>
+                                    <p class="hidden lg:block text-m mt-10">{{ $producto->precio }} &euro;</p>
 
+                                    @if (Auth::user()->rol == "cliente")
                                     <form action="{{ route('anadiralcarrito', $producto) }}" method="POST">
                                         @csrf
                                         @method('POST')
                                         <button type="submit"
-                                            class=" mt-10 px-6 py-3 text-xl text-white bg-orange-500 hover:bg-orange-600 rounded">Añadir
+                                            class="flex mt-10 px-6 py-3 text-xl text-white bg-orange-500 hover:bg-orange-600 rounded">Añadir
                                             al carrito</button>
                                     </form>
-
+                                    @endif
 
 
                                 </div>

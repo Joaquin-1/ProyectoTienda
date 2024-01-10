@@ -8,13 +8,13 @@
     </x-slot>
 
 
-    <form action="{{ route('perfiles.update', $user->id, false) }}" method="POST" enctype="multipart/form-data">
+    <form id="form" action="{{ route('perfiles.update', $user->id, false) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
         <div class="my-6 ml-80">
 
-            {{-- <?php dd($user); ?> --}}
+
 
             <label for="name"
                 class="text-sm font-medium text-gray-900 block mb-2 @error('nombre') text-red-500 @enderror">
@@ -88,6 +88,33 @@
         $('#charNum').text(len);
       }
     };
+
+    document.getElementById('form').addEventListener('submit', function(event) {
+
+    event.preventDefault();
+
+    // Valor del campo de entrada
+    var nameInput = document.getElementById('name').value;
+
+    // Validacion si está vacio
+    if (nameInput.trim() === '') {
+      alert('Por favor, ingresa un nombre válido.');
+      return;
+    }
+
+    //Expresion regular para que solo tenga letras y espacios
+
+    var regex = /^[A-Za-z\s]+$/;
+
+    // Validación con la expresión regular
+    if (!regex.test(nameInput)) {
+        alert('Por favor, ingresa un nombre válido (solo letras y espacios).');
+        return;
+
+    // Si la validación pasa, puedes enviar el formulario
+    this.submit();
+    };
+    });
 
     </script>
 

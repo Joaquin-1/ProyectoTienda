@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold leading-tight">
-            {{ __('PURCHASE HISTORY') }}
+            {{ __('Historial de Compra') }}
         </h2>
     </x-slot>
 
@@ -38,7 +38,7 @@
                                 @php
                                     $fecha = explode(' ', $linea->created_at)
                                 @endphp
-                                <tr>
+                                <tr class="border-b-4 border-[#047857]">
                                     {{-- <td class="px-6 py-2"><img class="h-44 w-auto" src="{{ URL($linea->producto->imagen) }}" alt="imagen del producto"></td> --}}
                                     <td class="px-6 py-2">{{ $linea->producto->nombre }}</td>
                                     <td class="px-6 py-2">{{ $linea->cantidad }}</td>

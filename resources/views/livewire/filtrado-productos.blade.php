@@ -53,7 +53,7 @@
                                         }
                                     @endphp
                                     <td class="px-6 py-2"><a href="{{route('producto', $producto)}}"> <img class="hidden lg:block h-60 w-auto" src="{{ URL($producto->imagenes[0]->imagen) }}" alt="imagen del producto"></a></td>
-                                    <td class="px-6 py-2 w-96"><p class="text-3xl mb-4 ">{{ $producto->nombre }}</p>{{ $desCorta }}
+                                    <td class="px-6 py-2 w-96"><a href="{{route('producto', $producto)}}"><p class="text-3xl mb-4 ">{{ $producto->nombre }}</p>{{ $desCorta }}
                                     @if ($vermas)
                                         <a class="font-bold hover:text-orange-700" href="{{route('producto', $producto)}}"> More </a>
                                     @endif
@@ -72,25 +72,29 @@
                                         </div>
                                         @endif
                                     </td>
-                                    <td class="px-6 py-4">
+                                    <td class="px-4 py-2 sm:px-6 md:px-8 lg:px-10 xl:px-12">
                                         @if (Auth::user()->rol == "admin")
+                                            <div class="flex flex-col items-center space-y-2">
 
-                                            <a href="/productos/{{ $producto->id }}/edit"
-                                                class="px-4 py-1 text-sm text-white bg-blue-600 rounded">Editar</a>
+                                                <a href="/productos/{{ $producto->id }}/edit"
+                                                    class="px-4 py-1 text-sm text-white bg-blue-600 rounded">Editar</a>
 
-                                            <p class="mt-5">
                                                 <a href="/productos/{{ $producto->id }}/anadirImagen"
-                                                    class="px-4 py-1 text-sm text-white bg-green-600 rounded">Añadir imagen</a>
-                                            </p>
+                                                    class="px-4 py-1 text-sm text-white bg-green-600 rounded">AñadirImagen</a>
 
+                                                <form action="/productos/{{ $producto->id }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button onclick="return confirm('¿Seguro? Borrarás todos los datos de esta película')"
+                                                            class="px-4 py-1 text-sm text-white bg-red-600 rounded"
+                                                            type="submit">Borrar</button>
+                                                </form>
 
-                                            <form action="/productos/{{ $producto->id }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button onclick="return confirm('¿Seguro? Borrarás todos los datos de esta película')" class="px-4 py-1 mt-5 text-sm text-white bg-red-600 rounded" type="submit">Borrar</button>
-                                            </form>
+                                            </div>
                                         @endif
                                     </td>
+
+
                                 </tr>
 
                                {{--  @endif --}}

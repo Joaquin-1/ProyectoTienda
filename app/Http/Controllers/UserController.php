@@ -32,14 +32,12 @@ class UserController extends Controller
 
         $validados = request()->validate([
             'name'=> 'required|string|max:255',
-            'descripcion'=> 'required|min:80',
+            'descripcion'=> 'nullable|string|min:40',
             'imagen' => 'required',
             'telefono' => 'nullable|string|max:9',
             'ciudad' => 'nullable|string|max:255',
             'pais' => 'nullable|string|max:255',
 
-            /*'precio'=> 'required',
-            'video'=> 'required', */
         ]);
 
         $user = User::findOrFail($id);
@@ -49,8 +47,7 @@ class UserController extends Controller
         $user->telefono = $validados['telefono'];
         $user->ciudad = $validados['ciudad'];
         $user->pais = $validados['pais'];
-        /*$producto->precio = $validados['precio'];
-        $producto->video = $validados['video']; */
+
 
         $user->save();
 
