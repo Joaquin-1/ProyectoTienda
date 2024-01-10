@@ -1,1 +1,1 @@
-<img class="h-28" src="{{url("img/logo.png")}}" alt="">
+<img class="h-20" src="{{url("img/logo.png")}}" alt="">

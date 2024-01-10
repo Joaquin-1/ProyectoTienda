@@ -40,34 +40,38 @@
                 {{ $slot }}
             </main>
         </div>
-        <footer class="flex justify-center bg-white   w-full h-96 mt-1">
-            <div class="bg-[#4C3F2B] text-white mt-4 w-full h-5/6">
-                <div class="bg-[#B99A66] grid grid-rows-3 grid-flow-col gap-4  h-4/5">
-                    <div class="absolute mt-10 flex ml-28">
+        <footer class="bg-[#B99A66] text-white py-8 md:py-16">
+            <div class="container mx-auto flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 md:pr-8">
+                    <div class="flex items-center mb-6">
                         <img class="h-6" src="{{ URL('img/correo.png') }}" alt="">
                         <p class="ml-2">betweenfilms@gmail.com</p>
                     </div>
-                    <div class="flex mt-24 ml-28 ">
-                        <img class=" mr-1 w-8 h-8"
-                                src="{{ URL('img/youtube.png') }}" alt="youtube">
-                        <a class="mt-1" href="https://www.youtube.com/@sonypictures/featured">
-                             BetweenFilms</a>
-                    </div>
-                    <div class="col-span-2 row-span-4 text-right mr-36 mt-10">
-                        <p class="text-2xl">¿Tienes alguna duda? </p>
-                        <p class="text-xl mr-3 mt-2"> <a class="text-black hover:text-[#4C3F2B]" href="/contactos/create">Contacta</a> con nosotros </p>
+                    <div class="flex items-center">
+                        <img class="mr-2 w-8 h-8" src="{{ URL('img/youtube.png') }}" alt="youtube">
+                        <a href="https://www.youtube.com/@sonypictures/featured" target="_blank" rel="noopener noreferrer">
+                            BetweenFilms</a>
                     </div>
                 </div>
+                <div class="md:w-1/2 md:text-right mt-12">
+                    <p class="text-2xl mb-4">¿Tienes alguna duda?</p>
+                    <p class="text-xl">
+                        <a class="" href="/contactos/create">Contacta con nosotros</a>
+                    </p>
+                </div>
             </div>
-            <div class="w-full absolute mt-28">
-                <p class="text-center text-3xl"><a class="hover:text-[#4C3F2B] text-white" href="{{ route('productos') }}"> Nuestras Películas</a>
+            <div class="text-center mt-8 md:mt-12">
+                <p class="text-3xl">
+                    <a class="hover:text-[#B99A66]" href="{{ route('productos') }}">Nuestras Películas</a>
                 </p>
             </div>
-            <div class="w-50 h-auto absolute mt-40">
-                <a href="{{ route('productos') }}"><img class="h-20 w-32 mt-3 mr-1"
-                    src="{{ URL('img/logo.png') }}" alt="logo"></a>
+            <div class="text-center mt-8">
+                <a href="{{ route('productos') }}">
+                    <img class="h-20 w-32 mx-auto" src="{{ URL('img/logo.png') }}" alt="logo">
+                </a>
             </div>
         </footer>
+
         @livewireScripts
     </body>
 </html>

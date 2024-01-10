@@ -108,8 +108,18 @@
                                     @method('get')
 
                                     <button class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-xl rounded-xl" type="submit"> Proceder con la compra</button>
+
+
+
                                 </form>
                             </div>
+
+{{-- -------------------------- --}}
+
+
+
+{{-- ------------------------------------------------------------ --}}
+
 <div class="w-full ml-52 text-xl mt-20">
     <p><b> Tu dirección es: </b></p>
     <div class="flex flex-col">

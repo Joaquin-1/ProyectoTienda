@@ -1,18 +1,35 @@
 <div class="py-12">
     {{-- Meter las categorias desde livewire --}}
-    <select name="categoriaSelect" id="categoriaSelect" wire:model="categoriaSelect" style="display:flex; float: left; margin-left: 15%; margin-bottom:5%;">
-        <option value="All" selected>Todas</option>
-        @foreach ($categorias as $categoria)
-       <option value="{{$categoria->nombre}}" >{{$categoria->nombre}}</option>
+    <div class="flex flex-wrap justify-center items-center max-w-screen-xl mx-auto mb-12">
+        <select name="categoriaSelect" id="categoriaSelect" wire:model="categoriaSelect" class="w-full md:w-3/4 lg:w-auto mb-3 lg:mb-0 mx-2 lg:mr-64">
+            <option value="All" selected>Todas</option>
+            @foreach ($categorias as $categoria)
+                <option value="{{$categoria->nombre}}">{{$categoria->nombre}}</option>
+            @endforeach
+        </select>
 
-       @endforeach
+        <select name="ordenarSelect" id="ordenarSelect" wire:model="ordenarSelect" class="w-full md:w-3/4 lg:w-auto mx-2 lg:ml-64">
+            <option value="Precio descendente" selected>Precio descendente</option>
+            <option value="value3">Precio Ascendente</option>
+        </select>
+    </div>
 
-   </select>
 
-     <select name="ordenarSelect" id="ordenarSelect" wire:model="ordenarSelect" style="display:flex; margin-left: 80%; margin-bottom:5%;">
-        <option value="Precio descendente" selected>Precio descendente</option>
-        <option value="value3">Precio Ascendente</option>
-    </select>
+
+
+    {{-- <div class="flex flex-wrap justify-between mb-5">
+        <select name="categoriaSelect" id="categoriaSelect" wire:model="categoriaSelect" class="flex-shrink-0 w-full md:w-auto mb-2 md:mb-0 md:mr-2">
+            <option value="All" selected>Todas</option>
+            @foreach ($categorias as $categoria)
+                <option value="{{$categoria->nombre}}" >{{$categoria->nombre}}</option>
+            @endforeach
+        </select>
+
+        <select name="ordenarSelect" id="ordenarSelect" wire:model="ordenarSelect" class="flex-shrink-0 w-full md:w-auto">
+            <option value="Precio descendente" selected>Precio descendente</option>
+            <option value="value3">Precio Ascendente</option>
+        </select>
+    </div> --}}
 
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -23,22 +40,6 @@
                         <tbody>
                             @foreach ($productos as $producto)
 
-                            {{-- @if (count($producto->imagenes) == 0)
-                            @if (Auth::user()->rol == 'admin')
-                            {{$producto->nombre}} No tiene imagen
-
-                            <a href="/productos/{{ $producto->id }}/anadirImagen"
-                                class="px-4 py-1 text-sm text-white bg-green-600 rounded">Añadir imagen</a>
-
-                                <form action="/productos/{{ $producto->id }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button onclick="return confirm('¿Seguro?')" class="px-4 py-1 mt-5 text-sm text-white bg-red-600 rounded" type="submit">Borrar</button>
-                                </form>
-                                @else
-                                @endif
-
-                            @else --}}
                             <tr class="border-2 border-grey-700">
                                 @php
                                     $vermas = false;
@@ -51,7 +52,7 @@
                                             $vermas = false;
                                         }
                                     @endphp
-                                    <td class="px-6 py-2"><a href="{{route('producto', $producto)}}"> <img class="h-60 w-auto" src="{{ URL($producto->imagenes[0]->imagen) }}" alt="imagen del producto"></a></td>
+                                    <td class="px-6 py-2"><a href="{{route('producto', $producto)}}"> <img class="hidden lg:block h-60 w-auto" src="{{ URL($producto->imagenes[0]->imagen) }}" alt="imagen del producto"></a></td>
                                     <td class="px-6 py-2 w-96"><p class="text-3xl mb-4 ">{{ $producto->nombre }}</p>{{ $desCorta }}
                                     @if ($vermas)
                                         <a class="font-bold hover:text-orange-700" href="{{route('producto', $producto)}}"> More </a>
