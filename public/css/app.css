@@ -813,6 +813,10 @@ select {
   margin-left: 2rem;
   margin-right: 2rem;
 }
+.mx-1 {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -2403,6 +2407,11 @@ select {
     margin-right: -1.5rem;
   }
 
+  .sm\:mx-1 {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+  }
+
   .sm\:ml-10 {
     margin-left: 2.5rem;
   }
@@ -2423,6 +2432,10 @@ select {
     margin-bottom: 0px;
   }
 
+  .sm\:ml-8 {
+    margin-left: 2rem;
+  }
+
   .sm\:block {
     display: block;
   }
@@ -2441,6 +2454,10 @@ select {
 
   .sm\:h-28 {
     height: 7rem;
+  }
+
+  .sm\:w-3\/4 {
+    width: 75%;
   }
 
   .sm\:max-w-md {
@@ -2488,6 +2505,21 @@ select {
   .sm\:py-4 {
     padding-top: 1rem;
     padding-bottom: 1rem;
+  }
+
+  .sm\:px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .sm\:px-3 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .sm\:py-1 {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
   }
 
   .sm\:pt-0 {
@@ -2571,6 +2603,10 @@ select {
     margin-left: 16rem;
   }
 
+  .md\:ml-8 {
+    margin-left: 2rem;
+  }
+
   .md\:block {
     display: block;
   }
@@ -2627,12 +2663,20 @@ select {
     width: 50%;
   }
 
+  .md\:w-2\/3 {
+    width: 66.666667%;
+  }
+
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .md\:flex-row {
     flex-direction: row;
+  }
+
+  .md\:justify-center {
+    justify-content: center;
   }
 
   .md\:justify-between {
@@ -2659,6 +2703,16 @@ select {
   .md\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+
+  .md\:px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .md\:py-1 {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
   }
 
   .md\:pr-8 {
@@ -2702,6 +2756,10 @@ select {
     margin-left: 16rem;
   }
 
+  .lg\:ml-52 {
+    margin-left: 13rem;
+  }
+
   .lg\:block {
     display: block;
   }
@@ -2724,6 +2782,10 @@ select {
 
   .lg\:w-3\/4 {
     width: 75%;
+  }
+
+  .lg\:w-1\/2 {
+    width: 50%;
   }
 
   .lg\:items-center {
@@ -2755,6 +2817,12 @@ select {
   .lg\:text-8xl {
     font-size: 6rem;
     line-height: 1;
+  }
+}
+@media (min-width: 1280px) {
+
+  .xl\:w-3\/4 {
+    width: 75%;
   }
 }
 

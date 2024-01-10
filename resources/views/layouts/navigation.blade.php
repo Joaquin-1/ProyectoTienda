@@ -12,7 +12,7 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="sm:flex space-x-8 sm:-my-px sm:ml-10 text-xl">
+                <div class="sm:flex space-x-8 sm:-my-px sm:ml-8 text-xl">
                     @if (Auth::user()->rol == "admin")
                         <x-nav-link :href="route('productos')" :active="request()->routeIs('productos')">
                             {{ __('Productos') }}
