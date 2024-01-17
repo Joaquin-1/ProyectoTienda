@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+
+
 use App\Http\Requests\StoreProductoRequest;
 use App\Http\Requests\UpdateProductoRequest;
 use App\Models\Categoria;
 use App\Models\Imagen;
 use App\Models\Producto;
-
+use Illuminate\Support\Facades\Auth;
 
 class ProductoController extends Controller
 {
@@ -26,6 +28,8 @@ class ProductoController extends Controller
             'imagenes' => $imagenes
         ]);
     }
+
+
 
     /**
      * Show the form for creating a new resource.

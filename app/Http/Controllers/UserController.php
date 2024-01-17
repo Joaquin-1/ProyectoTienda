@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Imagen;
 
+
 class UserController extends Controller
 {
     public function index(){
@@ -17,6 +18,9 @@ class UserController extends Controller
         ]);
 
     }
+
+
+
 
     public function edit($id)
     {
@@ -31,7 +35,7 @@ class UserController extends Controller
     {
 
         $validados = request()->validate([
-            'name'=> 'required|string|max:255',
+            'name'=> 'required|string|max:25',
             'descripcion'=> 'nullable|string|min:40',
             'imagen' => 'required',
             'telefono' => 'nullable|string|max:9',

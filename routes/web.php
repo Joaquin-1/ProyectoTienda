@@ -13,6 +13,7 @@ use App\Http\Controllers\UserController;
 // use App\Http\Controllers\InicioController;
 use App\Models\Contacto;
 use App\Models\Producto;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/stripe-payment/{total}', [StripeController::class, 'handleGet'])->name('pagar');
 Route::post('/stripe-payment', [StripeController::class, 'handlePost'])->name('stripe.payment');
 
+
 Route::get('/', function () {
     $productos = Producto::all();
     return view('welcome1', ['productos' => $productos]);
@@ -45,6 +47,9 @@ Route::get('/', function () {
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
+
+
+
 
     Route::resource('carritos', CarritoController::class);
 

@@ -111,7 +111,6 @@
         alert('Por favor, ingresa un nombre válido (solo letras y espacios).');
         return;
 
-    // Si la validación pasa, puedes enviar el formulario
     this.submit();
     };
     });
