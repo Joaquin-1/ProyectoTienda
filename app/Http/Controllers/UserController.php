@@ -36,7 +36,7 @@ class UserController extends Controller
 
         $validados = request()->validate([
             'name'=> 'required|string|max:25',
-            'descripcion'=> 'nullable|string|min:40',
+            'descripcion'=> 'nullable|string|min:20',
             'imagen' => 'required',
             'telefono' => 'nullable|string|max:9',
             'ciudad' => 'nullable|string|max:255',

@@ -31,6 +31,8 @@ class ProductoController extends Controller
 
 
 
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -58,7 +60,7 @@ class ProductoController extends Controller
     public function store(StoreProductoRequest $request)
     {
         $validados = request()->validate([
-            'nombre'=> 'required|string|max:255',
+            'nombre'=> 'required|max:255',
             'descripcion'=> 'required',
             'precio'=> 'required',
             'video'=> 'required',
@@ -89,7 +91,10 @@ class ProductoController extends Controller
 
         return redirect('/productos')
             ->with('success', 'Producto insertado con éxito.');
+
+
     }
+
 
     /**
      * Display the specified resource.
