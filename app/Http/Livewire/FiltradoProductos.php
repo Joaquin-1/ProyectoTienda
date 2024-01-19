@@ -8,54 +8,38 @@ use Livewire\Component;
 
 class FiltradoProductos extends Component
 {
+
+    //Livewire  se utilizan en las vistas Blade mediante la directiva
+    //@livewire y se pueden acceder directamente a través de la URL sin necesidad de definir rutas
+
     public $categoriaSelect = 'All';
-
     public $ordenarSelect = 'Precio descendente';
-
 
     public function render()
     {
+        $query = Producto::query();
 
-        if ($this->categoriaSelect == 'All' && $this->ordenarSelect == 'Precio descendente')
-        {
-            $productos = Producto::all();
-            $productos = Producto::orderBy('precio','desc')->get();
-        }
-         elseif ($this->categoriaSelect == 'All') {
-
-            $productos = Producto::all();
-            $productos = Producto::orderBy('precio','asc')->get();
-
-        } else {
-            $categoriaLive = Categoria::where('nombre', $this->categoriaSelect)->get()[0]->id;
-            $productos = Producto:: where('categoria_id', $categoriaLive)->get();
+        if ($this->categoriaSelect != 'All') {
+            $categoriaLive = Categoria::where('nombre', $this->categoriaSelect)->first();
+            $query->where('categoria_id', $categoriaLive->id);
         }
 
-        // if ($this->ordenarSelect == 'Precio descendente')
-        // {
+        if ($this->ordenarSelect == 'Precio descendente') {
+            $query->orderBy('precio', 'desc');
+        } elseif ($this->ordenarSelect == 'Precio ascendente') {
+            $query->orderBy('precio', 'asc');
+        }
 
-        //     $productos = Producto::orderBy('precio','desc')->get();
-        // }
-        //  else {
-
-        //     $productos = Producto::orderBy('precio','asc')->get();
-
-
-        // }
-
-
-
-        // dd($ordenarSelect);
-
+        $productos = $query->paginate(5);
+        // $productos = $query->get();
         $categorias = Categoria::all();
 
-        // dd($categorias)
+
+
         return view('livewire.filtrado-productos', [
             'productos' => $productos,
             'categorias' => $categorias,
-
         ]);
-
     }
 }
 

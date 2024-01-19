@@ -20,12 +20,13 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos = Producto::all();
-        $imagenes = Imagen::all();
+
+
+        //No se llama a los productos porque ya se hace en el controlador del livewire
 
         return view('productos.index', [
-            'productos' => $productos,
-            'imagenes' => $imagenes
+
+
         ]);
     }
 

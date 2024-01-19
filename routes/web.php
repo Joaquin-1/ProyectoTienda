@@ -125,7 +125,7 @@ Route::middleware(['auth', 'can:solo-admin'])->group(function () {
     Route::get('/todosLosPedidos', [PedidoAdminController::class, 'index'])->name('todosLosPedidos');
     Route::get('/completados', [PedidoAdminController::class, 'completados'])->name('completados');
 
-    Route::get('/productos/index', [ProductoController::class, 'edit']);
+    // Route::get('/productos/index', [ProductoController::class, 'edit']);
     Route::get('/productos/create', [ProductoController::class, 'create']);
     Route::post('/productos', [ProductoController::class, 'store'])->name('productos.store');
 
