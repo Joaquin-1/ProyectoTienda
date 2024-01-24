@@ -29,38 +29,100 @@
                                 </th>
                             </thead>
                             <tbody>
-                                @foreach ($facturas as $factura)
-                                @foreach ($factura->lineas as $linea)
+
+                                @php
+                                    $facturasProcesadas = [];
+                                @endphp
+
+                        @foreach ($facturas as $factura)
+                            @foreach ($factura->lineas as $linea)
                                 @if ($linea->estado != 'Completed')
 
 
                                 @else
-                                @php
-                                    $fecha = explode(' ', $linea->created_at)
-                                @endphp
-                                <tr class="border-b-4 border-[#047857]">
-                                    {{-- <td class="px-6 py-2"><img class="h-44 w-auto" src="{{ URL($linea->producto->imagen) }}" alt="imagen del producto"></td> --}}
-                                    <td class="px-6 py-2">{{ $linea->producto->nombre }}</td>
-                                    <td class="px-6 py-2">{{ $linea->cantidad }}</td>
-                                    <td class="px-6 py-2">{{ $linea->producto->precio * $linea->cantidad }}$</td>
-                                    <td class="px-6 py-2">{{ $linea->estado }}</td>
-                                    <td class="px-6 py-2">{{$fecha[0]}}</td>
-                                        <td>
-                                            <div class="text-sm text-gray-900 ">
-                                                {{-- <form action="{{ route('anadiralcarrito', $zapato) }}" method="POST">
-                                                    @csrf
-                                                    @method('POST')
-                                                    <button type="submit" class="px-4 py-1 text-sm text-white bg-red-400 rounded">Añadir al carrito</button>
-                                                </form> --}}
-                                            </div>
-                                        </td>
-                                </tr>
+
+
+                                    @if (!in_array($factura->id, $facturasProcesadas))
+                                        @php
+                                            $facturasProcesadas[] = $factura->id;
+                                        @endphp
+
+                                        @if (count($factura->lineas) > 0)
+                                            @php
+                                                $fecha = explode(' ', $factura->lineas[0]->created_at)
+                                            @endphp
+
+                                            @if (count($factura->lineas) == 1)
+                                                <tr class="border-b-4 border-red-700 ]">
+                                            @endif
+
+                                            <td class="px-6 py-2">{{ $factura->lineas[0]->producto->nombre }}</td>
+                                            <td class="px-6 py-2">{{ $factura->lineas[0]->cantidad }}</td>
+                                            <td class="px-6 py-2">{{ $factura->lineas[0]->producto->precio * $factura->lineas[0]->cantidad }}$</td>
+                                            <td class="px-6 py-2">{{ $factura->lineas[0]->estado }}</td>
+                                            <td class="px-6 py-2">{{ $fecha[0] }}</td>
+                                            <td>
+                                                <div class="text-sm text-gray-900">
+                                                    <button onclick="miFunc()" class="botonsito bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                                        Devolucion
+                                                    </button>
+                                                </div>
+                                            </td>
+                                                </tr>
+
+                                            @for ($i = 1; $i < count($factura->lineas); $i++)
+                                                <tr class="border-b-4 border-[#047857]">
+                                                    <td class="px-6 py-2">{{ $factura->lineas[$i]->producto->nombre }}</td>
+                                                    <td class="px-6 py-2">{{ $factura->lineas[$i]->cantidad }}</td>
+                                                    <td class="px-6 py-2">{{ $factura->lineas[$i]->producto->precio * $factura->lineas[$i]->cantidad }}$</td>
+                                                    <td class="px-6 py-2">{{ $factura->lineas[$i]->estado }}</td>
+
+
+                                                </tr>
+                                            @endfor
+                                        @endif
                                     @endif
 
-                                    @endforeach
-                                    @endforeach
-                                </tbody>
+
+                                @endif
+
+                            @endforeach
+                        @endforeach
+
+                        <script>
+
+                            function miFunc() {
+                                alert("Hola")
+                            }
+
+                            //Obtener todos los botones de devolución por su clase
+                            var botonesDevolucion = document.querySelectorAll('.botonsito');
+
+                            //Fecha de creación de la factura
+                            var fechaCreacionFactura = Date.parse('{{ $factura->lineas[0]->created_at }}'); // Reemplaza con la fecha real de creación
+                            //Calcular la diferencia de días
+                            var diferenciaDias = Math.floor((Date.now() - fechaCreacionFactura) / (1000 * 60 * 60 * 24));
+
+                            //alert(diferenciaDias);
+
+                            //Recorre sobre cada botón y mostrar u ocultar según la diferencia de días
+                            botonesDevolucion.forEach(function(boton) {
+                                if (diferenciaDias <= 15) {
+                                    boton.classList.remove('hidden');
+                                } else {
+                                    boton.classList.add('hidden');
+                                }
+                            });
+                        </script>
+
+
+
+                    </tbody>
                             </table>
+
+
+
+
                         </x-plantilla>
                 </div>
             </div>

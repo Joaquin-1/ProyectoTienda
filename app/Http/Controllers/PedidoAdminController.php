@@ -17,8 +17,21 @@ class PedidoAdminController extends Controller
 
     }
 
+    // public function devoluciones(){
+    //     $facturas = Factura::all();
+    //     return view('todosLosPedidos.index', [
+    //         'facturas' => $facturas
+    //     ]);
+
+    // }
+
+
+
     public function completados(){
-        $facturas = Factura::all();
+
+        $query = Factura::query();
+
+        $facturas = $query->paginate(5);
         return view('completados', [
             'facturas' => $facturas
         ]);
