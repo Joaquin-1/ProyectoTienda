@@ -121,6 +121,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware(['auth', 'can:solo-admin'])->group(function () {
 
     // Route::get('/todasLasDevoluciones', [PedidoAdminController::class, 'devoluciones'])->name('todosLasDevoluciones');
+    // Route::post('/devoluciones', [PedidoAdminController::class, 'crearDevolucion'])->name('devoluciones');
 
 
 

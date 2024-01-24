@@ -25,6 +25,18 @@ class PedidoAdminController extends Controller
 
     // }
 
+    // public function crearDevolucion() {
+
+    //     $facturaDevolucion = new FacturaDevolucion();
+    //     $facturaDevolucion->cliente_id = $request->input('cliente_id');
+
+    //     $facturaDevolucion->save();
+
+
+    //     return redirect()->route('devoluciones.index')->with('success', 'Factura de devolución creada correctamente.');
+
+    // }
+
 
 
     public function completados(){
@@ -40,6 +52,8 @@ class PedidoAdminController extends Controller
 
     public function completadosUser(){
         $facturas = Factura::all()->where('user_id', Auth::user()->id);
+
+
         return view('completadosUser', [
             'facturas' => $facturas
         ]);

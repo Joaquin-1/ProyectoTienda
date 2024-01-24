@@ -63,9 +63,11 @@
                                             <td class="px-6 py-2">{{ $fecha[0] }}</td>
                                             <td>
                                                 <div class="text-sm text-gray-900">
-                                                    <button onclick="miFunc()" class="botonsito bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                                        Devolucion
-                                                    </button>
+                                                    @if($factura->created_at->diffInDays(now()) < 15)
+
+                                                        <button onclick="miFunc()" class="botonsito bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Devolucion</button>
+                                                    @endif
+
                                                 </div>
                                             </td>
                                                 </tr>
@@ -91,28 +93,13 @@
 
                         <script>
 
+
+
                             function miFunc() {
-                                alert("Hola")
+                                alert(diferenciaDias);
                             }
 
-                            //Obtener todos los botones de devolución por su clase
-                            var botonesDevolucion = document.querySelectorAll('.botonsito');
 
-                            //Fecha de creación de la factura
-                            var fechaCreacionFactura = Date.parse('{{ $factura->lineas[0]->created_at }}'); // Reemplaza con la fecha real de creación
-                            //Calcular la diferencia de días
-                            var diferenciaDias = Math.floor((Date.now() - fechaCreacionFactura) / (1000 * 60 * 60 * 24));
-
-                            //alert(diferenciaDias);
-
-                            //Recorre sobre cada botón y mostrar u ocultar según la diferencia de días
-                            botonesDevolucion.forEach(function(boton) {
-                                if (diferenciaDias <= 15) {
-                                    boton.classList.remove('hidden');
-                                } else {
-                                    boton.classList.add('hidden');
-                                }
-                            });
                         </script>
 
 
