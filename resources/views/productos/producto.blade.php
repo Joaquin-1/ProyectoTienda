@@ -18,11 +18,12 @@
                             <div class="flex flex-col lg:flex-row">
                                 <div class="flex flex-col lg:flex-row items-center">
                                     <img id="" onclick="cambiarImagenAnterior()" class="h-10 mt-4 lg:mt-0 lg:mr-3 cursor-pointer" src="{{ URL('img/anterior.png') }}" alt="">
-                                    <img id="imgGrande" class="w-96 h-auto border mb-4 lg:mb-0" src="{{ URL($imagenes->get()[0]->imagen) }}" alt="">
+                                    <img id="imgGrande" class="w-full lg:w-1/2 h-auto border mb-4 lg:mb-0" src="{{ URL($imagenes->get()[0]->imagen) }}" alt="">
+
                                     <img id="" onclick="cambiarImagen()" class="h-10 mt-4 lg:mt-0 lg:ml-3 cursor-pointer" src="{{ URL('img/proximo.png') }}" alt="">
                                 </div>
 
-                                <div class="mt-4 lg:mt-28 lg:ml-20">
+                                <div class="lg:w-1/2 mt-4 lg:mt-28 lg:ml-20">
                                     <p class="text-2xl">{{ $producto->descripcion }}</p>
                                     <p class="text-m mt-2 lg:mt-10">{{ $producto->precio }} &euro;</p>
 
@@ -60,8 +61,90 @@
                             </div>
                         @endif
                         <h3 class="mb-4 mt-10 text-lg font-semibold text-gray-900">Comentarios</h3>
+
+
+
+                        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+
+                        <script>
+                            $(document).ready(function() {
+                                $('#formulario-comentario').submit(function(e) {
+                                    e.preventDefault();
+
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '{{ route("anadircomentario") }}',
+                                        data: $('#formulario-comentario').serialize(),
+                                        dataType: 'json',
+                                        success: function(response) {
+                                            console.log('Respuesta del servidor:', response);
+
+
+                                            var comentario = response.comentario;
+                                            var comentarioId = comentario.id;
+                                            var comentarioTexto = comentario.texto;
+                                            var comentarioNombreusuario = comentario.nombre_usuario;
+
+                                            var comentarioFecha = formatDate(comentario.created_at);
+                                            var comentarioHTML = `
+            <div class="flex">
+                <div class="flex-shrink-0 mr-3"></div>
+                <div class="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed ">
+                    <strong>${comentarioNombreusuario}</strong> <span class="text-xs ml-2 text-gray-400">${comentarioFecha}</span>
+                    <div class="flex">
+                        <p class="text-sm w-3/4 inline-block">${comentarioTexto}</p>
+                    </div>
+                    <div class="mt-4 flex items-center">
+                        <div class="block w-full -space-x-2 mr-2">
+                            <details class="text-sm text-gray-500 hover:text-black cursor-pointer font-semibold block">
+                                <summary style="list-style: none;"> Responder </summary>
+                                <form class="mt-4" action="{{ route('anadirrespuesta') }}" method="POST">
+                                    @csrf
+                                    @method('POST')
+                                    <input class="rounded w-3/4" type="text" id="comentario" name="comentario" maxlength="300">
+                                    <label for="producto" hidden></label>
+                                    <input type="text" id="producto" name="producto" hidden value="{{ $producto->id }}">
+                                    <label for="comentariopadre" hidden></label>
+                                    <input type="text" id="comentariopadre" name="comentariopadre" hidden value="${comentarioId}">
+                                    <input type='submit' class="bg-orange-500 text-white font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-orange-700" value='Responder'>
+                                </form>
+                            </details>
+                            <!-- Puedes agregar aquí la lógica para mostrar respuestas si es necesario -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+                                            $('#comentariosDiv').append(comentarioHTML);
+                                            $('#comentario').val('');
+                                        },
+                                        error: function(error) {
+                                            console.error('Error en la solicitud AJAX');
+                                        }
+                                    });
+                                });
+                            });
+
+                            function formatDate(dateString) {
+                                const date = new Date(dateString);
+                                const year = date.getFullYear();
+                                const month = date.getMonth() + 1; // Los meses son indexados desde 0
+                                const day = date.getDate();
+
+                                // Formatear para que tenga el formato 'YYYY-MM-DD'
+                                const formattedDate = `${year}-${month}-${day}`;
+
+                                return formattedDate;
+                            }
+                            </script>
+
+
+
+
                         <div class="flex items-center justify-center shadow-lg mt-10 mb-4 w-11/12">
-                            <form class="w-3/4" action="{{ route('anadircomentario') }}" method="POST">
+                            <form id="formulario-comentario" class="w-3/4" action="{{ route('anadircomentario') }}" method="POST">
                                 @csrf
                                 @method('POST')
                                 <div class="flex flex-wrap -mx-3 mb-6">
@@ -86,16 +169,21 @@
                             </form>
                         </div>
                 </div>
-                <!-- component -->
+
+                {{-- ------------------------------------------------------------------------------------------------------ --}}
+                <!-- componente -->
+
+
+                <div id="comentariosDiv" class="space-y-4 w-full">
                 @foreach ($producto->comentarios as $comentario)
                     @php
                         $fecha = explode(' ', $comentario->created_at);
                     @endphp
                     @if ($comentario->comentario_id != null)
                     @else
-                        <div class="space-y-4 w-full">
 
-                            <div class="flex">
+
+                            <div  class="flex">
                                 <div class="flex-shrink-0 mr-3">
 
                                 </div>
@@ -165,10 +253,12 @@
                                     </div>
                                 </div>
                             </div>
+
                     @endif
                 @endforeach
 
-            </div>
+                        </div>
+
 
         </div>
     </div>

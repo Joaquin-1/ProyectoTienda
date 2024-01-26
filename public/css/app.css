@@ -3099,6 +3099,10 @@ select {
     width: 50%;
   }
 
+  .lg\:w-96 {
+    width: 24rem;
+  }
+
   .lg\:flex-row {
     flex-direction: row;
   }

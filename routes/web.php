@@ -10,6 +10,7 @@ use App\Http\Controllers\PedidoAdminController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\UserController;
+use App\Http\Livewire\SwitchView;
 // use App\Http\Controllers\InicioController;
 use App\Models\Contacto;
 use App\Models\Producto;
