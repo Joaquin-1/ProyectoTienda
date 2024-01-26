@@ -15,31 +15,28 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <x-plantilla>
                         <div class="mr-20">
-                            <div class="flex">
-                                <img id="" onclick="cambiarImagenAnterior()"
-                                    class="h-10 mt-44 mr-3 cursor-pointer" src="{{ URL('img/anterior.png') }}"
-                                    alt="">
-                                <img id="imgGrande" class="w-96 h-auto border"
-                                    src="{{ URL($imagenes->get()[0]->imagen) }}" alt="">
-                                <img id="" onclick="cambiarImagen()" class="h-10 mt-44 ml-3 cursor-pointer"
-                                    src="{{ URL('img/proximo.png') }}" alt="">
-                                <div class="mt-28 ml-20 ">
-                                    <p class="hidden lg:block text-2xl">{{ $producto->descripcion }}</p>
-                                    <p class="hidden lg:block text-m mt-10">{{ $producto->precio }} &euro;</p>
+                            <div class="flex flex-col lg:flex-row">
+                                <div class="flex flex-col lg:flex-row items-center">
+                                    <img id="" onclick="cambiarImagenAnterior()" class="h-10 mt-4 lg:mt-0 lg:mr-3 cursor-pointer" src="{{ URL('img/anterior.png') }}" alt="">
+                                    <img id="imgGrande" class="w-96 h-auto border mb-4 lg:mb-0" src="{{ URL($imagenes->get()[0]->imagen) }}" alt="">
+                                    <img id="" onclick="cambiarImagen()" class="h-10 mt-4 lg:mt-0 lg:ml-3 cursor-pointer" src="{{ URL('img/proximo.png') }}" alt="">
+                                </div>
+
+                                <div class="mt-4 lg:mt-28 lg:ml-20">
+                                    <p class="text-2xl">{{ $producto->descripcion }}</p>
+                                    <p class="text-m mt-2 lg:mt-10">{{ $producto->precio }} &euro;</p>
 
                                     @if (Auth::user()->rol == "cliente")
                                     <form action="{{ route('anadiralcarrito', $producto) }}" method="POST">
                                         @csrf
                                         @method('POST')
-                                        <button type="submit"
-                                            class="flex mt-10 px-6 py-3 text-xl text-white bg-orange-500 hover:bg-orange-600 rounded">Añadir
-                                            al carrito</button>
+                                        <button type="submit" class="mt-2 lg:mt-10 px-6 py-3 text-xl text-white bg-orange-500 hover:bg-orange-600 rounded">Añadir al carrito</button>
                                     </form>
                                     @endif
-
-
                                 </div>
                             </div>
+
+
                             <div class="grid grid-cols-3 gap-3 w-80 ml-[3.25rem]">
                                 @foreach ($imagenes->get() as $imagen)
                                     <div>
@@ -78,7 +75,7 @@
                                     <div class="w-full md:w-full flex items-start md:w-full px-3">
                                         <div class="flex items-start w-1/2 text-gray-700 px-2 mr-auto">
 
-                                            <p class="text-xs md:text-sm pt-px">Be nice</p>
+                                            <p class="text-xs md:text-sm pt-px">Se respetuoso</p>
                                         </div>
                                         <div class="-mr-1">
                                             <input type='submit'
@@ -124,7 +121,7 @@
 
                                             <details
                                                 class="text-sm text-gray-500 hover:text-black cursor-pointer font-semibold block">
-                                                <summary style="list-style: none;"> Reply
+                                                <summary style="list-style: none;"> Responder
                                                 </summary>
                                                 <form class="mt-4" action="{{ route('anadirrespuesta') }}"
                                                     method="POST">
@@ -140,7 +137,7 @@
                                                         hidden value="{{ $comentario->id }}">
                                                     <input type='submit'
                                                         class="bg-orange-500 text-white font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-orange-700"
-                                                        value='Reply'>
+                                                        value='Responder'>
                                                 </form>
                                             </details>
                                             @if ($comentario->respuestas)

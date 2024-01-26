@@ -3039,6 +3039,34 @@ select {
     margin-left: 13rem;
   }
 
+  .lg\:mt-44 {
+    margin-top: 11rem;
+  }
+
+  .lg\:mt-28 {
+    margin-top: 7rem;
+  }
+
+  .lg\:ml-20 {
+    margin-left: 5rem;
+  }
+
+  .lg\:mt-10 {
+    margin-top: 2.5rem;
+  }
+
+  .lg\:mt-0 {
+    margin-top: 0px;
+  }
+
+  .lg\:mr-3 {
+    margin-right: 0.75rem;
+  }
+
+  .lg\:ml-3 {
+    margin-left: 0.75rem;
+  }
+
   .lg\:block {
     display: block;
   }
@@ -3069,6 +3097,10 @@ select {
 
   .lg\:w-1\/2 {
     width: 50%;
+  }
+
+  .lg\:flex-row {
+    flex-direction: row;
   }
 
   .lg\:items-center {
