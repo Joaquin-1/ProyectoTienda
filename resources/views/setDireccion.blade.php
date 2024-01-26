@@ -6,7 +6,7 @@
     </x-slot>
     <div class="flex justify-center">
     <div class="border-2 mt-10 pt-8 pl-12 w-1/2 items-center">
-    <form action="{{route('setDireccion', Auth::user())}}" method="post">
+    <form id="form" action="{{route('setDireccion', Auth::user())}}" method="post">
         @csrf
         @method('POST')
 
@@ -19,7 +19,7 @@
             <input type="text" name="calle" id="calle" value="{{Auth::user()->direccion->calle}}" required
                 class="w-11/12 mb-5 text-m bg-gray-50 border border-gray-300
                  text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 @error('nombre') border-red-500 @enderror">
-
+                 <p id="errorMsg1" class="hidden text-red-600">Por favor, ingresa una calle válida.</p>
 
 
                 <label for="ciudad"
@@ -28,7 +28,7 @@
             </label>
             <input type="text" name="ciudad" id="ciudad" value="{{ Auth::user()->direccion->ciudad }}"
                 class="w-11/12 mb-5 text-m bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 @error('nombre') border-red-500 @enderror">
-
+                <p id="errorMsg2" class="hidden text-red-600">Por favor, ingresa una ciudad válida.</p>
 
 
                 <label for="codigo_postal"
@@ -37,15 +37,16 @@
             </label>
             <input type="text" name="codigo_postal" id="codigo_postal" value="{{ Auth::user()->direccion->codigo_postal }}"
                 class="w-11/12 mb-5 text-m bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 @error('nombre') border-red-500 @enderror">
+                <p id="errorMsg3" class="hidden text-red-600">Por favor, ingresa un codigo postal válido.</p>
 
 
-                <label for="pais"
+            <label for="pais"
                 class="text-xl font-medium text-gray-900 block mb-2 @error('pais') text-red-500 @enderror">
                 Pais
             </label>
             <input type="text" name="pais" id="pais" value="{{ Auth::user()->direccion->pais }}"
                 class="w-11/12 bg-gray-50 text-m border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 @error('nombre') border-red-500 @enderror">
-
+                <p id="errorMsg4" class="hidden text-red-600">Por favor, ingresa un pais válido.</p>
 
 
             <button type="submit"
@@ -55,5 +56,103 @@
             </div>
         </div>
     </form>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function() {
+
+        var form = document.getElementById("form");
+
+
+
+            form.addEventListener("submit", function(event) {
+                // Validar el campo de nombre
+
+                var calleInput = document.getElementById("calle");
+                var calleValue = calleInput.value.trim();
+                var calleRegex = /^[0-9A-Za-zÁÉÍÓÚáéíóúÜü\s\.\-,'&]+$/;
+
+
+                if (!calleRegex.test(calleValue)) {
+                    event.preventDefault(); // Detener el envío del formulario
+
+                    // Mostrar mensaje de error
+                    document.getElementById("errorMsg1").classList.remove("hidden");
+
+
+
+                } else {
+                    // Ocultar mensaje de error si el nombre es válido
+                    document.getElementById("errorMsg1").classList.add("hidden");
+                }
+
+
+                var ciudadInput = document.getElementById("ciudad");
+                var ciudadValue = ciudadInput.value.trim();
+                var ciudadRegex = /^[A-Za-zÁÉÍÓÚáéíóúÜü\s\-']+$/;
+
+
+                if (!ciudadRegex.test(ciudadValue)) {
+                    event.preventDefault(); // Detener el envío del formulario
+
+                    // Mostrar mensaje de error
+                    document.getElementById("errorMsg2").classList.remove("hidden");
+
+
+
+                } else {
+                    // Ocultar mensaje de error si el nombre es válido
+                    document.getElementById("errorMsg2").classList.add("hidden");
+                }
+
+                var codigo_postalInput = document.getElementById("codigo_postal");
+                var codigo_postalValue = codigo_postalInput.value.trim();
+                var codigo_postalRegex = /^\d{5}$/;
+
+
+                if (!codigo_postalRegex.test(codigo_postalValue)) {
+                    event.preventDefault(); // Detener el envío del formulario
+
+                    // Mostrar mensaje de error
+                    document.getElementById("errorMsg3").classList.remove("hidden");
+
+
+
+                } else {
+                    // Ocultar mensaje de error si el nombre es válido
+                    document.getElementById("errorMsg3").classList.add("hidden");
+                }
+
+                var paisInput = document.getElementById("pais");
+                var paisValue = paisInput.value.trim();
+                var paisRegex = /^España$/i;
+
+
+                if (!paisRegex.test(paisValue)) {
+                    event.preventDefault(); // Detener el envío del formulario
+
+                    // Mostrar mensaje de error
+                    document.getElementById("errorMsg4").classList.remove("hidden");
+
+
+
+                } else {
+                    // Ocultar mensaje de error si el nombre es válido
+                    document.getElementById("errorMsg4").classList.add("hidden");
+                }
+
+
+
+
+
+
+            });
+
+
+        });
+
+
+            </script>
+
 </div>
 </x-app-layout>

@@ -50,9 +50,9 @@
                                                     @csrf
                                                     @method('POST')
                                                     <select name="estado" id="estado">
-                                                        <option  value="Pending to send">Pending to send</option>
-                                                        <option value="Product sent">Product sent</option>
-                                                        <option value="Completed">Completed</option>
+                                                        <option  value="Pending to send">Pendiente de envio</option>
+                                                        <option value="Product sent">Producto enviado</option>
+                                                        <option value="Completed">Completado</option>
 
                                                         <input type="submit" class="mt-2 mb-6 px-4 py-1 text-sm bg-orange-400 rounded ml-3 cursor-pointer" value="Cambiar estado">
                                                     </select>

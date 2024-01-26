@@ -118,6 +118,9 @@
         var precioGuardado = localStorage.getItem('precio');
         document.getElementById('precio').value = precioGuardado;
 
+        var videoGuardado = localStorage.getItem('video');
+        document.getElementById('video').value = videoGuardado;
+
         form.addEventListener("submit", function(event) {
             // Validar el campo de nombre
 
@@ -180,6 +183,7 @@
             var videoValue = videoInput.value.trim();
             var videoRegex = /^https:\/\/www\.youtube\.com\/embed\/[a-zA-Z0-9_-]{11}\?[\s\S]*$/; // Expresión regular para letras, numeros y espacios
 
+            localStorage.setItem('video', videoValue);
 
             if (!videoRegex.test(videoValue)) {
                 event.preventDefault(); // Detener el envío del formulario
