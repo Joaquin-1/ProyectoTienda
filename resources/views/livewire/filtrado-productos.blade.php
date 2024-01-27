@@ -33,12 +33,10 @@
         </select>
 
         <select name="ordenarSelect" id="ordenarSelect" wire:model="ordenarSelect" class="w-full md:w-3/4 lg:w-auto mx-2 lg:ml-64">
-            <option value="Precio descendente" selected>Precio descendente</option>
-            <option value="value3">Precio Ascendente</option>
+            <option value="Precio descendente" selected>Precio Descendente</option>
+            <option value="Precio ascendente">Precio Ascendente</option>
         </select>
     </div>
-
-
 
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -189,13 +187,18 @@
                                             <a href="/productos/{{ $producto->id }}/anadirImagen"
                                                 class="px-4 py-1 text-sm text-white bg-green-600 rounded">AñadirImagen</a>
 
-                                            <form action="/productos/{{ $producto->id }}" method="POST">
+                                            {{-- <form action="/productos/{{ $producto->id }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button onclick="return confirm('¿Seguro? Borrarás todos los datos de esta película')"
                                                         class="px-4 py-1 text-sm text-white bg-red-600 rounded"
-                                                        type="submit">Borrar</button>
-                                            </form>
+                                                        type="submit">Borrar</button> --}}
+                                                <!-- Modifica el botón para llamar a la función 'confirmDelete' al hacer clic -->
+                                                <button id="openModal" class="px-4 py-1 text-sm text-white bg-red-600 rounded" onclick="confirmDelete()">
+                                                    Borrar
+                                                </button>
+
+                                            {{-- </form> --}}
 
                                         </div>
                                     @endif
@@ -213,6 +216,52 @@
 
                         </tbody>
                     </table>
+
+                    <!-- Agrega este modal al final de tu documento HTML -->
+                    <div id="confirmModal" class="fixed inset-0 z-50 overflow-auto bg-black bg-opacity-50 flex items-center justify-center hidden">
+                        <div class="modal-container max-w-md mx-auto bg-white rounded shadow-lg overflow-hidden z-50">
+                            <div class="modal-content text-left">
+                                <div class="modal-header bg-gray-800 text-white p-4">
+                                    <h3 class="text-lg font-semibold">Confirmación</h3>
+
+                                </div>
+                                <div class="modal-body p-4">
+                                    <p>¿Seguro? Borrarás todos los datos de esta película</p>
+                                </div>
+                                <div class="modal-footer p-4 flex justify-end">
+                                    <button class="px-4 py-2 mr-2 text-white bg-gray-500 rounded" onclick="closeModal()">Cancelar</button>
+
+                                    <form action="/productos/{{ $producto->id }}" method="POST" onsubmit="closeModal()">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="px-4 py-2 text-white bg-red-600 rounded" type="submit">Borrar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+<!-- Modifica el script para abrir la ventana modal solo cuando se hace clic en el botón -->
+<!-- Agrega este script al final de tu documento HTML -->
+<script>
+    function confirmDelete() {
+        const modal = document.getElementById('confirmModal');
+        modal.classList.remove('hidden');
+        var producto = {{ $producto->id }}
+        console.log(producto);
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('confirmModal');
+        modal.classList.add('hidden');
+    }
+</script>
+
+
+
+
 
                     {{ $productos->links() }}
 

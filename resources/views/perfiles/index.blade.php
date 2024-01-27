@@ -8,7 +8,7 @@
 
     <div class="flex flex-col md:flex-row">
         <div class="md:w-1/4">
-            <img class="border-4 border-[#B99A66] h-96 w-96 rounded-full shadow-md m-8 mx-auto md:mx-0" src="{{ URL($users->imagen) }}" alt="imagen del producto">
+            <img class="border-4 border-[#B99A66] lg:ml-5 h-96 w-96 rounded-full shadow-md m-8 mx-auto md:mx-0" src="{{ URL($users->imagen) }}" alt="imagen del producto">
         </div>
 
         <div class="container mx-auto md:w-3/4">

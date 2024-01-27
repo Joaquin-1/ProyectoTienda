@@ -105,7 +105,7 @@
         var nombreValue = nombreInput.value.trim();
         var nombreRegex = /^[a-zA-Z\s]+$/; // Expresión regular para letras y espacios
 
-        if (!nombreRegex.test(nombreValue)) {
+        if (!nombreRegex.test(nombreValue) || (nombreValue === '')) {
             event.preventDefault(); // Detener el envío del formulario
 
             // Mostrar mensaje de error
@@ -118,7 +118,7 @@
 
         var descripcionInput = document.getElementById("descripcion");
         var descripcionValue = descripcionInput.value.trim();
-        var descripcionRegex = /^[a-zA-Z0-9\s]+$/; // Expresión regular para letras y espacios
+        var descripcionRegex = /^[\s\S]{1,400}$/; // Expresión regular para letras y espacios
 
         if (!descripcionRegex.test(descripcionValue)) {
             event.preventDefault(); // Detener el envío del formulario

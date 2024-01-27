@@ -833,6 +833,10 @@ select {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -1210,6 +1214,12 @@ select {
 }
 .max-w-full {
   max-width: 100%;
+}
+.max-w-sm {
+  max-width: 24rem;
+}
+.max-w-md {
+  max-width: 28rem;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -1661,6 +1671,9 @@ select {
 .bg-blue-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+}
+.bg-opacity-50 {
+  --tw-bg-opacity: 0.5;
 }
 .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
@@ -3065,6 +3078,10 @@ select {
 
   .lg\:ml-3 {
     margin-left: 0.75rem;
+  }
+
+  .lg\:ml-5 {
+    margin-left: 1.25rem;
   }
 
   .lg\:block {
