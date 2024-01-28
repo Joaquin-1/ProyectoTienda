@@ -98,7 +98,7 @@
 
 
 
-            if (!nombreRegex.test(nombreValue)) {
+            if (!nombreRegex.test(nombreValue) || (nombreValue === '')) {
                 event.preventDefault(); // Detener el envío del formulario
 
                 // Mostrar mensaje de error
@@ -114,10 +114,10 @@
 
             var descripcionInput = document.getElementById("descripcion");
             var descripcionValue = descripcionInput.value.trim();
-            var descripcionRegex = /^[a-zA-Z0-9\s]*$/; // Expresión regular para letras, numeros y espacios
+            var descripcionRegex = /^[\s\S]{1,400}$/; // Expresión regular para letras, numeros y espacios
 
 
-            if (!descripcionRegex.test(descripcionValue)) {
+            if (!descripcionRegex.test(descripcionValue) || (descripcionValue === '')) {
                 event.preventDefault(); // Detener el envío del formulario
 
                 // Mostrar mensaje de error
@@ -134,7 +134,7 @@
 
 
 
-            if (!precioRegex.test(precioValue)) {
+            if (!precioRegex.test(precioValue) || (precioValue === '')) {
                 event.preventDefault(); // Detener el envío del formulario
 
                 // Mostrar mensaje de error
@@ -143,8 +143,6 @@
                 // Ocultar mensaje de error si el nombre es válido
                 document.getElementById("errorMsg3").classList.add("hidden");
             }
-
-
 
             var videoInput = document.getElementById("video");
             var videoValue = videoInput.value.trim();

@@ -55,7 +55,7 @@ class DireccionController extends Controller
         $direccion->save();
 
         return redirect('/carritos')
-            ->with('success', 'Address added successfully');
+            ->with('success', 'Direccion agregada correctamente');
     }
 
     /**
@@ -83,7 +83,7 @@ class DireccionController extends Controller
         $direccion->save();
 
         return redirect('/carritos')
-            ->with('success', 'Address modified successfully');
+            ->with('success', 'Direccion modificada correctamente');
     }
     public function store(StoreDireccionRequest $request)
     {

@@ -120,7 +120,7 @@
         var descripcionValue = descripcionInput.value.trim();
         var descripcionRegex = /^[\s\S]{1,400}$/; // Expresión regular para letras y espacios
 
-        if (!descripcionRegex.test(descripcionValue)) {
+        if (!descripcionRegex.test(descripcionValue) || (descripcionValue === '')) {
             event.preventDefault(); // Detener el envío del formulario
 
             // Mostrar mensaje de error
@@ -135,7 +135,7 @@
         var telefonoValue = telefonoInput.value.trim();
         var telefonoRegex = /^[6789]\d{8}$/; // Expresión regular para letras y espacios
 
-        if (!telefonoRegex.test(telefonoValue)) {
+        if (!telefonoRegex.test(telefonoValue) || (telefonoValue === '')) {
             event.preventDefault(); // Detener el envío del formulario
 
             // Mostrar mensaje de error
@@ -150,7 +150,7 @@
         var ciudadValue = ciudadInput.value.trim();
         var ciudadRegex = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s\-]+$/; // Expresión regular para letras y espacios
 
-        if (!ciudadRegex.test(ciudadValue)) {
+        if (!ciudadRegex.test(ciudadValue) || (ciudadValue === '')) {
             event.preventDefault(); // Detener el envío del formulario
 
             // Mostrar mensaje de error
@@ -165,7 +165,7 @@
         var paisValue = paisInput.value.trim();
         var paisRegex = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s\-]+$/; // Expresión regular para letras y espacios
 
-        if (!paisRegex.test(paisValue)) {
+        if (!paisRegex.test(paisValue) || (paisValue === '')) {
             event.preventDefault(); // Detener el envío del formulario
 
             // Mostrar mensaje de error

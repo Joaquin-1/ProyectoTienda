@@ -130,7 +130,7 @@
 
             localStorage.setItem('nombre', nombreValue);
 
-            if (!nombreRegex.test(nombreValue)) {
+            if (!nombreRegex.test(nombreValue) || (nombreValue === '')) {
                 event.preventDefault(); // Detener el envío del formulario
 
                 // Mostrar mensaje de error
@@ -150,7 +150,7 @@
 
             localStorage.setItem('descripcion', descripcionValue);
 
-            if (!descripcionRegex.test(descripcionValue)) {
+            if (!descripcionRegex.test(descripcionValue) || (descripcionValue === '')) {
                 event.preventDefault(); // Detener el envío del formulario
 
                 // Mostrar mensaje de error
@@ -167,7 +167,7 @@
 
             localStorage.setItem('precio', precioValue);
 
-            if (!precioRegex.test(precioValue)) {
+            if (!precioRegex.test(precioValue) || (precioValue === '')) {
                 event.preventDefault(); // Detener el envío del formulario
 
                 // Mostrar mensaje de error

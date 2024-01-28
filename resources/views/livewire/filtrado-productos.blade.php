@@ -187,13 +187,7 @@
                                             <a href="/productos/{{ $producto->id }}/anadirImagen"
                                                 class="px-4 py-1 text-sm text-white bg-green-600 rounded">AñadirImagen</a>
 
-                                            {{-- <form action="/productos/{{ $producto->id }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button onclick="return confirm('¿Seguro? Borrarás todos los datos de esta película')"
-                                                        class="px-4 py-1 text-sm text-white bg-red-600 rounded"
-                                                        type="submit">Borrar</button> --}}
-                                                <!-- Modifica el botón para llamar a la función 'confirmDelete' al hacer clic -->
+                                                {{-- Abre la ventana modal llamando a la funcion confirmDelete --}}
                                                 <button id="openModal" class="px-4 py-1 text-sm text-white bg-red-600 rounded" onclick="confirmDelete()">
                                                     Borrar
                                                 </button>
@@ -217,7 +211,7 @@
                         </tbody>
                     </table>
 
-                    <!-- Agrega este modal al final de tu documento HTML -->
+                    <!-- Ventana modal para borrar el produucto -->
                     <div id="confirmModal" class="fixed inset-0 z-50 overflow-auto bg-black bg-opacity-50 flex items-center justify-center hidden">
                         <div class="modal-container max-w-md mx-auto bg-white rounded shadow-lg overflow-hidden z-50">
                             <div class="modal-content text-left">
@@ -243,15 +237,18 @@
 
 
 
-<!-- Modifica el script para abrir la ventana modal solo cuando se hace clic en el botón -->
-<!-- Agrega este script al final de tu documento HTML -->
 <script>
+
+    // Funcion que abre la ventana modal
+
     function confirmDelete() {
         const modal = document.getElementById('confirmModal');
         modal.classList.remove('hidden');
         var producto = {{ $producto->id }}
         console.log(producto);
     }
+
+    // Funcion que cierra la ventana si cancelas
 
     function closeModal() {
         const modal = document.getElementById('confirmModal');

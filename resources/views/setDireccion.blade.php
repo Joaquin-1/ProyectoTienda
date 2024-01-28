@@ -16,9 +16,9 @@
                 class="text-xl font-medium text-gray-900 block mb-2 @error('calle') text-red-500 @enderror">
                 Calle
             </label>
-            <input type="text" name="calle" id="calle" value="{{Auth::user()->direccion->calle}}" required
+            <input type="text" name="calle" id="calle" value="{{Auth::user()->direccion->calle}}" {{-- required --}}
                 class="w-11/12 mb-5 text-m bg-gray-50 border border-gray-300
-                 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 @error('nombre') border-red-500 @enderror">
+                 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 @error('calle') border-red-500 @enderror">
                  <p id="errorMsg1" class="hidden text-red-600">Por favor, ingresa una calle válida.</p>
 
 
@@ -27,7 +27,7 @@
                 Ciudad
             </label>
             <input type="text" name="ciudad" id="ciudad" value="{{ Auth::user()->direccion->ciudad }}"
-                class="w-11/12 mb-5 text-m bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 @error('nombre') border-red-500 @enderror">
+                class="w-11/12 mb-5 text-m bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 @error('ciudad') border-red-500 @enderror">
                 <p id="errorMsg2" class="hidden text-red-600">Por favor, ingresa una ciudad válida.</p>
 
 
@@ -36,7 +36,7 @@
                 Código Postal
             </label>
             <input type="text" name="codigo_postal" id="codigo_postal" value="{{ Auth::user()->direccion->codigo_postal }}"
-                class="w-11/12 mb-5 text-m bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 @error('nombre') border-red-500 @enderror">
+                class="w-11/12 mb-5 text-m bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 @error('codigo_postal') border-red-500 @enderror">
                 <p id="errorMsg3" class="hidden text-red-600">Por favor, ingresa un codigo postal válido.</p>
 
 
@@ -45,7 +45,7 @@
                 Pais
             </label>
             <input type="text" name="pais" id="pais" value="{{ Auth::user()->direccion->pais }}"
-                class="w-11/12 bg-gray-50 text-m border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 @error('nombre') border-red-500 @enderror">
+                class="w-11/12 bg-gray-50 text-m border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 @error('pais') border-red-500 @enderror">
                 <p id="errorMsg4" class="hidden text-red-600">Por favor, ingresa un pais válido.</p>
 
 

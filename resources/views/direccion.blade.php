@@ -15,8 +15,8 @@
                 class="text-xl font-medium text-gray-900 block mb-2 @error('calle') text-red-500 @enderror">
                 Calle
             </label>
-            <input type="text" name="calle" id="calle" required
-                class="text-xl w-80 mb-5 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 @error('nombre') border-red-500 @enderror">
+            <input type="text" name="calle" id="calle" {{-- required --}}
+                class="w-80 mb-5 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 @error('nombre') border-red-500 @enderror">
                 <p id="errorMsg1" class="hidden text-red-600">Por favor, ingresa una calle válida.</p>
 
 
