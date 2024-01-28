@@ -162,16 +162,27 @@
 
                                             <a href="/productos/{{ $producto->id }}/edit"
                                                 class="px-4 py-1 text-sm text-white bg-blue-600 rounded">Editar</a>
+                                            <p>{{ $producto->id }} </p>
 
                                             <a href="/productos/{{ $producto->id }}/anadirImagen"
                                                 class="px-4 py-1 text-sm text-white bg-green-600 rounded">AñadirImagen</a>
 
+                                                {{-- <form action="/productos/{{ $producto->id }}" method="POST">
+
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button onclick="return confirm('¿Seguro? Borrarás todos los datos de esta película')"
+                                                                class="px-4 py-1 text-sm text-white bg-red-600 rounded"
+                                                                type="submit">Borrar</button>
+                                                </form> --}}
                                                 {{-- Abre la ventana modal llamando a la funcion confirmDelete --}}
-                                                <button id="openModal" class="px-4 py-1 text-sm text-white bg-red-600 rounded" onclick="confirmDelete()">
+                                                <button class="px-4 py-1 text-sm text-white bg-red-600 rounded" onclick="confirmDelete({{ $producto->id }})">
                                                     Borrar
                                                 </button>
 
-                                            {{-- </form> --}}
+
+
+
 
                                         </div>
                                     @endif
@@ -207,7 +218,6 @@
                             <div class="modal-content text-left">
                                 <div class="modal-header bg-gray-800 text-white p-4">
                                     <h3 class="text-lg font-semibold">Confirmación</h3>
-
                                 </div>
                                 <div class="modal-body p-4">
                                     <p>¿Seguro? Borrarás todos los datos de esta película</p>
@@ -215,11 +225,14 @@
                                 <div class="modal-footer p-4 flex justify-end">
                                     <button class="px-4 py-2 mr-2 text-white bg-gray-500 rounded" onclick="closeModal()">Cancelar</button>
 
-                                    <form action="/productos/{{ $producto->id }}" method="POST" onsubmit="closeModal()">
+                                    <form action="/productos/{{ $producto->id }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="px-4 py-2 text-white bg-red-600 rounded" type="submit">Borrar</button>
+
                                     </form>
+
+
                                 </div>
                             </div>
                         </div>
@@ -231,11 +244,15 @@
 
     // Funcion que abre la ventana modal
 
-    function confirmDelete() {
+    function confirmDelete(productoId) {
         const modal = document.getElementById('confirmModal');
         modal.classList.remove('hidden');
-        var producto = {{ $producto->id }}
-        console.log(producto);
+
+        console.log(productoId);
+
+        var form = document.querySelector('#confirmModal form');
+        form.action = ("/productos/" + productoId );
+
     }
 
     // Funcion que cierra la ventana si cancelas
@@ -243,6 +260,9 @@
     function closeModal() {
         const modal = document.getElementById('confirmModal');
         modal.classList.add('hidden');
+
+        var form = document.querySelector('#confirmModal form');
+        form.action = "";
     }
 </script>
 

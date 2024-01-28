@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('lineas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('factura_id')->constrained('facturas');
-            $table->foreignId('producto_id')->constrained('productos');
+            $table->foreignId('producto_id')->constrained('productos')->onDelete('cascade');
             $table->integer('cantidad');
             $table->string('estado')->default('Pending to send');
             $table->timestamps();

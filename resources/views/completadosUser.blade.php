@@ -64,7 +64,7 @@
                                             <td>
                                                 <div class="text-sm text-gray-900">
                                                     @if($factura->created_at->diffInDays(now()) < 15)
-                                                        <p> {{ $factura->id }} </p>
+                                                        <p> {{ $factura->lineas[0]->id }} </p>
                                                         <button onclick="miFunc()" class="botonsito bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Devolucion</button>
                                                     @endif
 
