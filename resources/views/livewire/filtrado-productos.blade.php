@@ -1,27 +1,4 @@
 
-{{--
-
-<div x-data="{ searchTerm: '' }">
-    <input type="text" x-model="searchTerm" placeholder="Buscar productos..." class="p-2 border rounded mb-4">
-    <table class="table-auto bg-white">
-        <tbody>
-            @foreach ($productos as $producto)
-                <template x-if="searchTerm === '' || '{{ strtolower($producto->nombre) }}'.includes(searchTerm.toLowerCase())">
-                    <!-- Resto de tu código aquí -->
-                    <tr class="border-2 border-grey-700">
-                        <!-- ... -->
-                    </tr>
-                </template>
-            @endforeach
-        </tbody>
-    </table>
-</div> --}}
-
-
-
-
-
-
 <div class="py-12">
     {{-- Meter las categorias desde livewire --}}
     <div class="flex flex-wrap justify-center items-center max-w-screen-xl mx-auto mb-12">
@@ -137,14 +114,16 @@
 
 
 
-
-
+                <div x-data="{ searchTerm: '' }">
+                    <input type="text" x-model="searchTerm" placeholder="Buscar productos..." class="lg:ml-0 sm:ml-12 my-4 px-2 py-1 border border-gray-300 rounded">
 
                     <table class="table-auto bg-white">
                         <tbody>
                             @foreach ($productos as $producto)
 
-                            <tr class="border-2 border-grey-700">
+                            <tr class="border-2 border-grey-700" x-show="productoMatches('{{ $producto->nombre }}', $data.searchTerm)">
+
+
                                     @php
                                     $vermas = false;
                                         $desCorta = substr($producto->descripcion, 0, 70);
@@ -199,19 +178,30 @@
                                 </td>
 
 
-                                </tr>
+                            </tr>
 
                                {{--  @endif --}}
                             @endforeach
                             @if (Auth::user()->rol == "admin")
 
-                            <a href="/productos/create" class="my-4 text-black hover:underline text-xl">Insertar un nuevo producto</a>
+                            <a href="/productos/create" class="ml-12 lg:ml-48 my-4 text-black hover:underline text-xl">Insertar un nuevo producto</a>
                             @endif
 
                         </tbody>
                     </table>
 
-                    <!-- Ventana modal para borrar el produucto -->
+                    <script>
+                        function productoMatches(nombre, searchTerm) {
+
+                            return searchTerm === '' || nombre.toLowerCase().includes(searchTerm.toLowerCase());
+                        }
+                    </script>
+
+
+
+                </div>
+
+                    {{-- Ventana modal para borrar el produucto  --}}
                     <div id="confirmModal" class="fixed inset-0 z-50 overflow-auto bg-black bg-opacity-50 flex items-center justify-center hidden">
                         <div class="modal-container max-w-md mx-auto bg-white rounded shadow-lg overflow-hidden z-50">
                             <div class="modal-content text-left">

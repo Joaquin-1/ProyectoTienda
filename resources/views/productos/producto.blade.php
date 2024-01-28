@@ -50,9 +50,9 @@
 
                         </div>
                         @if ($producto->video != null)
-                            <div class="flex bg-black w-full h-auto my-10 py-20 items-center justify-center">
+                            <div class="flex bg-black w-full h-auto mt-12 py-4 items-center justify-center">
 
-                                <iframe class="" width="560" height="315" src="{{ $producto->video }}"
+                                <iframe id="video1" class="sm:w-1/2 sm:h-60" src="{{ $producto->video }}"
                                     title="YouTube video player" frameborder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen></iframe>
@@ -62,6 +62,14 @@
                         @endif
                         <h3 class="mb-4 mt-10 text-lg font-semibold text-gray-900">Comentarios</h3>
 
+                        <style>
+                            @media (min-width: 1000px) {
+                              #video1 {
+                                width: 1000px;
+                                height: 600px;
+                              }
+                            }
+                          </style>
 
 
                         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

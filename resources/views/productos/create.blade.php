@@ -146,7 +146,7 @@
 
             var descripcionInput = document.getElementById("descripcion");
             var descripcionValue = descripcionInput.value.trim();
-            var descripcionRegex = /^[\s\S]{1,400}$/; // Expresión regular para letras, numeros y espacios
+            var descripcionRegex = /^[\s\S]{1,500}$/; // Expresión regular para letras, numeros y espacios
 
             localStorage.setItem('descripcion', descripcionValue);
 
