@@ -59,5 +59,23 @@ class UserController extends Controller
             ->with('success', 'Perfil modificado con éxito.');
     }
 
+
+    public function verClientes()
+    {
+        $admin = Auth::user();
+        $clientes = User::where('rol', 'cliente')->get();
+
+        return view('usuarios.ver-clientes', compact('admin', 'clientes'));
+    }
+
+    public function destroy($id)
+    {
+        $cliente = User::findOrFail($id);
+        $cliente->delete();
+
+        return redirect()->back()
+            ->with('success', 'Producto borrado correctamente');
+    }
+
 }
 

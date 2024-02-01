@@ -1384,6 +1384,11 @@ select {
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
 }
+.space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
 .overflow-auto {
   overflow: auto;
 }
@@ -2388,6 +2393,10 @@ select {
   --tw-text-opacity: 1;
   color: rgb(185 154 102 / var(--tw-text-opacity));
 }
+.hover\:text-red-700:hover {
+  --tw-text-opacity: 1;
+  color: rgb(185 28 28 / var(--tw-text-opacity));
+}
 .hover\:underline:hover {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
@@ -2626,6 +2635,14 @@ select {
 
   .sm\:ml-12 {
     margin-left: 3rem;
+  }
+
+  .sm\:ml-0 {
+    margin-left: 0px;
+  }
+
+  .sm\:ml-40 {
+    margin-left: 10rem;
   }
 
   .sm\:block {
@@ -2897,6 +2914,10 @@ select {
     margin-left: 2rem;
   }
 
+  .md\:ml-6 {
+    margin-left: 1.5rem;
+  }
+
   .md\:block {
     display: block;
   }
@@ -2967,6 +2988,10 @@ select {
 
   .md\:flex-row {
     flex-direction: row;
+  }
+
+  .md\:items-center {
+    align-items: center;
   }
 
   .md\:justify-center {
@@ -3116,6 +3141,10 @@ select {
 
   .lg\:ml-0 {
     margin-left: 0px;
+  }
+
+  .lg\:ml-8 {
+    margin-left: 2rem;
   }
 
   .lg\:block {

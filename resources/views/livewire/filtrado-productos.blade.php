@@ -151,7 +151,7 @@
                                         <form action="{{ route('anadiralcarrito', $producto) }}" method="POST">
                                             @csrf
                                             @method('POST')
-                                            <button type="submit" class="px-4 py-1 text-sm text-white bg-orange-500 rounded">Add to cart</button>
+                                            <button type="submit" class="px-4 py-1 text-sm text-white bg-orange-500 rounded">Añadir al carrito</button>
                                         </form>
                                     </div>
                                     @endif
@@ -162,7 +162,7 @@
 
                                             <a href="/productos/{{ $producto->id }}/edit"
                                                 class="px-4 py-1 text-sm text-white bg-blue-600 rounded">Editar</a>
-                                            <p>{{ $producto->id }} </p>
+
 
                                             <a href="/productos/{{ $producto->id }}/anadirImagen"
                                                 class="px-4 py-1 text-sm text-white bg-green-600 rounded">AñadirImagen</a>

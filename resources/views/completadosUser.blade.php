@@ -73,7 +73,7 @@
                                                 </tr>
 
                                             @for ($i = 1; $i < count($factura->lineas); $i++)
-                                                <tr class="border-b-4 border-[#047857]">
+                                                <tr class="border-b-4 border-red-700">
                                                     <td class="px-6 py-2">{{ $factura->lineas[$i]->producto->nombre }}</td>
                                                     <td class="px-6 py-2">{{ $factura->lineas[$i]->cantidad }}</td>
                                                     <td class="px-6 py-2">{{ $factura->lineas[$i]->producto->precio * $factura->lineas[$i]->cantidad }}$</td>

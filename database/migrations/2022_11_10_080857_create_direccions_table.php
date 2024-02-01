@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('direccions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('calle');
             $table->string('ciudad');
             $table->string('codigo_postal');

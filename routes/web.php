@@ -124,7 +124,8 @@ Route::middleware(['auth', 'can:solo-admin'])->group(function () {
     // Route::get('/todasLasDevoluciones', [PedidoAdminController::class, 'devoluciones'])->name('todosLasDevoluciones');
     // Route::post('/devoluciones', [PedidoAdminController::class, 'crearDevolucion'])->name('devoluciones');
 
-
+    Route::get('/usuarios/ver-clientes', [UserController::class, 'verClientes'])->name('ver-clientes');
+    Route::delete('/usuarios/{id}', [UserController::class, 'destroy']);
 
     Route::get('/todosLosPedidos', [PedidoAdminController::class, 'index'])->name('todosLosPedidos');
     Route::get('/completados', [PedidoAdminController::class, 'completados'])->name('completados');

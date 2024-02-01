@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('comentarios', function (Blueprint $table) {
             $table->id();
             $table->foreignId('producto_id')->constrained('productos');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->integer('comentario_id')->unsigned()->nullable();
             $table->text('texto');
             $table->integer('like')->nullable();
