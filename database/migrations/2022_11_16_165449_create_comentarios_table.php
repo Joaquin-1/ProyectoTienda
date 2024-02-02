@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('producto_id')->constrained('productos');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->integer('comentario_id')->unsigned()->nullable();
+            $table->integer('comentario_id')->unsigned()->nullable()->onDelete('cascade');
             $table->text('texto');
             $table->integer('like')->nullable();
             $table->integer('dislike')->nullable();

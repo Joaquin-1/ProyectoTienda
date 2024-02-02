@@ -63,9 +63,11 @@ class UserController extends Controller
     public function verClientes()
     {
         $admin = Auth::user();
-        $clientes = User::where('rol', 'cliente')->get();
+        //$clientes = User::where('rol', 'cliente')->get();
+        $clientes = User::where('rol', 'cliente')->paginate(10);
 
         return view('usuarios.ver-clientes', compact('admin', 'clientes'));
+
     }
 
     public function destroy($id)

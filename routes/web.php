@@ -11,6 +11,7 @@ use App\Http\Controllers\StripeController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\UserController;
 use App\Http\Livewire\SwitchView;
+use App\Models\Comentario;
 // use App\Http\Controllers\InicioController;
 use App\Models\Contacto;
 use App\Models\Producto;
@@ -126,6 +127,9 @@ Route::middleware(['auth', 'can:solo-admin'])->group(function () {
 
     Route::get('/usuarios/ver-clientes', [UserController::class, 'verClientes'])->name('ver-clientes');
     Route::delete('/usuarios/{id}', [UserController::class, 'destroy']);
+
+    Route::delete('/comentarios/{id}', [ComentarioController::class, 'destroy']);
+
 
     Route::get('/todosLosPedidos', [PedidoAdminController::class, 'index'])->name('todosLosPedidos');
     Route::get('/completados', [PedidoAdminController::class, 'completados'])->name('completados');

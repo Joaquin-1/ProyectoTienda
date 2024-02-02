@@ -179,7 +179,7 @@
                 </div>
 
                 {{-- ------------------------------------------------------------------------------------------------------ --}}
-                <!-- componente -->
+
 
 
                 <div id="comentariosDiv" class="space-y-4 w-full">
@@ -197,6 +197,8 @@
                                 </div>
                                 <div class="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed ">
 
+                                    {{-- <p>{{$comentario->id}}</p> --}}
+
                                     <strong>{{ $comentario->user->name }}</strong> <span
                                         class="text-xs ml-2 text-gray-400">
                                         {{ $fecha[0] }}
@@ -212,6 +214,22 @@
                                             {{ $comentario->texto }}
                                         </p>
                                     </div>
+
+                                    @if (Auth::user()->rol == "admin")
+                                        <div class="mt-4">
+
+                                            <form action="/comentarios/{{ $comentario->id }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button onclick="return confirm('¿Seguro? Borrarás el comentario y sus respuestas')"
+                                                        type="submit" class="px-4 py-1 text-sm text-white bg-red-600 rounded">Borrar
+                                                </button>
+                                            </form>
+
+                                        </div>
+                                    @endif
+
+
                                     <div class="mt-4 flex items-center">
                                         <div class="block w-full -space-x-2 mr-2">
 
@@ -239,9 +257,12 @@
                                             @if ($comentario->respuestas)
                                                 <div class="space-y-4">
                                                     @foreach ($comentario->respuestas as $respuesta)
+
+
                                                         <div class="flex mt-6">
                                                             <div
                                                                 class="flex-1 bg-gray-100 rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
+                                                                {{-- <p>{{$respuesta->id}}</p> --}}
                                                                 <strong>{{ $respuesta->user->name }}</strong> <span
                                                                     class="text-xs ml-2 text-gray-400">{{ $fecha[0] }}</span>
                                                                 @if ($respuesta->user->rol == 'admin')
@@ -252,8 +273,28 @@
                                                                 <p class="text-xs sm:text-sm">
                                                                     {{ $respuesta->texto }}
                                                                 </p>
+
+                                                                @if (Auth::user()->rol == "admin")
+                                                                <div class="mt-4">
+
+                                                                    <form action="/comentarios/{{ $respuesta->id }}" method="post">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button onclick="return confirm('¿Seguro? Borrarás el comentario de esta película')"
+                                                                                type="submit" class="px-4 py-1 text-sm text-white bg-red-600 rounded">Borrar
+                                                                        </button>
+                                                                    </form>
+
+                                                                </div>
+                                                                @endif
+
                                                             </div>
+
+
+
                                                         </div>
+
+
                                                     @endforeach
                                                 </div>
                                             @endif

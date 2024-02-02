@@ -30,6 +30,8 @@ class FiltradoProductos extends Component
             $query->orderBy('precio', 'asc');
         }
 
+
+
         $productos = $query->paginate(5);
         // $productos = $query->get();
         $categorias = Categoria::all();

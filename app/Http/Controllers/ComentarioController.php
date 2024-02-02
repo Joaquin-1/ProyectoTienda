@@ -38,7 +38,7 @@ class ComentarioController extends Controller
             'texto' => $comentario->texto,
             'producto_id' => $comentario->producto_id,
             'user_id' => $comentario->user_id,
-            'nombre_usuario' => $nombreUsuario, // Agrega el nombre del usuario aquí
+            'nombre_usuario' => $nombreUsuario,
             'created_at' => $comentario->created_at,
             'updated_at' => $comentario->updated_at,
         ],
@@ -66,6 +66,16 @@ class ComentarioController extends Controller
         $comentario->save();
 
         return redirect('/producto/'.$prod);
+    }
+
+
+    public function destroy($id)
+    {
+        $comentario = Comentario::findOrFail($id);
+        $comentario->delete();
+
+        return redirect()->back()
+            ->with('success', 'Comentario borrado correctamente');
     }
 
 }
