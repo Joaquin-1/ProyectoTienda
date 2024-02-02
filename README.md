@@ -22,26 +22,23 @@ de la web.
 
 ## Objetivos generales
 
-- Objetivo: "Gestión de usuarios", "Gestión de compra de pelicula"
+    Objetivo: "Gestión de usuarios", "Gestión de compra de pelicula".
+
+    Casos de uso:
+
+        Invitado : "registrarse", "ver pagina de inicio".
+
+        Usuarios: "iniciar sesion", "cerrar sesion", "editar perfil","buscar productos", "ver productos", "comentar productos" "responder comentarios", "comprar productos", 
+                    "hacer preguntas al admin", "ver carrito", "establecer su dirección", "editar su dirección", "ver pedidos pendientes", "ver historial de compra".
+
+        Administrador: "iniciar sesión", "cerrar sesión", "editar perfil", "ver usuarios", "eliminar un usuario (junto a toda información vinculada a él)", ver productos, "añadir comentarios", 
+        "responder comentarios", "añadir una pelicula", "eliminar una pelicula", "modificar datos de una pelicula", "añadir nuevas imagenes a una pelicula", "responder preguntas de clientes", 
+        "ver todos los productos pendiente de envio", "ver los datos del usuario en el producto que ha comprado", "modificar el estado (Pendiente de envio, enviado, completo) de un producto", 
+        "ver el historial de productos vendidos".
 
 
-- Casos de uso:
-      
 
+## Elemento de innovación
 
+Implementar un mapa con la ubicación de la tienda, utilizar la libreria "Livewire", pago a traves de la API "Stripe"
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
