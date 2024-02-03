@@ -74,12 +74,12 @@
             <h1 class="text-white text-4xl font-bold mb-8">¡Echa un vistazo a las películas!</h1>
 
             <div class="grid grid-rows-1 grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-3 rounded-md w-full md:w-[400px] h-auto md:h-[600px] overflow-x-auto">
+                <div class="bg-white p-3 rounded-md w-full md:w-[400px] h-auto md:h-[600px] overflow-x-auto mt-4 md:mt-0">
                     <table class="w-full table-auto bg-white">
                         <tbody>
                             <tr class="w-full">
                                 <td class="bg-green-500 ">
-                                    <p class="text-3xl">Mejores Películas</p>
+                                    <p class="text-3xl">Nuestras Películas</p>
                                 </td>
                             </tr>
 
@@ -89,7 +89,7 @@
 
                             @foreach ($productos as $producto)
 
-                            @break($count == 3)
+                            @break($count == 5)
                             <tr>
                                 <td class="px-6 py-2 "><p class="text-2xl mb-4 ">{{ $producto->nombre }}</p></td>
                                 <td class="px-6 py-2 "><p class="text-2xl mb-4 ">{{ $producto->precio }}€</p></td>
@@ -118,6 +118,7 @@
                             </tr>
 
                             <tr>
+
                                 <td class="px-6 py-2 "><p class="text-2xl mb-4 ">Avatar 2</p></td>
                             </tr>
 

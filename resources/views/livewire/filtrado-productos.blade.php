@@ -121,97 +121,79 @@
                         <tbody>
                             @foreach ($productos as $producto)
 
-                            <tr class="border-2 border-grey-700" x-show="productoMatches('{{ $producto->nombre }}', $data.searchTerm)">
+                            @if ($producto->estado && Auth::user()->rol == "cliente")
+
+                                <tr class="border-2 border-grey-700" x-show="productoMatches('{{ $producto->nombre }}', $data.searchTerm)">
 
 
-                                    @php
-                                    $vermas = false;
-                                        $desCorta = substr($producto->descripcion, 0, 70);
-                                        if (strlen($producto->descripcion) > 70) {
-                                            $desCorta = $desCorta . '...';
-                                            $vermas = true;
-                                        }
-                                        else {
-                                            $vermas = false;
-                                        }
-                                    @endphp
+                                        @php
+                                        $vermas = false;
+                                            $desCorta = substr($producto->descripcion, 0, 70);
+                                            if (strlen($producto->descripcion) > 70) {
+                                                $desCorta = $desCorta . '...';
+                                                $vermas = true;
+                                            }
+                                            else {
+                                                $vermas = false;
+                                            }
+                                        @endphp
 
-                                <td class="px-4 py-2"><a href="{{route('producto', $producto)}}"> <img class="hidden lg:block h-60 w-auto" src="{{ URL($producto->imagenes[0]->imagen) }}" alt="imagen del producto"></a></td>
-                                <td class="px-4 py-2 w-96"><a href="{{route('producto', $producto)}}"><p class="text-3xl mb-4 ">{{ $producto->nombre }}</p>{{ $desCorta }}
-                                @if ($vermas)
-                                    <a class="font-bold hover:text-orange-700" href="{{route('producto', $producto)}}"> More </a>
-                                @endif
-                                </td>
-
-                                <td class="px-4 py-2">{{ $producto->precio }} &euro;</td>
-                                <td class="px-4 py-2">{{ $producto->categoria->nombre }}</td>
-
-                                {{-- ------------------------------------------------------------ --}}
-                                {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-                                <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-                                <!-- Vista de la película -->
-                                <td>
-
-                                    <!-- Vista de la película -->
-                                    <form id="ratingForm" method="post" action="">
-                                        @csrf
-                                        <div class="flex items-center space-x-0">
-                                            <input type="radio" id="star1" name="rating" value="1" class="hidden">
-                                            <label for="star1" title="1 stars" class="cursor-pointer text-sm">
-                                                <i class="fas fa-star"></i>
-                                            </label>
-
-                                            <input type="radio" id="star2" name="rating" value="2" class="hidden">
-                                            <label for="star2" title="2 stars" class="cursor-pointer text-sm">
-                                                <i class="fas fa-star"></i>
-                                            </label>
-
-                                            <input type="radio" id="star3" name="rating" value="3" class="hidden">
-                                            <label for="star3" title="3 stars" class="cursor-pointer text-sm">
-                                                <i class="fas fa-star"></i>
-                                            </label>
-
-                                            <input type="radio" id="star4" name="rating" value="4" class="hidden">
-                                            <label for="star4" title="4 stars" class="cursor-pointer text-sm">
-                                                <i class="fas fa-star"></i>
-                                            </label>
-
-                                            <input type="radio" id="star5" name="rating" value="5" class="hidden">
-                                            <label for="star5" title="5 star" class="cursor-pointer text-sm">
-                                                <i class="fas fa-star"></i>
-                                            </label>
-                                        </div>
-                                    </form>
-
-                                    <script>
-                                        $(document).ready(function(){
-                                            $('.rating input').change(function () {
-                                                $('#ratingForm').submit(); // Envía el formulario cuando se selecciona una estrella
-                                            });
-                                        });
-                                    </script>
-
-
-                                </td> --}}
-
-
-                                {{-- ------------------------------------------------------------------- --}}
-
-
-
-                                <td>
-                                    @if (Auth::user()->rol == "cliente")
-                                    <div class="text-sm text-gray-900 ">
-                                        <form action="{{ route('anadiralcarrito', $producto) }}" method="POST">
-                                            @csrf
-                                            @method('POST')
-                                            <button type="submit" class="px-4 py-1 text-sm text-white bg-orange-500 rounded">Añadir al carrito</button>
-                                        </form>
-                                    </div>
+                                    <td class="px-4 py-2"><a href="{{route('producto', $producto)}}"> <img class="hidden lg:block h-60 w-auto" src="{{ URL($producto->imagenes[0]->imagen) }}" alt="imagen del producto"></a></td>
+                                    <td class="px-4 py-2 w-96"><a href="{{route('producto', $producto)}}"><p class="text-3xl mb-4 ">{{ $producto->nombre }}</p>{{ $desCorta }}
+                                    @if ($vermas)
+                                        <a class="font-bold hover:text-orange-700" href="{{route('producto', $producto)}}"> More </a>
                                     @endif
-                                </td>
-                                <td class="px-4 py-2 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+                                    </td>
+
+                                    <td class="px-4 py-2">{{ $producto->precio }} &euro;</td>
+                                    <td class="px-4 py-2">{{ $producto->categoria->nombre }}</td>
+
+
+
+
+
+                                    <td class="px-4 py-2 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+                                        @if (Auth::user()->rol == "cliente")
+                                        <div class="text-sm text-gray-900 ">
+                                            <form action="{{ route('anadiralcarrito', $producto) }}" method="POST">
+                                                @csrf
+                                                @method('POST')
+                                                <button type="submit" class="px-4 py-1 text-sm text-white bg-orange-500 rounded">Añadir al carrito</button>
+                                            </form>
+                                        </div>
+                                        @endif
+
+                                    </td>
+                                </tr>
+                            @elseif (Auth::user()->rol == "admin")
+
+                                <tr class="border-2 border-grey-700" x-show="productoMatches('{{ $producto->nombre }}', $data.searchTerm)">
+
+
+                                @php
+                                $vermas = false;
+                                    $desCorta = substr($producto->descripcion, 0, 70);
+                                    if (strlen($producto->descripcion) > 70) {
+                                        $desCorta = $desCorta . '...';
+                                        $vermas = true;
+                                    }
+                                    else {
+                                        $vermas = false;
+                                    }
+                                @endphp
+
+                                    <td class="px-4 py-2"><a href="{{route('producto', $producto)}}"> <img class="hidden lg:block h-60 w-auto" src="{{ URL($producto->imagenes[0]->imagen) }}" alt="imagen del producto"></a></td>
+                                    <td class="px-4 py-2 w-96"><a href="{{route('producto', $producto)}}"><p class="text-3xl mb-4 ">{{ $producto->nombre }}</p>{{ $desCorta }}
+                                    @if ($vermas)
+                                        <a class="font-bold hover:text-orange-700" href="{{route('producto', $producto)}}"> More </a>
+                                    @endif
+                                    </td>
+
+                                    <td class="px-4 py-2">{{ $producto->precio }} &euro;</td>
+                                    <td class="px-4 py-2">{{ $producto->categoria->nombre }}</td>
+
+
+                                    <td class="px-4 py-2 sm:px-6 md:px-8 lg:px-10 xl:px-12">
                                     @if (Auth::user()->rol == "admin")
                                         <div class="flex flex-col items-center space-y-2">
 
@@ -235,16 +217,31 @@
                                                     Borrar
                                                 </button>
 
+                                                <form action="{{ route('productos.cambiar-estado', ['producto' => $producto->id]) }}" method="post">
+                                                    @csrf
+                                                    @method('put')
+                                                    <button id="botonEstado" onclick="return confirm('¿Seguro? Cambiaras el estado de esta película')"
+                                                    class="mt-8 px-4 py-1 text-sm text-white @if($producto->estado) bg-green-500 @else bg-red-500 @endif rounded" type="submit">Cambiar Estado</button>
+                                                </form>
+
+                                                @if( $producto->estado)
+
+                                                    <p>El producto esta visible</p>
+                                                @else
+                                                    <p>El producto no esta visible</p>
+                                                @endif
 
 
 
 
                                         </div>
                                     @endif
+
                                 </td>
 
 
                             </tr>
+                            @endif
 
                                {{--  @endif --}}
                             @endforeach

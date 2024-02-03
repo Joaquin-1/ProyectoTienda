@@ -214,4 +214,13 @@ class ProductoController extends Controller
             'imagenes' => $imagenes
         ]);
     }
+
+    public function cambiarEstado(Producto $producto)
+    {
+        $producto->estado = !$producto->estado;
+        $producto->save();
+
+        return redirect()->back()->with('success', 'Estado cambiado correctamente.');
+    }
+
 }

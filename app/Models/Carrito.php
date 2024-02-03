@@ -19,8 +19,8 @@ class Carrito extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function pedido()
-    {
-        return $this->belongsTo(Pedido::class);
-    }
+    // public function pedido()
+    // {
+    //     return $this->belongsTo(Pedido::class);
+    // }
 }

@@ -61,7 +61,7 @@
                                             <td class="px-6 py-2">{{ $factura->lineas[0]->producto->precio * $factura->lineas[0]->cantidad }}$</td>
                                             <td class="px-6 py-2">{{ $factura->lineas[0]->estado }}</td>
                                             <td class="px-6 py-2">{{ $fecha[0] }}</td>
-                                            <td>
+                                            {{-- <td>
                                                 <div class="text-sm text-gray-900">
                                                     @if($factura->created_at->diffInDays(now()) < 15)
                                                         <p> {{ $factura->lineas[0]->id }} </p>
@@ -69,7 +69,7 @@
                                                     @endif
 
                                                 </div>
-                                            </td>
+                                            </td> --}}
                                                 </tr>
 
                                             @for ($i = 1; $i < count($factura->lineas); $i++)
@@ -79,7 +79,7 @@
                                                     <td class="px-6 py-2">{{ $factura->lineas[$i]->producto->precio * $factura->lineas[$i]->cantidad }}$</td>
                                                     <td class="px-6 py-2">{{ $factura->lineas[$i]->estado }}</td>
                                                     <td></td>
-                                                    <td>
+                                                    {{-- <td>
                                                         <div class="text-sm text-gray-900">
                                                             @if($factura->created_at->diffInDays(now()) < 15)
                                                                 <p> {{ $factura->lineas[$i]->id }} </p>
@@ -87,7 +87,7 @@
                                                             @endif
 
                                                         </div>
-                                                    </td>
+                                                    </td> --}}
 
                                                 </tr>
                                             @endfor
@@ -100,7 +100,7 @@
                             @endforeach
                         @endforeach
 
-                        <script>
+                        {{-- <script>
 
 
 
@@ -109,7 +109,7 @@
                             }
 
 
-                        </script>
+                        </script> --}}
 
 
 

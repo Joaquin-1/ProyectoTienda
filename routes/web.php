@@ -9,11 +9,13 @@ use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\PedidoAdminController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\FuturaspeliculasController;
 use App\Http\Controllers\UserController;
 use App\Http\Livewire\SwitchView;
 use App\Models\Comentario;
 // use App\Http\Controllers\InicioController;
 use App\Models\Contacto;
+use App\Models\Futuraspeliculas;
 use App\Models\Producto;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -41,11 +43,12 @@ Route::post('/stripe-payment', [StripeController::class, 'handlePost'])->name('s
 
 Route::get('/', function () {
     $productos = Producto::all();
-    return view('welcome1', ['productos' => $productos]);
+    $futuraspeliculas = Futuraspeliculas::all();
+    return view('welcome1', ['productos' => $productos,
+                             'futuraspeliculas' => $futuraspeliculas]);
 });
 
-
-
+// Route::get('/futuraspeliculas', [FuturaspeliculasController::class, 'index'])->name('futuraspeliculas');
 
 
 
@@ -121,6 +124,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'can:solo-admin'])->group(function () {
+
+    Route::put('/productos/{producto}/cambiar-estado', [ProductoController::class, 'cambiarEstado'])
+    ->name('productos.cambiar-estado');
+
+
 
     // Route::get('/todasLasDevoluciones', [PedidoAdminController::class, 'devoluciones'])->name('todosLasDevoluciones');
     // Route::post('/devoluciones', [PedidoAdminController::class, 'crearDevolucion'])->name('devoluciones');

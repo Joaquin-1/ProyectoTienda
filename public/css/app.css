@@ -1023,6 +1023,9 @@ select {
 .ml-48 {
   margin-left: 12rem;
 }
+.ml-16 {
+  margin-left: 4rem;
+}
 .block {
   display: block;
 }
@@ -1693,6 +1696,26 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(59 130 246 / var(--tw-bg-opacity));
 }
+.bg-\[\#9F8152\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(159 129 82 / var(--tw-bg-opacity));
+}
+.bg-yellow-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(202 138 4 / var(--tw-bg-opacity));
+}
+.bg-yellow-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(253 224 71 / var(--tw-bg-opacity));
+}
+.bg-yellow-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 204 21 / var(--tw-bg-opacity));
+}
+.bg-yellow-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(234 179 8 / var(--tw-bg-opacity));
+}
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
@@ -1722,8 +1745,14 @@ select {
 .to-green-500 {
   --tw-gradient-to: #22c55e;
 }
+.bg-cover {
+  background-size: cover;
+}
 .bg-clip-padding {
   background-clip: padding-box;
+}
+.bg-center {
+  background-position: center;
 }
 .fill-current {
   fill: currentColor;

@@ -32,7 +32,7 @@ class FiltradoProductos extends Component
 
 
 
-        $productos = $query->paginate(5);
+        $productos = $query->paginate(10);
         // $productos = $query->get();
         $categorias = Categoria::all();
 
