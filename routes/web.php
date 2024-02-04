@@ -48,6 +48,8 @@ Route::get('/', function () {
                              'futuraspeliculas' => $futuraspeliculas]);
 });
 
+// Route::get('/', [FuturaspeliculasController::class, 'index']);
+
 // Route::get('/futuraspeliculas', [FuturaspeliculasController::class, 'index'])->name('futuraspeliculas');
 
 
@@ -124,6 +126,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'can:solo-admin'])->group(function () {
+
+
+
+    Route::get('/futuraspeliculas/{id}/edit', [FuturaspeliculasController::class, 'edit']);
+    Route::put('/futuraspeliculas/{id}', [FuturaspeliculasController::class, 'update'])
+    ->name('futuraspeliculas.update');
+
+
+    Route::delete('/contactos/{id}', [ContactoController::class, 'destroy']);
+
 
     Route::put('/productos/{producto}/cambiar-estado', [ProductoController::class, 'cambiarEstado'])
     ->name('productos.cambiar-estado');

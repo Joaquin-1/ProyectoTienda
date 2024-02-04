@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Futuraspeliculas;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Imagen;
@@ -12,9 +13,15 @@ class UserController extends Controller
     public function index(){
         $users = User::all()->where('id', Auth::user()->id)->first();
         $imagenes = Imagen::all();
+
+        $futuraspeliculas = Futuraspeliculas::all();
+
+
         return view('perfiles.index', [
             'users' => $users,
             'imagenes' => $imagenes,
+            'futuraspeliculas' => $futuraspeliculas,
+
         ]);
 
     }
@@ -64,7 +71,7 @@ class UserController extends Controller
     {
         $admin = Auth::user();
         //$clientes = User::where('rol', 'cliente')->get();
-        $clientes = User::where('rol', 'cliente')->paginate(10);
+        $clientes = User::where('rol', 'cliente')->paginate(5);
 
         return view('usuarios.ver-clientes', compact('admin', 'clientes'));
 

@@ -17,9 +17,11 @@ class FuturaspeliculasController extends Controller
     {
         $futuraspeliculas = Futuraspeliculas::all();
 
-        return view('welcome1', [
-            'futuraspeliculas' => $futuraspeliculas,
-        ]);
+        // return view('welcome1', [
+        //     'futuraspeliculas' => $futuraspeliculas,
+        // ]);
+
+        return view('welcome1', ['futuraspeliculas' => $futuraspeliculas]);
     }
 
     /**
@@ -60,9 +62,13 @@ class FuturaspeliculasController extends Controller
      * @param  \App\Models\Futuraspeliculas  $futuraspeliculas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Futuraspeliculas $futuraspeliculas)
+    public function edit($id)
     {
-        //
+        $futuraspeliculas = Futuraspeliculas::findOrFail($id);
+
+        return view('futuraspeliculas.edit', [
+            'futuraspeliculas' => $futuraspeliculas,
+        ]);
     }
 
     /**
@@ -72,9 +78,22 @@ class FuturaspeliculasController extends Controller
      * @param  \App\Models\Futuraspeliculas  $futuraspeliculas
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateFuturaspeliculasRequest $request, Futuraspeliculas $futuraspeliculas)
+    public function update($id)
     {
-        //
+        $validados = request()->validate([
+            'nombre'=> 'required',
+            'imagen_url' => 'required',
+        ]);
+
+        $futuraspeliculas = Futuraspeliculas::findOrFail($id);
+        $futuraspeliculas->nombre = $validados['nombre'];
+        $futuraspeliculas->imagen_url = "img/" . $validados['imagen_url']->getClientOriginalName();
+
+
+        $futuraspeliculas->save();
+
+        return redirect('/perfiles')
+            ->with('success', 'Peliculas modificadas con exito.');
     }
 
     /**

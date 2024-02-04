@@ -16,7 +16,8 @@ class ContactoController extends Controller
      */
     public function index()
     {
-        $contactos = Contacto::all();
+        // $contactos = Contacto::all();
+        $contactos = Contacto::paginate(5);
 
 
         return view('contactos.index', [
@@ -120,6 +121,12 @@ class ContactoController extends Controller
      */
     public function destroy(Contacto $contacto)
     {
-        //
+
+        // Realizar la eliminación del contacto
+        $contacto->delete();
+
+        // Redirigir
+        return redirect()->back()->with('success', 'Comentario borrado correctamente.');
+
     }
 }

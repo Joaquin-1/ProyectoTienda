@@ -45,6 +45,9 @@
                         <x-nav-link :href="route('ver-clientes')" :active="request()->routeIs('ver-clientes')">
                             {{ __('Ver Usuarios') }}
                         </x-nav-link>
+                        {{-- <x-nav-link :href="route('welcome1')" :active="request()->routeIs('welcome1')">
+                            {{ __('Editar Prox Pelis') }}
+                        </x-nav-link> --}}
                     @endif
                 </div>
             </div>

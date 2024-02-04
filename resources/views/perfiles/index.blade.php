@@ -14,15 +14,16 @@
         <div class="container mx-auto md:w-3/4">
 
             <div class="text-center md:text-left ml-8 mt-8">
-                <p class="text-4xl">{{ $users->name }}</p>
-                <p class="text-2xl mt-4 break-words">{{ $users->descripcion }}</p>
+                <p class="text-4xl font-semibold">{{ $users->name }}</p>
+                <p class="text-2xl text-gray-600">{{ $users->descripcion }}</p>
             </div>
 
-            <div class="ml-8 mt-8 border-2 border-[#4C3F2B] p-4">
-                <p class="text-2xl">Email: {{ $users->email }}</p>
-                <p class="mt-4 text-2xl">Telefono: {{ $users->telefono }}</p>
-                <p class="mt-4 text-2xl">Ciudad: {{ $users->ciudad }}</p>
-                <p class="mt-4 text-2xl">Pais: {{ $users->pais }}</p>
+            <div class="ml-8 mt-8 border-t-2 border-[#4C3F2B] pt-4">
+                <!-- Detalles del usuario -->
+                <p class="text-2xl"><span class="font-semibold">Email:</span> {{ $users->email }}</p>
+                <p class="mt-4 text-2xl"><span class="font-semibold">Teléfono:</span> {{ $users->telefono }}</p>
+                <p class="mt-4 text-2xl"><span class="font-semibold">Ciudad:</span> {{ $users->ciudad }}</p>
+                <p class="mt-4 text-2xl"><span class="font-semibold">País:</span> {{ $users->pais }}</p>
             </div>
 
             <div class="mb-8 mt-8 ml-8 text-center md:text-left">
@@ -30,6 +31,26 @@
             </div>
 
 
+            @if (Auth::user()->rol == "admin")
+            <div class="mt-8 ml-8">
+                <h2 class="text-2xl font-bold mb-4">Futuras Películas</h2>
+
+                @foreach($futuraspeliculas as $pelicula)
+                    <!-- Detalles de la película -->
+                    <div class="flex items-center mt-4">
+                        <img class="h-16 w-12 mr-4" src="{{ URL($pelicula->imagen_url) }}" alt="{{ $pelicula->nombre }}">
+                        <p class="text-lg">{{ $pelicula->nombre }}</p>
+
+                        <!-- Enlace para editar película -->
+                        <div class="ml-2 text-center">
+                            <a href="/futuraspeliculas/{{ $pelicula->id }}/edit" class="px-3 py-1 text-sm text-white bg-blue-600 rounded">Editar</a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            @endif
+
+    </div>
 
 
 

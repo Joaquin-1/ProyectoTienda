@@ -109,6 +109,10 @@
                     </table>
                 </div>
                 <div class="bg-white p-3 rounded-md w-full md:w-[400px] h-auto md:h-[600px] overflow-x-auto mt-4 md:mt-0">
+
+                    @foreach($futuraspeliculas as $pelicula)
+
+
                     <table class="w-full table-auto bg-white">
                         <tbody>
                             <tr class="w-full">
@@ -119,23 +123,24 @@
 
                             <tr>
 
-                                <td class="px-6 py-2 "><p class="text-2xl mb-4 ">Avatar 2</p></td>
+                                <td class="px-6 py-2 "><p class="text-2xl mb-4 ">{{$pelicula->nombre}}</p></td>
                             </tr>
 
                             <tr>
-                                <td class="px-6 py-2 w-full md:w-96 "> <img class="h-60 w-full md:w-auto border-2 border-green-700" src="img/avatar2.jpg" alt="imagen del producto"></td>
+                                <td class="px-6 py-2 w-full md:w-96 "> <img class="h-60 w-full md:w-auto border-2 border-green-700" src={{$pelicula->imagen_url}} alt="imagen del producto"></td>
                             </tr>
 
-                            <tr>
+                            {{-- <tr>
                                 <td class="px-6 py-2 "><p class="text-2xl mb-4 ">La sociedad de la nieve</p></td>
                             </tr>
 
                             <tr>
                                 <td class="px-6 py-2 w-full md:w-96 "> <img class="h-60 w-full md:w-auto border-2 border-green-700" src="img/nieve.jpg" alt="imagen del producto"></td>
-                            </tr>
+                            </tr> --}}
 
                         </tbody>
                     </table>
+                    @endforeach
                 </div>
             </div>
         </div>

@@ -17,8 +17,8 @@
                                         <tr class="border-2 border-grey-700">
                                             <td class="px-4 py-2 sm:w-1/4">Nombre</td>
                                             <td class="px-4 py-2 sm:w-1/4">Email</td>
-                                            <td class="px-4 py-2 sm:w-1/4">Pregunta</td>
-                                            <td class="px-4 py-2 sm:w-1/4">Respuesta</td>
+                                            <td class="px-4 py-2 sm:w-1/4 bg-orange-200 rounded-lg">Pregunta</td>
+                                            <td class="px-4 py-2 sm:w-1/4 bg-green-200 rounded-lg">Respuesta</td>
                                         </tr>
                                         <tr class="border-2 border-grey-700">
                                             <td class="px-4 py-2 sm:w-1/4">{{ $contacto->nombre }}</td>
@@ -27,6 +27,7 @@
                                             <td class="px-4 py-2 sm:w-1/4">{{ $contacto->respuesta }}</td>
                                         </tr>
                                         <tr id="tr" class="border-2 border-grey-700">
+
                                             <form action="{{ route('contactos.update', $contacto->id, false) }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 @method('PUT')
@@ -39,8 +40,24 @@
                                                     </td>
                                                 @endif
                                             </form>
+
+
+
+                                            <form action="{{ route('contactos.destroy', $contacto->id) }}" method="POST" style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                @if (Auth::user()->rol == "admin")
+                                                <td class="px-4 py-2 sm:w-1/2">
+                                                    <button type="submit" onclick="return confirm('¿Seguro? Cambiaras el estado de esta película')"
+                                                            class="px-4 py-1 text-sm text-white bg-red-600 rounded">Borrar</button>
+                                                </td>
+                                                @endif
+                                            </form>
+
                                         </tr>
+
                                     @endforeach
+                                    {{ $contactos->links() }}
                                 </tbody>
                             </table>
                         </div>
@@ -59,27 +76,7 @@
     </div>
 
 
-{{-- <script>
 
-    function mostrarInput() {
-
-        let tr = document.getElementById('tr');
-        let respuesta = document.getElementById('respuesta');
-        let botonRespuesta = document.getElementById('botonRespuesta');
-
-
-        if(tr.style.display === "none") {
-            tr.style.display = "";
-        } else {
-            tr.style.display = "none";
-        }
-
-
-
-
-    }
-
-</script> --}}
 
 </x-app-layout>
 

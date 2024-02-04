@@ -35,7 +35,7 @@
                             <form action="/usuarios/{{ $cliente->id }}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button onclick="return confirm('¿Seguro? Borrarás todos los datos de esta película')"
+                                <button onclick="return confirm('Zona de peligro, borrar este usuario podría influenciar en el resto de la pagina')"
                                         type="submit" class="px-4 py-1 text-sm text-white bg-red-600 rounded">Borrar
                                 </button>
                             </form>
