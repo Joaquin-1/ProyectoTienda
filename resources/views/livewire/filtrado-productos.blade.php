@@ -22,11 +22,8 @@
                 <x-plantilla>
 
                     @php
-
-                    $user = Auth::user();
-                    $username = $user->name;
-                    // dd($username);
-
+                        $user = Auth::user();
+                        $username = $user->name;
                     @endphp
 
                     <script>
@@ -103,15 +100,7 @@
                             }
                         }
 
-
-
-
                     </script>
-
-
-
-
-
 
 
                 <div x-data="{ searchTerm: '' }">
@@ -121,127 +110,114 @@
                         <tbody>
                             @foreach ($productos as $producto)
 
-                            @if ($producto->estado && Auth::user()->rol == "cliente")
+                                @if ($producto->estado && Auth::user()->rol == "cliente")
 
-                                <tr class="border-2 border-grey-700" x-show="productoMatches('{{ $producto->nombre }}', $data.searchTerm)">
+                                    <tr class="border-2 border-grey-700" x-show="productoMatches('{{ $producto->nombre }}', $data.searchTerm)">
 
+
+                                            @php
+                                            $vermas = false;
+                                                $desCorta = substr($producto->descripcion, 0, 70);
+                                                if (strlen($producto->descripcion) > 70) {
+                                                    $desCorta = $desCorta . '...';
+                                                    $vermas = true;
+                                                }
+                                                else {
+                                                    $vermas = false;
+                                                }
+                                            @endphp
+
+                                        <td class="px-4 py-2"><a href="{{route('producto', $producto)}}"> <img class="hidden lg:block h-60 w-auto" src="{{ URL($producto->imagenes[0]->imagen) }}" alt="imagen del producto"></a></td>
+                                        <td class="px-4 py-2 w-96"><a href="{{route('producto', $producto)}}"><p class="text-3xl mb-4 ">{{ $producto->nombre }}</p>{{ $desCorta }}
+                                        @if ($vermas)
+                                            <a class="font-bold hover:text-orange-700" href="{{route('producto', $producto)}}"> More </a>
+                                        @endif
+                                        </td>
+
+                                        <td class="px-4 py-2">{{ $producto->precio }} &euro;</td>
+                                        <td class="px-4 py-2">{{ $producto->categoria->nombre }}</td>
+
+
+
+
+
+                                        <td class="px-4 py-2 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+                                            @if (Auth::user()->rol == "cliente")
+                                            <div class="text-sm text-gray-900 ">
+                                                <form action="{{ route('anadiralcarrito', $producto) }}" method="POST">
+                                                    @csrf
+                                                    @method('POST')
+                                                    <button type="submit" class="px-4 py-1 text-sm text-white bg-orange-500 rounded">Añadir al carrito</button>
+                                                </form>
+                                            </div>
+                                            @endif
+
+                                        </td>
+                                    </tr>
+                                @elseif (Auth::user()->rol == "admin")
+
+                                    <tr class="border-2 border-grey-700" x-show="productoMatches('{{ $producto->nombre }}', $data.searchTerm)">
 
                                         @php
-                                        $vermas = false;
-                                            $desCorta = substr($producto->descripcion, 0, 70);
-                                            if (strlen($producto->descripcion) > 70) {
-                                                $desCorta = $desCorta . '...';
-                                                $vermas = true;
-                                            }
-                                            else {
-                                                $vermas = false;
-                                            }
+                                            $vermas = false;
+                                                $desCorta = substr($producto->descripcion, 0, 70);
+                                                if (strlen($producto->descripcion) > 70) {
+                                                    $desCorta = $desCorta . '...';
+                                                    $vermas = true;
+                                                }
+                                                else {
+                                                    $vermas = false;
+                                                }
                                         @endphp
 
-                                    <td class="px-4 py-2"><a href="{{route('producto', $producto)}}"> <img class="hidden lg:block h-60 w-auto" src="{{ URL($producto->imagenes[0]->imagen) }}" alt="imagen del producto"></a></td>
-                                    <td class="px-4 py-2 w-96"><a href="{{route('producto', $producto)}}"><p class="text-3xl mb-4 ">{{ $producto->nombre }}</p>{{ $desCorta }}
-                                    @if ($vermas)
-                                        <a class="font-bold hover:text-orange-700" href="{{route('producto', $producto)}}"> More </a>
-                                    @endif
-                                    </td>
-
-                                    <td class="px-4 py-2">{{ $producto->precio }} &euro;</td>
-                                    <td class="px-4 py-2">{{ $producto->categoria->nombre }}</td>
-
-
-
-
-
-                                    <td class="px-4 py-2 sm:px-6 md:px-8 lg:px-10 xl:px-12">
-                                        @if (Auth::user()->rol == "cliente")
-                                        <div class="text-sm text-gray-900 ">
-                                            <form action="{{ route('anadiralcarrito', $producto) }}" method="POST">
-                                                @csrf
-                                                @method('POST')
-                                                <button type="submit" class="px-4 py-1 text-sm text-white bg-orange-500 rounded">Añadir al carrito</button>
-                                            </form>
-                                        </div>
+                                        <td class="px-4 py-2"><a href="{{route('producto', $producto)}}"> <img class="hidden lg:block h-60 w-auto" src="{{ URL($producto->imagenes[0]->imagen) }}" alt="imagen del producto"></a></td>
+                                        <td class="px-4 py-2 w-96"><a href="{{route('producto', $producto)}}"><p class="text-3xl mb-4 ">{{ $producto->nombre }}</p>{{ $desCorta }}
+                                        @if ($vermas)
+                                            <a class="font-bold hover:text-orange-700" href="{{route('producto', $producto)}}"> More </a>
                                         @endif
+                                        </td>
 
-                                    </td>
-                                </tr>
-                            @elseif (Auth::user()->rol == "admin")
-
-                                <tr class="border-2 border-grey-700" x-show="productoMatches('{{ $producto->nombre }}', $data.searchTerm)">
+                                        <td class="px-4 py-2">{{ $producto->precio }} &euro;</td>
+                                        <td class="px-4 py-2">{{ $producto->categoria->nombre }}</td>
 
 
-                                @php
-                                $vermas = false;
-                                    $desCorta = substr($producto->descripcion, 0, 70);
-                                    if (strlen($producto->descripcion) > 70) {
-                                        $desCorta = $desCorta . '...';
-                                        $vermas = true;
-                                    }
-                                    else {
-                                        $vermas = false;
-                                    }
-                                @endphp
+                                        <td class="px-4 py-2 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+                                            @if (Auth::user()->rol == "admin")
+                                                <div class="flex flex-col items-center space-y-2">
 
-                                    <td class="px-4 py-2"><a href="{{route('producto', $producto)}}"> <img class="hidden lg:block h-60 w-auto" src="{{ URL($producto->imagenes[0]->imagen) }}" alt="imagen del producto"></a></td>
-                                    <td class="px-4 py-2 w-96"><a href="{{route('producto', $producto)}}"><p class="text-3xl mb-4 ">{{ $producto->nombre }}</p>{{ $desCorta }}
-                                    @if ($vermas)
-                                        <a class="font-bold hover:text-orange-700" href="{{route('producto', $producto)}}"> More </a>
-                                    @endif
-                                    </td>
-
-                                    <td class="px-4 py-2">{{ $producto->precio }} &euro;</td>
-                                    <td class="px-4 py-2">{{ $producto->categoria->nombre }}</td>
+                                                    <a href="/productos/{{ $producto->id }}/edit"
+                                                        class="px-4 py-1 text-sm text-white bg-blue-600 rounded">Editar</a>
 
 
-                                    <td class="px-4 py-2 sm:px-6 md:px-8 lg:px-10 xl:px-12">
-                                    @if (Auth::user()->rol == "admin")
-                                        <div class="flex flex-col items-center space-y-2">
+                                                    <a href="/productos/{{ $producto->id }}/anadirImagen"
+                                                        class="px-4 py-1 text-sm text-white bg-green-600 rounded">AñadirImagen</a>
 
-                                            <a href="/productos/{{ $producto->id }}/edit"
-                                                class="px-4 py-1 text-sm text-white bg-blue-600 rounded">Editar</a>
+                                                    {{-- Abre la ventana modal llamando a la funcion confirmDelete --}}
+                                                    <button class="px-4 py-1 text-sm text-white bg-red-600 rounded" onclick="confirmDelete({{ $producto->id }})">
+                                                        Borrar
+                                                    </button>
 
-
-                                            <a href="/productos/{{ $producto->id }}/anadirImagen"
-                                                class="px-4 py-1 text-sm text-white bg-green-600 rounded">AñadirImagen</a>
-
-                                                {{-- <form action="/productos/{{ $producto->id }}" method="POST">
-
+                                                    <form action="{{ route('productos.cambiar-estado', ['producto' => $producto->id]) }}" method="post">
                                                         @csrf
-                                                        @method('DELETE')
-                                                        <button onclick="return confirm('¿Seguro? Borrarás todos los datos de esta película')"
-                                                                class="px-4 py-1 text-sm text-white bg-red-600 rounded"
-                                                                type="submit">Borrar</button>
-                                                </form> --}}
-                                                {{-- Abre la ventana modal llamando a la funcion confirmDelete --}}
-                                                <button class="px-4 py-1 text-sm text-white bg-red-600 rounded" onclick="confirmDelete({{ $producto->id }})">
-                                                    Borrar
-                                                </button>
+                                                        @method('put')
+                                                        <button id="botonEstado" onclick="return confirm('¿Seguro? Cambiaras el estado de esta película')"
+                                                        class="mt-8 px-4 py-1 text-sm text-white @if($producto->estado) bg-green-500 @else bg-red-500 @endif rounded" type="submit">Cambiar Estado</button>
+                                                    </form>
 
-                                                <form action="{{ route('productos.cambiar-estado', ['producto' => $producto->id]) }}" method="post">
-                                                    @csrf
-                                                    @method('put')
-                                                    <button id="botonEstado" onclick="return confirm('¿Seguro? Cambiaras el estado de esta película')"
-                                                    class="mt-8 px-4 py-1 text-sm text-white @if($producto->estado) bg-green-500 @else bg-red-500 @endif rounded" type="submit">Cambiar Estado</button>
-                                                </form>
+                                                    @if( $producto->estado)
 
-                                                @if( $producto->estado)
+                                                        <p class="text-green-500">El producto esta visible</p>
+                                                    @else
+                                                        <p class="text-red-500">El producto no esta visible</p>
+                                                    @endif
 
-                                                    <p>El producto esta visible</p>
-                                                @else
-                                                    <p>El producto no esta visible</p>
-                                                @endif
+                                                </div>
+                                            @endif
 
+                                        </td>
 
-
-
-                                        </div>
-                                    @endif
-
-                                </td>
-
-
-                            </tr>
-                            @endif
+                                    </tr>
+                                @endif
 
                                {{--  @endif --}}
                             @endforeach
@@ -292,31 +268,31 @@
 
 
 
-<script>
+                    <script>
 
-    // Funcion que abre la ventana modal
+                        // Funcion que abre la ventana modal
 
-    function confirmDelete(productoId) {
-        const modal = document.getElementById('confirmModal');
-        modal.classList.remove('hidden');
+                        function confirmDelete(productoId) {
+                            const modal = document.getElementById('confirmModal');
+                            modal.classList.remove('hidden');
 
-        console.log(productoId);
+                            console.log(productoId);
 
-        var form = document.querySelector('#confirmModal form');
-        form.action = ("/productos/" + productoId );
+                            var form = document.querySelector('#confirmModal form');
+                            form.action = ("/productos/" + productoId );
 
-    }
+                        }
 
-    // Funcion que cierra la ventana si cancelas
+                        // Funcion que cierra la ventana si cancelas
 
-    function closeModal() {
-        const modal = document.getElementById('confirmModal');
-        modal.classList.add('hidden');
+                        function closeModal() {
+                            const modal = document.getElementById('confirmModal');
+                            modal.classList.add('hidden');
 
-        var form = document.querySelector('#confirmModal form');
-        form.action = "";
-    }
-</script>
+                            var form = document.querySelector('#confirmModal form');
+                            form.action = "";
+                        }
+                    </script>
 
 
 

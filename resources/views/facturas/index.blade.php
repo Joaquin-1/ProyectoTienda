@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold leading-tight">
-            {{ __('ORDERS') }}
+            {{ __('Mis pedidos') }}
         </h2>
     </x-slot>
 
@@ -34,30 +34,30 @@
                             <tbody>
                                 @foreach ($facturas as $factura)
 
-                                @foreach ($factura->lineas as $linea)
-                                @if ($linea->estado == 'Completed')
+                                    @foreach ($factura->lineas as $linea)
+                                        @if ($linea->estado == 'Completed')
 
 
-                                @else
-@php
-    $fecha = explode(' ', $linea->created_at)
-@endphp
-                                <tr class="border-b-4 border-[#047857]">
-                                    <td class="px-6 py-2"><img class="hidden lg:block h-44 w-auto" src="{{ URL($linea->producto->imagenes[0]->imagen) }}" alt="imagen del producto"></td>
-                                    <td class="px-6 py-2">{{ $linea->producto->nombre }}</td>
-                                    <td class="px-6 py-2">{{ $linea->cantidad }}</td>
-                                    <td class="px-6 py-2">{{ $linea->producto->precio * $linea->cantidad }}$</td>
-                                    <td class="px-6 py-2">{{ $linea->estado }}</td>
-                                    <td class="px-6 py-2">{{$fecha[0]}}</td>
+                                        @else
+                                            @php
+                                                $fecha = explode(' ', $linea->created_at)
+                                            @endphp
+                                            <tr class="border-b-4 border-[#047857]">
+                                                <td class="px-6 py-2"><img class="hidden lg:block h-44 w-auto" src="{{ URL($linea->producto->imagenes[0]->imagen) }}" alt="imagen del producto"></td>
+                                                <td class="px-6 py-2">{{ $linea->producto->nombre }}</td>
+                                                <td class="px-6 py-2">{{ $linea->cantidad }}</td>
+                                                <td class="px-6 py-2">{{ $linea->producto->precio * $linea->cantidad }}$</td>
+                                                <td class="px-6 py-2">{{ $linea->estado }}</td>
+                                                <td class="px-6 py-2">{{$fecha[0]}}</td>
 
-                                </tr>
+                                            </tr>
 
-                                    @endif
+                                            @endif
+                                        @endforeach
                                     @endforeach
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </x-plantilla>
+                            </tbody>
+                        </table>
+                    </x-plantilla>
                 </div>
             </div>
         </div>

@@ -14,6 +14,7 @@ class FacturaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //Muestra los pedidos del cliente logueado (realmente se deberia llamar PedidoController pero fue de lo primero que hice y asi quedó).
     public function index()
     {
         $facturas = Factura::all()->where('user_id', Auth::user()->id);

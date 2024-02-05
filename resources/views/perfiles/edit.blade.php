@@ -14,8 +14,6 @@
 
         <div class="my-6 ml-80">
 
-
-
             <label for="name"
                 class="text-sm font-medium text-gray-900 block mb-2 @error('nombre') text-red-500 @enderror">
                 Nombre
@@ -88,96 +86,95 @@
 
     <script>
     function countChar(val) {
-      var len = val.value.length;
-      if (len >= 500) {
-        val.value = val.value.substring(0, 500);
-      } else {
-        $('#charNum').text(len);
-      }
+        var len = val.value.length;
+        if (len >= 500) {
+            val.value = val.value.substring(0, 500);
+        } else {
+            $('#charNum').text(len);
+        }
     };
 
     //Espera que el documento este cargado
     document.addEventListener("DOMContentLoaded", function() {
-    var form = document.getElementById("form");
-    form.addEventListener("submit", function(event) {
-        // Validar el campo de nombre
-        var nombreInput = document.getElementById("name");
-        var nombreValue = nombreInput.value.trim();
-        var nombreRegex = /^[a-zA-Z\s]+$/; // Expresión regular para letras y espacios
+        var form = document.getElementById("form");
+        form.addEventListener("submit", function(event) {
+            // Validar el campo de nombre
+            var nombreInput = document.getElementById("name");
+            var nombreValue = nombreInput.value.trim();
+            var nombreRegex = /^[a-zA-Z\s]+$/; // Expresión regular para letras y espacios
 
-        if (!nombreRegex.test(nombreValue) || (nombreValue === '')) {
-            event.preventDefault(); // Detener el envío del formulario
+            if (!nombreRegex.test(nombreValue) || (nombreValue === '')) {
+                event.preventDefault(); // Detener el envío del formulario
 
-            // Mostrar mensaje de error
-            document.getElementById("errorMsg1").classList.remove("hidden");
-        } else {
-            // Ocultar mensaje de error si el nombre es válido
-            document.getElementById("errorMsg1").classList.add("hidden");
-        }
-
-
-        var descripcionInput = document.getElementById("descripcion");
-        var descripcionValue = descripcionInput.value.trim();
-        var descripcionRegex = /^[\s\S]{1,400}$/; // Expresión regular para letras y espacios
-
-        if (!descripcionRegex.test(descripcionValue) || (descripcionValue === '')) {
-            event.preventDefault(); // Detener el envío del formulario
-
-            // Mostrar mensaje de error
-            document.getElementById("errorMsg2").classList.remove("hidden");
-        } else {
-            // Ocultar mensaje de error si el nombre es válido
-            document.getElementById("errorMsg2").classList.add("hidden");
-        }
+                // Mostrar mensaje de error
+                document.getElementById("errorMsg1").classList.remove("hidden");
+            } else {
+                // Ocultar mensaje de error si el nombre es válido
+                document.getElementById("errorMsg1").classList.add("hidden");
+            }
 
 
-        var telefonoInput = document.getElementById("telefono");
-        var telefonoValue = telefonoInput.value.trim();
-        var telefonoRegex = /^[6789]\d{8}$/; // Expresión regular para letras y espacios
+            var descripcionInput = document.getElementById("descripcion");
+            var descripcionValue = descripcionInput.value.trim();
+            var descripcionRegex = /^[\s\S]{1,400}$/; // Expresión regular para letras y espacios
 
-        if (!telefonoRegex.test(telefonoValue) || (telefonoValue === '')) {
-            event.preventDefault(); // Detener el envío del formulario
+            if (!descripcionRegex.test(descripcionValue) || (descripcionValue === '')) {
+                event.preventDefault(); // Detener el envío del formulario
 
-            // Mostrar mensaje de error
-            document.getElementById("errorMsg3").classList.remove("hidden");
-        } else {
-            // Ocultar mensaje de error si el nombre es válido
-            document.getElementById("errorMsg3").classList.add("hidden");
-        }
-
-
-        var ciudadInput = document.getElementById("ciudad");
-        var ciudadValue = ciudadInput.value.trim();
-        var ciudadRegex = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s\-]+$/; // Expresión regular para letras y espacios
-
-        if (!ciudadRegex.test(ciudadValue) || (ciudadValue === '')) {
-            event.preventDefault(); // Detener el envío del formulario
-
-            // Mostrar mensaje de error
-            document.getElementById("errorMsg4").classList.remove("hidden");
-        } else {
-            // Ocultar mensaje de error si el nombre es válido
-            document.getElementById("errorMsg4").classList.add("hidden");
-        }
+                // Mostrar mensaje de error
+                document.getElementById("errorMsg2").classList.remove("hidden");
+            } else {
+                // Ocultar mensaje de error si el nombre es válido
+                document.getElementById("errorMsg2").classList.add("hidden");
+            }
 
 
-        var paisInput = document.getElementById("pais");
-        var paisValue = paisInput.value.trim();
-        var paisRegex = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s\-]+$/; // Expresión regular para letras y espacios
+            var telefonoInput = document.getElementById("telefono");
+            var telefonoValue = telefonoInput.value.trim();
+            var telefonoRegex = /^[6789]\d{8}$/; // Expresión regular para letras y espacios
 
-        if (!paisRegex.test(paisValue) || (paisValue === '')) {
-            event.preventDefault(); // Detener el envío del formulario
+            if (!telefonoRegex.test(telefonoValue) || (telefonoValue === '')) {
+                event.preventDefault(); // Detener el envío del formulario
 
-            // Mostrar mensaje de error
-            document.getElementById("errorMsg5").classList.remove("hidden");
-        } else {
-            // Ocultar mensaje de error si el nombre es válido
-            document.getElementById("errorMsg5").classList.add("hidden");
-        }
+                // Mostrar mensaje de error
+                document.getElementById("errorMsg3").classList.remove("hidden");
+            } else {
+                // Ocultar mensaje de error si el nombre es válido
+                document.getElementById("errorMsg3").classList.add("hidden");
+            }
+
+
+            var ciudadInput = document.getElementById("ciudad");
+            var ciudadValue = ciudadInput.value.trim();
+            var ciudadRegex = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s\-]+$/; // Expresión regular para letras y espacios
+
+            if (!ciudadRegex.test(ciudadValue) || (ciudadValue === '')) {
+                event.preventDefault(); // Detener el envío del formulario
+
+                // Mostrar mensaje de error
+                document.getElementById("errorMsg4").classList.remove("hidden");
+            } else {
+                // Ocultar mensaje de error si el nombre es válido
+                document.getElementById("errorMsg4").classList.add("hidden");
+            }
+
+
+            var paisInput = document.getElementById("pais");
+            var paisValue = paisInput.value.trim();
+            var paisRegex = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ\s\-]+$/; // Expresión regular para letras y espacios
+
+            if (!paisRegex.test(paisValue) || (paisValue === '')) {
+                event.preventDefault(); // Detener el envío del formulario
+
+                // Mostrar mensaje de error
+                document.getElementById("errorMsg5").classList.remove("hidden");
+            } else {
+                // Ocultar mensaje de error si el nombre es válido
+                document.getElementById("errorMsg5").classList.add("hidden");
+            }
+        });
+
     });
-
-
-});
 
 
     </script>

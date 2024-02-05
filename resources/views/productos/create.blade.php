@@ -89,120 +89,121 @@
 
 
     {{-- La validacion de si están vacios y el tamaño de los campos esta hecha en el lado del servidor ProductoControler (create/store) --}}
+    {{-- Nota: Ahora esta en el lado del cliente tambien --}}
 
 
     <script>
 
         function countChar(val) {
-              var len = val.value.length;
-              if (len >= 500) {
+            var len = val.value.length;
+            if (len >= 500) {
                 val.value = val.value.substring(0, 500);
-              } else {
+            } else {
                 $('#charNum').text(len);
-              }
+            }
         };
 
-    //Uso el local storage para guardar la informacion de los inputs en caso de que no este correcto el formulario
+        //Uso el local storage para guardar la informacion de los inputs en caso de que no este correcto el formulario
 
-    document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function() {
 
-        var form = document.getElementById("form");
+            var form = document.getElementById("form");
 
-        //Recoge el valor del localStorage para mostralo en los inputs.
-        var nombreGuardado = localStorage.getItem('nombre');
-        document.getElementById('nombre').value = nombreGuardado;
+            //Recoge el valor del localStorage para mostralo en los inputs.
+            var nombreGuardado = localStorage.getItem('nombre');
+            document.getElementById('nombre').value = nombreGuardado;
 
-        var descripcionGuardado = localStorage.getItem('descripcion');
-        document.getElementById('descripcion').value = descripcionGuardado;
+            var descripcionGuardado = localStorage.getItem('descripcion');
+            document.getElementById('descripcion').value = descripcionGuardado;
 
-        var precioGuardado = localStorage.getItem('precio');
-        document.getElementById('precio').value = precioGuardado;
+            var precioGuardado = localStorage.getItem('precio');
+            document.getElementById('precio').value = precioGuardado;
 
-        var videoGuardado = localStorage.getItem('video');
-        document.getElementById('video').value = videoGuardado;
+            var videoGuardado = localStorage.getItem('video');
+            document.getElementById('video').value = videoGuardado;
 
-        form.addEventListener("submit", function(event) {
-            // Validar el campo de nombre
+            form.addEventListener("submit", function(event) {
+                // Validar el campo de nombre
 
-            var nombreInput = document.getElementById("nombre");
-            var nombreValue = nombreInput.value.trim();
-            var nombreRegex = /^$|^[a-zA-Z0-9](?:[a-zA-Z0-9\s\-_\.,'\(\)\[\]!&]*[a-zA-Z0-9])?$/; // Expresión regular para letras, numeros, caracteres especiales y espacios (He puesto que la ñ no este permitida)
+                var nombreInput = document.getElementById("nombre");
+                var nombreValue = nombreInput.value.trim();
+                var nombreRegex = /^$|^[a-zA-Z0-9](?:[a-zA-Z0-9\s\-_\.,'\(\)\[\]!&]*[a-zA-Z0-9])?$/; // Expresión regular para letras, numeros, caracteres especiales y espacios (He puesto que la ñ no este permitida)
 
-            localStorage.setItem('nombre', nombreValue);
+                localStorage.setItem('nombre', nombreValue);
 
-            if (!nombreRegex.test(nombreValue) || (nombreValue === '')) {
-                event.preventDefault(); // Detener el envío del formulario
+                if (!nombreRegex.test(nombreValue) || (nombreValue === '')) {
+                    event.preventDefault(); // Detener el envío del formulario
 
-                // Mostrar mensaje de error
-                document.getElementById("errorMsg1").classList.remove("hidden");
-
-
-
-            } else {
-                // Ocultar mensaje de error si el nombre es válido
-                document.getElementById("errorMsg1").classList.add("hidden");
-            }
-
-
-            var descripcionInput = document.getElementById("descripcion");
-            var descripcionValue = descripcionInput.value.trim();
-            var descripcionRegex = /^[\s\S]{1,500}$/; // Expresión regular para letras, numeros y espacios
-
-            localStorage.setItem('descripcion', descripcionValue);
-
-            if (!descripcionRegex.test(descripcionValue) || (descripcionValue === '')) {
-                event.preventDefault(); // Detener el envío del formulario
-
-                // Mostrar mensaje de error
-                document.getElementById("errorMsg2").classList.remove("hidden");
-            } else {
-                // Ocultar mensaje de error si el nombre es válido
-                document.getElementById("errorMsg2").classList.add("hidden");
-            }
-
-
-            var precioInput = document.getElementById("precio");
-            var precioValue = precioInput.value.trim();
-            var precioRegex = /^\d*(?:\.\d{1,2})?$/; // Expresión regular para letras, numeros y espacios
-
-            localStorage.setItem('precio', precioValue);
-
-            if (!precioRegex.test(precioValue) || (precioValue === '')) {
-                event.preventDefault(); // Detener el envío del formulario
-
-                // Mostrar mensaje de error
-                document.getElementById("errorMsg3").classList.remove("hidden");
-            } else {
-                // Ocultar mensaje de error si el nombre es válido
-                document.getElementById("errorMsg3").classList.add("hidden");
-            }
+                    // Mostrar mensaje de error
+                    document.getElementById("errorMsg1").classList.remove("hidden");
 
 
 
-            var videoInput = document.getElementById("video");
-            var videoValue = videoInput.value.trim();
-            var videoRegex = /^https:\/\/www\.youtube\.com\/embed\/[a-zA-Z0-9_-]{11}\?[\s\S]*$/; // Expresión regular para letras, numeros y espacios
-
-            localStorage.setItem('video', videoValue);
-
-            if (!videoRegex.test(videoValue)) {
-                event.preventDefault(); // Detener el envío del formulario
-
-                // Mostrar mensaje de error
-                document.getElementById("errorMsg4").classList.remove("hidden");
-            } else {
-                // Ocultar mensaje de error si el nombre es válido
-                document.getElementById("errorMsg4").classList.add("hidden");
-            }
+                } else {
+                    // Ocultar mensaje de error si el nombre es válido
+                    document.getElementById("errorMsg1").classList.add("hidden");
+                }
 
 
+                var descripcionInput = document.getElementById("descripcion");
+                var descripcionValue = descripcionInput.value.trim();
+                var descripcionRegex = /^[\s\S]{1,500}$/; // Expresión regular para letras, numeros y espacios
 
+                localStorage.setItem('descripcion', descripcionValue);
+
+                if (!descripcionRegex.test(descripcionValue) || (descripcionValue === '')) {
+                    event.preventDefault(); // Detener el envío del formulario
+
+                    // Mostrar mensaje de error
+                    document.getElementById("errorMsg2").classList.remove("hidden");
+                } else {
+                    // Ocultar mensaje de error si el nombre es válido
+                    document.getElementById("errorMsg2").classList.add("hidden");
+                }
+
+
+                var precioInput = document.getElementById("precio");
+                var precioValue = precioInput.value.trim();
+                var precioRegex = /^\d*(?:\.\d{1,2})?$/; // Expresión regular para letras, numeros y espacios
+
+                localStorage.setItem('precio', precioValue);
+
+                if (!precioRegex.test(precioValue) || (precioValue === '')) {
+                    event.preventDefault(); // Detener el envío del formulario
+
+                    // Mostrar mensaje de error
+                    document.getElementById("errorMsg3").classList.remove("hidden");
+                } else {
+                    // Ocultar mensaje de error si el nombre es válido
+                    document.getElementById("errorMsg3").classList.add("hidden");
+                }
+
+
+
+                var videoInput = document.getElementById("video");
+                var videoValue = videoInput.value.trim();
+                var videoRegex = /^https:\/\/www\.youtube\.com\/embed\/[a-zA-Z0-9_-]{11}\?[\s\S]*$/; // Expresión regular para letras, numeros y espacios
+
+                localStorage.setItem('video', videoValue);
+
+                if (!videoRegex.test(videoValue)) {
+                    event.preventDefault(); // Detener el envío del formulario
+
+                    // Mostrar mensaje de error
+                    document.getElementById("errorMsg4").classList.remove("hidden");
+                } else {
+                    // Ocultar mensaje de error si el nombre es válido
+                    document.getElementById("errorMsg4").classList.add("hidden");
+                }
+
+
+
+
+
+            });
 
 
         });
-
-
-    });
 
     </script>
 

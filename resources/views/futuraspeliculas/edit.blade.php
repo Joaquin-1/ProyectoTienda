@@ -14,8 +14,6 @@
 
         <div class="my-6 ml-80">
 
-
-
             <label for="name"
                 class="text-sm font-medium text-gray-900 block mb-2 @error('nombre') text-red-500 @enderror">
                 Nombre
@@ -26,7 +24,7 @@
             <p id="errorMsg1" class="hidden text-red-600">Por favor, ingresa un nombre válido.</p>
 
 
-                <label for="imagen_url"
+            <label for="imagen_url"
                 class="text-sm font-medium text-gray-900 block mb-2 @error('imagen_url') text-red-500 @enderror">
                 Imagen_url
             </label>

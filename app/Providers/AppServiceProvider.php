@@ -12,6 +12,8 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
+    //Vista por defecto para el paginado, esta modificada en la vista pagination.default.
     public function register()
     {
         Paginator::defaultView('pagination.default');

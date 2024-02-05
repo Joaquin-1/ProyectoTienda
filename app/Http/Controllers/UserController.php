@@ -10,10 +10,13 @@ use App\Models\Imagen;
 
 class UserController extends Controller
 {
+    //Muestra los datos del usuario logueado en su perfil
     public function index(){
         $users = User::all()->where('id', Auth::user()->id)->first();
         $imagenes = Imagen::all();
 
+        //Variable dedicada al admin, esta permite ver los datos de futurasPeliculas y editarlos
+        //para la vista inicial/welcome de la aplicacion
         $futuraspeliculas = Futuraspeliculas::all();
 
 
@@ -28,7 +31,7 @@ class UserController extends Controller
 
 
 
-
+    //Un edit basico
     public function edit($id)
     {
         $user = User::findOrFail($id);
@@ -38,9 +41,10 @@ class UserController extends Controller
         ]);
     }
 
+    //Actualiza los datos si estan correctos
     public function update($id)
     {
-
+        //Validacion
         $validados = request()->validate([
             'name'=> 'required|string|max:25',
             'descripcion'=> 'nullable|string|min:20',
@@ -66,17 +70,21 @@ class UserController extends Controller
             ->with('success', 'Perfil modificado con éxito.');
     }
 
-
+    //Funcion dedicada al admin
+    //Le permite ver a todos los usuarios
     public function verClientes()
     {
         $admin = Auth::user();
-        //$clientes = User::where('rol', 'cliente')->get();
-        $clientes = User::where('rol', 'cliente')->paginate(5);
+        //Lo he paginado para que no aparezcan todos en una sola vista
+        $clientes = User::where('rol', 'cliente')->paginate(10);
 
         return view('usuarios.ver-clientes', compact('admin', 'clientes'));
 
     }
 
+    //Funcion dedicada al admin
+    //Otra funcion problemática, permite al admin borrar a un usuario por completo junto a todos los datos que tenga en la aplicacion
+    //¿Es ilegal almacenar datos de usuario borrados?
     public function destroy($id)
     {
         $cliente = User::findOrFail($id);

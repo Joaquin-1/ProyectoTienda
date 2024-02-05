@@ -23,6 +23,7 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    //Permite el acceso solo si el rol del usuario es admin
     public function boot()
     {
         $this->registerPolicies();

@@ -34,76 +34,60 @@
                                     $facturasProcesadas = [];
                                 @endphp
 
-                        @foreach ($facturas as $factura)
-                            @foreach ($factura->lineas as $linea)
-                                @if ($linea->estado != 'Completed')
+                                @foreach ($facturas as $factura)
+                                    @foreach ($factura->lineas as $linea)
+                                        @if ($linea->estado != 'Completed')
 
 
-                                @else
+                                        @else
 
 
-                                    @if (!in_array($factura->id, $facturasProcesadas))
-                                        @php
-                                            $facturasProcesadas[] = $factura->id;
-                                        @endphp
+                                            @if (!in_array($factura->id, $facturasProcesadas))
+                                                @php
+                                                    $facturasProcesadas[] = $factura->id;
+                                                @endphp
 
-                                        @if (count($factura->lineas) > 0)
-                                            @php
-                                                $fecha = explode(' ', $factura->lineas[0]->created_at)
-                                            @endphp
+                                                @if (count($factura->lineas) > 0)
+                                                    @php
+                                                        $fecha = explode(' ', $factura->lineas[0]->created_at)
+                                                    @endphp
 
-                                            @if (count($factura->lineas) == 1)
-                                                <tr class="border-b-4 border-red-700 ]">
+                                                    @if (count($factura->lineas) == 1)
+                                                        <tr class="border-b-4 border-red-700 ]">
+                                                    @endif
+
+                                                    <td class="px-6 py-2">{{ $factura->lineas[0]->producto->nombre }}</td>
+                                                    <td class="px-6 py-2">{{ $factura->lineas[0]->cantidad }}</td>
+                                                    <td class="px-6 py-2">{{ $factura->lineas[0]->producto->precio * $factura->lineas[0]->cantidad }}$</td>
+                                                    <td class="px-6 py-2">{{ $factura->lineas[0]->estado }}</td>
+                                                    <td class="px-6 py-2">{{ $fecha[0] }}</td>
+
+                                                        </tr>
+
+                                                    @for ($i = 1; $i < count($factura->lineas); $i++)
+                                                        <tr class="border-b-4 border-red-700">
+                                                            <td class="px-6 py-2">{{ $factura->lineas[$i]->producto->nombre }}</td>
+                                                            <td class="px-6 py-2">{{ $factura->lineas[$i]->cantidad }}</td>
+                                                            <td class="px-6 py-2">{{ $factura->lineas[$i]->producto->precio * $factura->lineas[$i]->cantidad }}$</td>
+                                                            <td class="px-6 py-2">{{ $factura->lineas[$i]->estado }}</td>
+                                                            <td></td>
+
+
+                                                        </tr>
+                                                    @endfor
+                                                @endif
+
                                             @endif
 
-                                            <td class="px-6 py-2">{{ $factura->lineas[0]->producto->nombre }}</td>
-                                            <td class="px-6 py-2">{{ $factura->lineas[0]->cantidad }}</td>
-                                            <td class="px-6 py-2">{{ $factura->lineas[0]->producto->precio * $factura->lineas[0]->cantidad }}$</td>
-                                            <td class="px-6 py-2">{{ $factura->lineas[0]->estado }}</td>
-                                            <td class="px-6 py-2">{{ $fecha[0] }}</td>
-
-                                                </tr>
-
-                                            @for ($i = 1; $i < count($factura->lineas); $i++)
-                                                <tr class="border-b-4 border-red-700">
-                                                    <td class="px-6 py-2">{{ $factura->lineas[$i]->producto->nombre }}</td>
-                                                    <td class="px-6 py-2">{{ $factura->lineas[$i]->cantidad }}</td>
-                                                    <td class="px-6 py-2">{{ $factura->lineas[$i]->producto->precio * $factura->lineas[$i]->cantidad }}$</td>
-                                                    <td class="px-6 py-2">{{ $factura->lineas[$i]->estado }}</td>
-                                                    <td></td>
-
-
-                                                </tr>
-                                            @endfor
                                         @endif
-                                    @endif
 
+                                    @endforeach
+                                @endforeach
 
-                                @endif
+                            </tbody>
+                        </table>
 
-                            @endforeach
-                        @endforeach
-
-                        {{-- <script>
-
-
-
-                            function miFunc() {
-                                console.log("hola");
-                            }
-
-
-                        </script> --}}
-
-
-
-                    </tbody>
-                            </table>
-
-
-
-
-                        </x-plantilla>
+                    </x-plantilla>
                 </div>
             </div>
         </div>

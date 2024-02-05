@@ -1,4 +1,6 @@
 <x-app-layout>
+    {{-- El <x-app-layout> permite que sea vea el footer que contiene el app.blade y el header que está en el navigation.
+        Dentro del app.blade hay un enlace al navigation para solo tener que usar un etiqueta al llamarlo en la vista --}}
     <x-slot name="header">
         <h2 class="font-semibold leading-tight">
             {{ __('Carrito') }}
@@ -12,7 +14,7 @@
                     <x-plantilla>
                         <table class="table-auto">
                             <thead>
-                                @if ($carritos->isEmpty())
+                            @if ($carritos->isEmpty())
                                 <p>No has añadido nada al carrito todavia</p>
                             @else
                                 <th class="px-6 py-2 text-gray-500">
@@ -31,71 +33,68 @@
 
                                 </th>
                                 <th class="px-6 py-2 text-gray-500">
-
                                     <form action="{{route('vaciar')}}" method="post">
                                         @csrf
                                         @method('POST')
                                         <button class="hover:bg-orange-500 bg-orange-200 text-black border px-7 py-2 rounded-xl" type="submit"> Vaciar carrito</button>
                                     </form>
                                 </th>
-                                @endif
+                            @endif
                             </thead>
                             <tbody>
-@php
-    $total = 0;
-@endphp
+                                @php
+                                    $total = 0;
+                                @endphp
 
-@foreach ($carritos as $carrito)
-<tr>
-    <td class="px-6 py-2"><a href="{{route('producto', $carrito->producto)}}"><img class="hidden lg:block h-60 w-auto" src="{{ URL($carrito->producto->imagenes[0]->imagen) }}" alt="imagen del producto"></a></td>
-    <td class="px-6 py-2">{{ $carrito->producto->nombre }}</td>
+                                @foreach ($carritos as $carrito)
+                                <tr>
+                                    <td class="px-6 py-2"><a href="{{route('producto', $carrito->producto)}}"><img class="hidden lg:block h-60 w-auto" src="{{ URL($carrito->producto->imagenes[0]->imagen) }}" alt="imagen del producto"></a></td>
+                                    <td class="px-6 py-2">{{ $carrito->producto->nombre }}</td>
 
-    <td class="px-6 py-2 md:px-4 md:py-1 px-3 py-1">
-        <div class="text-sm text-gray-900 inline-block">
-            <form action="{{ route('restar', $carrito) }}" method="POST">
-                @csrf
-                @method('POST')
-                <button type="submit" class="flex justify-center px-2 px-4 py-1 border text-sm mx-2 text-black hover:bg-orange-500 rounded mx-1">-</button>
-            </form>
-        </div>
-        {{ $carrito->cantidad }}
-        <div class="text-sm text-gray-900 inline-block">
-            <form action="{{ route('sumar', $carrito) }}" method="POST">
-                @csrf
-                @method('POST')
-                <button type="submit" class="flex justify-center px-2 px-4 py-1 border text-sm mx-2 text-black hover:bg-orange-500 rounded mx-1">+</button>
-            </form>
-        </div>
-    </td>
+                                    <td class="px-6 py-2 md:px-4 md:py-1 px-3 py-1">
+                                        <div class="text-sm text-gray-900 inline-block">
+                                            <form action="{{ route('restar', $carrito) }}" method="POST">
+                                                @csrf
+                                                @method('POST')
+                                                <button type="submit" class="flex justify-center px-2 px-4 py-1 border text-sm mx-2 text-black hover:bg-orange-500 rounded mx-1">-</button>
+                                            </form>
+                                        </div>
+                                        {{ $carrito->cantidad }}
+                                        <div class="text-sm text-gray-900 inline-block">
+                                            <form action="{{ route('sumar', $carrito) }}" method="POST">
+                                                @csrf
+                                                @method('POST')
+                                                <button type="submit" class="flex justify-center px-2 px-4 py-1 border text-sm mx-2 text-black hover:bg-orange-500 rounded mx-1">+</button>
+                                            </form>
+                                        </div>
+                                    </td>
 
 
-        <td>
+                                    <td>{{ $carrito->producto->precio * $carrito->cantidad}}&euro;</td>
+                                    @php
+                                        $total += $carrito->producto->precio * $carrito->cantidad;
+                                    @endphp
 
-                                        {{ $carrito->producto->precio * $carrito->cantidad}}&euro;</td>
-                                        @php
-                                            $total += $carrito->producto->precio * $carrito->cantidad;
-                                        @endphp
-
-                                    </tr>
-                                    @endforeach
+                                </tr>
+                                @endforeach
 
                             </tbody>
 
                         </table>
                         <div class="border-t-2 w-3/4 mt-3">
                             @if ($carritos->isEmpty() == false)
-                            <div class="mt-4 text-right  mr-48">
+                                <div class="mt-4 text-right  mr-48">
 
-                                <span class="text-2xl mr-32 font-bold">Precio Total: </span><span class="font-bold text-xl">{{$total}}&euro;</span>
-                            </div>
+                                    <span class="text-2xl mr-32 font-bold">Precio Total: </span><span class="font-bold text-xl">{{$total}}&euro;</span>
+
+                                </div>
                             @endif
                         </div>
                         @if ($carritos->isEmpty())
-                            @else
-                            <div class="mt-5">
 
-                            </div>
-                            <div class="mt-5">
+                        @else
+
+                            <div class="mt-10">
                                 @if (Auth::user()->direccion == null)
                                 <form action="{{route('indexDireccion')}}" method="get">
                                     @csrf
@@ -110,7 +109,7 @@
 
                                     <button class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-xl rounded-xl" type="submit"> Proceder con la compra</button>
 
-
+                                @endif
 
                                 </form>
                             </div>
@@ -167,12 +166,11 @@
                                 </form>
                             </div>
 
-                            @endif
-                            @endif
-                        </x-plantilla>
-                    </div>
-                </div>
 
+                        @endif
+                    </x-plantilla>
+                </div>
             </div>
         </div>
+    </div>
 </x-app-layout>

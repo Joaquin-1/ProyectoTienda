@@ -6,7 +6,8 @@
     </x-slot>
     <section class="mb-56 text-center text-gray-800">
         <div class="max-w-[700px] mx-auto px-3 lg:px-6 mt-24 ">
-          <h2 class="text-3xl font-bold mt-6 mb-12">¿Tienes alguna duda?</h2>
+
+            <h2 class="text-3xl font-bold mt-6 mb-12">¿Tienes alguna duda?</h2>
             <form id="form" action="{{ route('contactos.store', [], false) }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
@@ -44,14 +45,8 @@
 
         </div>
 
+    </section>
 
-
-      </section>
-
-
-      <!-- Section: Design Block -->
-
-    </div>
 
     <script>
 

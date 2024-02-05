@@ -9,6 +9,9 @@ class Carrito extends Model
 {
     use HasFactory;
 
+    //Nota: El modelo te permite relacionar las tablas entre ellas para poder recorrer las tablas que
+    //tengan alguna relacion entre sí.
+
     public function producto()
     {
         return $this->belongsTo(Producto::class);

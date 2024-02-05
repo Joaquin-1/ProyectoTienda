@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Esta ruta específica está diseñada para devolver la información del usuario autenticado cuando se
+//realiza una solicitud GET a "/user" y solo estará disponible para usuarios autenticados.
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

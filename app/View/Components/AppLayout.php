@@ -11,6 +11,8 @@ class AppLayout extends Component
      *
      * @return \Illuminate\View\View
      */
+
+    //Esto hace que cargue la vista que hayas diseñado en el (/view/layout/app.blade.php)
     public function render()
     {
         return view('layouts.app');

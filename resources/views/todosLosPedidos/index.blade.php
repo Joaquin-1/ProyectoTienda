@@ -33,61 +33,61 @@
                             </thead>
                             <tbody>
                                 @foreach ($facturas as $factura)
-                                @foreach ($factura->lineas as $linea)
-                                @if ($linea->estado == 'Completed')
+                                    @foreach ($factura->lineas as $linea)
+                                        @if ($linea->estado == 'Completed')
 
 
-                                    @else
-                                    <tr id="tr">
-                                        <td class="w-1/6 px-6 py-2"><img class="h-44 w-full hidden lg:block" src="{{ URL($linea->producto->imagenes[0]->imagen) }}" alt="imagen del producto"></td>
-                                        <td class="w-1/6 px-6 py-2">{{ $linea->producto->nombre }}</td>
-                                        <td class="w-1/6 px-6 py-2">{{ $linea->cantidad }}</td>
-                                        <td class="w-1/6 px-6 py-2">{{ $linea->producto->precio * $linea->cantidad }}$</td>
-                                        <td class="w-1/6 px-6 py-2">{{ $linea->estado }}</td>
-                                        <td class="w-1/6 ">
-                                            <div class="text-sm text-green-900 ">
-                                                <form action="{{ route('edit', $linea) }}" method="POST">
-                                                    @csrf
-                                                    @method('POST')
-                                                    <select name="estado" id="estado">
-                                                        <option  value="Pending to send">Pendiente de envio</option>
-                                                        <option value="Product sent">Producto enviado</option>
-                                                        <option value="Completed">Completado</option>
+                                        @else
+                                            <tr id="tr">
+                                                <td class="w-1/6 px-6 py-2"><img class="h-44 w-full hidden lg:block" src="{{ URL($linea->producto->imagenes[0]->imagen) }}" alt="imagen del producto"></td>
+                                                <td class="w-1/6 px-6 py-2">{{ $linea->producto->nombre }}</td>
+                                                <td class="w-1/6 px-6 py-2">{{ $linea->cantidad }}</td>
+                                                <td class="w-1/6 px-6 py-2">{{ $linea->producto->precio * $linea->cantidad }}$</td>
+                                                <td class="w-1/6 px-6 py-2">{{ $linea->estado }}</td>
+                                                <td class="w-1/6 ">
+                                                    <div class="text-sm text-green-900 ">
+                                                        <form action="{{ route('edit', $linea) }}" method="POST">
+                                                            @csrf
+                                                            @method('POST')
+                                                            <select name="estado" id="estado">
+                                                                <option  value="Pending to send">Pendiente de envio</option>
+                                                                <option value="Product sent">Producto enviado</option>
+                                                                <option value="Completed">Completado</option>
 
-                                                        <input type="submit" class="mt-2 mb-6 px-4 py-1 text-sm bg-orange-400 rounded ml-3 cursor-pointer" value="Cambiar estado">
-                                                    </select>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @php
-                                    $fecha = explode(' ', $linea->created_at)
-                                @endphp
-                                    <tr class="datosUsuario" style="display: none;">
-                                        <td></td>
-                                        <td class="px-3 ">
-                                            <b> Nombre: </b> {{$linea->factura->user->name}}
-                                        </td>
-                                        <td class="px-3">
-                                            <b> Email: </b> {{$linea->factura->user->email}}
-                                        </td>
-                                        <td colspan="2" class="px-3">
-                                            <b>Direccion: </b> <br>
-                                            <b> Calle: </b> {{$linea->factura->user->direccion->calle}} <br>
-                                            <b> Ciudad:</b> {{$linea->factura->user->direccion->ciudad}} <br>
-                                            <b> Codigo postal: </b> {{$linea->factura->user->direccion->codigo_postal}} <br>
-                                            <b> Pais: </b>{{$linea->factura->user->direccion->pais}}
-                                        </td>
-                                        <td  class="px-3">
-                                            <b>Fecha del pedido: </b> {{$fecha[0]}}
-                                        </td>
-                                    </tr>
-                                    @endif
+                                                                <input type="submit" class="mt-2 mb-6 px-4 py-1 text-sm bg-orange-400 rounded ml-3 cursor-pointer" value="Cambiar estado">
+                                                            </select>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            @php
+                                                $fecha = explode(' ', $linea->created_at)
+                                            @endphp
+                                            <tr class="datosUsuario" style="display: none;">
+                                                <td></td>
+                                                <td class="px-3 ">
+                                                    <b> Nombre: </b> {{$linea->factura->user->name}}
+                                                </td>
+                                                <td class="px-3">
+                                                    <b> Email: </b> {{$linea->factura->user->email}}
+                                                </td>
+                                                <td colspan="2" class="px-3">
+                                                    <b>Direccion: </b> <br>
+                                                    <b> Calle: </b> {{$linea->factura->user->direccion->calle}} <br>
+                                                    <b> Ciudad:</b> {{$linea->factura->user->direccion->ciudad}} <br>
+                                                    <b> Codigo postal: </b> {{$linea->factura->user->direccion->codigo_postal}} <br>
+                                                    <b> Pais: </b>{{$linea->factura->user->direccion->pais}}
+                                                </td>
+                                                <td  class="px-3">
+                                                    <b>Fecha del pedido: </b> {{$fecha[0]}}
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    @endforeach
                                 @endforeach
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </x-plantilla>
+                            </tbody>
+                        </table>
+                    </x-plantilla>
                 </div>
             </div>
         </div>

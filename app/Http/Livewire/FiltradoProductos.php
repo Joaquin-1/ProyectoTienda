@@ -15,6 +15,9 @@ class FiltradoProductos extends Component
     public $categoriaSelect = 'All';
     public $ordenarSelect = 'Precio descendente';
 
+    //Esta funcion te permite clasificar las peliculas por categorias y/o por precio de forma dinámica.
+    //Aqui esta la funcion "index" del productoController.
+    //Nota: Muchisimo mejor que ajax y más facil.
     public function render()
     {
         $query = Producto::query();

@@ -13,7 +13,6 @@ use App\Http\Controllers\FuturaspeliculasController;
 use App\Http\Controllers\UserController;
 use App\Http\Livewire\SwitchView;
 use App\Models\Comentario;
-// use App\Http\Controllers\InicioController;
 use App\Models\Contacto;
 use App\Models\Futuraspeliculas;
 use App\Models\Producto;
@@ -32,15 +31,15 @@ use Symfony\Component\Process\Process;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 
+//Rutas para manejar el pago con tarjeta
 Route::get('/stripe-payment/{total}', [StripeController::class, 'handleGet'])->name('pagar');
 Route::post('/stripe-payment', [StripeController::class, 'handlePost'])->name('stripe.payment');
 
 
+
+//Esta ruta te devuelve los datos de las peliculas y las futuras peliculas para verlos en la vista de la pagina de inicio
 Route::get('/', function () {
     $productos = Producto::all();
     $futuraspeliculas = Futuraspeliculas::all();
@@ -48,15 +47,11 @@ Route::get('/', function () {
                              'futuraspeliculas' => $futuraspeliculas]);
 });
 
-// Route::get('/', [FuturaspeliculasController::class, 'index']);
-
-// Route::get('/futuraspeliculas', [FuturaspeliculasController::class, 'index'])->name('futuraspeliculas');
 
 
 
+//Esto verifica si el usuario esta verificado, es decir estas rutas solo son accesibles para usuarios registrados.
 Route::middleware(['auth', 'verified'])->group(function () {
-
-
 
 
     Route::resource('carritos', CarritoController::class);
@@ -69,9 +64,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/productos', [ProductoController::class, 'index'])->name('productos');
 
-    // Route::get('/inicio', [InicioController::class, 'index'])->name('inicio');
 
-    Route::get('/contacto', [DireccionController::class, 'contacto'])->name('contacto');
+
+
 
 
     Route::post('/anadircomentario', [ComentarioController::class, 'anadircomentario'])
@@ -80,10 +75,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/anadirrespuesta', [ComentarioController::class, 'anadirrespuesta'])
         ->name('anadirrespuesta');
 
+
     Route::get('/direccion', [DireccionController::class, 'index'])->name('indexDireccion');
-    Route::get('/editDireccion', [DireccionController::class, 'edit'])->name('editDireccion');
 
     Route::post('/direccion/{user}', [DireccionController::class, 'direccion'])->name('direccion');
+
+    Route::get('/editDireccion', [DireccionController::class, 'edit'])->name('editDireccion');
 
     Route::post('/setDireccion/{direccion}', [DireccionController::class, 'setDireccion'])->name('setDireccion');
 
@@ -91,10 +88,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/producto/{producto}', [ProductoController::class, 'producto'])->name('producto');
 
+
     Route::resource('facturas', FacturaController::class);
 
     Route::post('/facturas/cambiar_estado', [FacturaController::class, 'cambiar_estado'])
         ->name('cambiar_estado');
+
 
     Route::post('/carritos/meter/{producto}', [CarritoController::class, 'anadiralcarrito'])
         ->name('anadiralcarrito');
@@ -114,17 +113,20 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/carritos/factura', [CarritoController::class, 'pedido'])
         ->name('pedido');
 
+
         Route::get('/completadosUser', [PedidoAdminController::class, 'completadosUser'])->name('completadosUser');
+
 
         Route::get('/perfiles', [UserController::class, 'index'])->name('perfiles');
         Route::get('/perfiles/{id}/edit', [UserController::class, 'edit']);
         Route::put('/perfiles/{id}', [UserController::class, 'update'])
         ->name('perfiles.update');
 
-    /* Route::resource('todosLosPedidos', PedidoAdminController::class)
-        ->middleware(['auth', 'can:solo-admin']); */
+
 });
 
+
+//Esto verifica si eres admin de la aplicacion, si es así te da acceso a las rutas que contiene.
 Route::middleware(['auth', 'can:solo-admin'])->group(function () {
 
 
@@ -142,11 +144,9 @@ Route::middleware(['auth', 'can:solo-admin'])->group(function () {
 
 
 
-    // Route::get('/todasLasDevoluciones', [PedidoAdminController::class, 'devoluciones'])->name('todosLasDevoluciones');
-    // Route::post('/devoluciones', [PedidoAdminController::class, 'crearDevolucion'])->name('devoluciones');
-
     Route::get('/usuarios/ver-clientes', [UserController::class, 'verClientes'])->name('ver-clientes');
     Route::delete('/usuarios/{id}', [UserController::class, 'destroy']);
+
 
     Route::delete('/comentarios/{id}', [ComentarioController::class, 'destroy']);
 
@@ -154,7 +154,7 @@ Route::middleware(['auth', 'can:solo-admin'])->group(function () {
     Route::get('/todosLosPedidos', [PedidoAdminController::class, 'index'])->name('todosLosPedidos');
     Route::get('/completados', [PedidoAdminController::class, 'completados'])->name('completados');
 
-    // Route::get('/productos/index', [ProductoController::class, 'edit']);
+
     Route::get('/productos/create', [ProductoController::class, 'create']);
     Route::post('/productos', [ProductoController::class, 'store'])->name('productos.store');
 

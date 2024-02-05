@@ -56,6 +56,10 @@ class LineaController extends Controller
      * @param  \App\Models\Linea  $linea
      * @return \Illuminate\Http\Response
      */
+    //Funcion solo para el admin
+    //Esta funcion está en el edit pero realmente es un update, ya que en la vista de todos los pedidos ya esta el input y el
+    //boton para cambiar, no utilizo una vista edit.
+    //Permite al admin cambiar el estado del pedido(Pendiente de envio, Enviado, Completo)
     public function edit(Linea $linea)
     {
         $validado = request()->validate([

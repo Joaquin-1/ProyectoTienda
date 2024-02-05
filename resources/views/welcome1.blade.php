@@ -36,13 +36,8 @@
         </div>
     </div>
 
-
-
-
-
-
 </head>
-
+<body>
 
     <div class="flex items-center">
         <div class="h-96 w-full relative">
@@ -53,9 +48,6 @@
             </div>
         </div>
     </div>
-
-
-
 
 
     <div class="bg-white h-1/3 w-full flex text-center justify-center my-8 px-8">
@@ -70,80 +62,59 @@
     </div>
 
 
-        <div class="bg-[#047857] h-auto md:h-1/3 p-4 min-h-full flex flex-col items-center justify-center">
-            <h1 class="text-white text-4xl font-bold mb-8">¡Echa un vistazo a las películas!</h1>
-
-            <div class="grid grid-rows-1 grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-3 rounded-md w-full md:w-[400px] h-auto md:h-[600px] overflow-x-auto mt-4 md:mt-0">
-                    <table class="w-full table-auto bg-white">
-                        <tbody>
-                            <tr class="w-full">
-                                <td class="bg-green-500 ">
-                                    <p class="text-3xl">Nuestras Películas</p>
-                                </td>
-                            </tr>
-
-                            @php
+    <div class="bg-[#047857] h-auto md:h-1/3 p-4 min-h-full flex flex-col items-center justify-center">
+        <h1 class="text-white text-4xl font-bold mb-8">¡Echa un vistazo a las películas!</h1>
+        <div class="grid grid-rows-1 grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white p-3 rounded-md w-full md:w-[400px] h-auto md:h-[600px] overflow-x-auto mt-4 md:mt-0">
+                <table class="w-full table-auto bg-white">
+                    <tbody>
+                        <tr class="w-full">
+                            <td class="bg-green-500 ">
+                                <p class="text-3xl">Nuestras Películas</p>
+                            </td>
+                        </tr>
+                        @php
                             $count = 0;
-                            @endphp
-
-                            @foreach ($productos as $producto)
-
+                        @endphp
+                        @foreach ($productos as $producto)
                             @break($count == 5)
                             <tr>
                                 <td class="px-6 py-2 "><p class="text-2xl mb-4 ">{{ $producto->nombre }}</p></td>
                                 <td class="px-6 py-2 "><p class="text-2xl mb-4 ">{{ $producto->precio }}€</p></td>
                             </tr>
-
                             <tr>
                                 <td class="px-6 py-2 w-full md:w-96 "><a href="{{route('producto', $producto)}}"> <img class="h-60 w-full md:w-auto border-2 border-green-700" src="{{ URL($producto->imagenes[0]->imagen) }}" alt="imagen del producto"></a></td>
                             </tr>
-
                             @php
-                            $count++;
+                                $count++;
                             @endphp
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <div class="bg-white p-3 rounded-md w-full md:w-[400px] h-auto md:h-[600px] overflow-x-auto mt-4 md:mt-0">
 
-                            @endforeach
-
-                        </tbody>
-                    </table>
-                </div>
-                <div class="bg-white p-3 rounded-md w-full md:w-[400px] h-auto md:h-[600px] overflow-x-auto mt-4 md:mt-0">
-
-                    @foreach($futuraspeliculas as $pelicula)
-
-
-                    <table class="w-full table-auto bg-white">
-                        <tbody>
-                            <tr class="w-full">
-                                <td class="bg-green-500 ">
-                                    <p class="text-3xl">Próximas Películas</p>
-                                </td>
-                            </tr>
-
+                <table class="w-full table-auto bg-white">
+                    <tbody>
+                        <tr class="w-full">
+                            <td class="bg-green-500 ">
+                                <p class="text-3xl">Próximas Películas</p>
+                            </td>
+                        </tr>
+                        @foreach($futuraspeliculas as $pelicula)
                             <tr>
-
                                 <td class="px-6 py-2 "><p class="text-2xl mb-4 ">{{$pelicula->nombre}}</p></td>
                             </tr>
-
                             <tr>
                                 <td class="px-6 py-2 w-full md:w-96 "> <img class="h-60 w-full md:w-auto border-2 border-green-700" src={{$pelicula->imagen_url}} alt="imagen del producto"></td>
                             </tr>
+                        @endforeach
+                    </tbody>
+                </table>
 
-                            {{-- <tr>
-                                <td class="px-6 py-2 "><p class="text-2xl mb-4 ">La sociedad de la nieve</p></td>
-                            </tr>
-
-                            <tr>
-                                <td class="px-6 py-2 w-full md:w-96 "> <img class="h-60 w-full md:w-auto border-2 border-green-700" src="img/nieve.jpg" alt="imagen del producto"></td>
-                            </tr> --}}
-
-                        </tbody>
-                    </table>
-                    @endforeach
-                </div>
             </div>
         </div>
+    </div>
 
 
 
@@ -179,4 +150,5 @@
         </div>
     </footer>
 
+</body>
 </html>

@@ -17,6 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
+    //Te redirige a la pagina  principal una vez de autenticas.
     public const HOME = '/productos';
 
     // protected $namespace = 'App\\Http\\Controllers';

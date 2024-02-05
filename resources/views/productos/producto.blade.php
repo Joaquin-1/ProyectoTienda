@@ -1,6 +1,7 @@
 <head>
-    <!-- JIT SUPPORT, for using peer-* below -->
+
     <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <x-app-layout>
     <x-slot name="header">
@@ -69,11 +70,7 @@
                                 height: 600px;
                               }
                             }
-                          </style>
-
-
-                        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
+                        </style>
 
                         <script>
                             $(document).ready(function() {
@@ -96,34 +93,34 @@
 
                                             var comentarioFecha = formatDate(comentario.created_at);
                                             var comentarioHTML = `
-            <div class="flex">
-                <div class="flex-shrink-0 mr-3"></div>
-                <div class="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed ">
-                    <strong>${comentarioNombreusuario}</strong> <span class="text-xs ml-2 text-gray-400">${comentarioFecha}</span>
-                    <div class="flex">
-                        <p class="text-sm w-3/4 inline-block">${comentarioTexto}</p>
-                    </div>
-                    <div class="mt-4 flex items-center">
-                        <div class="block w-full -space-x-2 mr-2">
-                            <details class="text-sm text-gray-500 hover:text-black cursor-pointer font-semibold block">
-                                <summary style="list-style: none;"> Responder </summary>
-                                <form class="mt-4" action="{{ route('anadirrespuesta') }}" method="POST">
-                                    @csrf
-                                    @method('POST')
-                                    <input class="rounded w-3/4" type="text" id="comentario" name="comentario" maxlength="300">
-                                    <label for="producto" hidden></label>
-                                    <input type="text" id="producto" name="producto" hidden value="{{ $producto->id }}">
-                                    <label for="comentariopadre" hidden></label>
-                                    <input type="text" id="comentariopadre" name="comentariopadre" hidden value="${comentarioId}">
-                                    <input type='submit' class="bg-orange-500 text-white font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-orange-700" value='Responder'>
-                                </form>
-                            </details>
-                            <!-- Puedes agregar aquí la lógica para mostrar respuestas si es necesario -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
+                                                <div class="flex">
+                                                    <div class="flex-shrink-0 mr-3"></div>
+                                                    <div class="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed ">
+                                                        <strong>${comentarioNombreusuario}</strong> <span class="text-xs ml-2 text-gray-400">${comentarioFecha}</span>
+                                                        <div class="flex">
+                                                            <p class="text-sm w-3/4 inline-block">${comentarioTexto}</p>
+                                                        </div>
+                                                        <div class="mt-4 flex items-center">
+                                                            <div class="block w-full -space-x-2 mr-2">
+                                                                <details class="text-sm text-gray-500 hover:text-black cursor-pointer font-semibold block">
+                                                                    <summary style="list-style: none;"> Responder </summary>
+                                                                    <form class="mt-4" action="{{ route('anadirrespuesta') }}" method="POST">
+                                                                        @csrf
+                                                                        @method('POST')
+                                                                        <input class="rounded w-3/4" type="text" id="comentario" name="comentario" maxlength="300">
+                                                                        <label for="producto" hidden></label>
+                                                                        <input type="text" id="producto" name="producto" hidden value="{{ $producto->id }}">
+                                                                        <label for="comentariopadre" hidden></label>
+                                                                        <input type="text" id="comentariopadre" name="comentariopadre" hidden value="${comentarioId}">
+                                                                        <input type='submit' class="bg-orange-500 text-white font-medium py-1 px-4 border border-gray-400 rounded-lg tracking-wide mr-1 hover:bg-orange-700" value='Responder'>
+                                                                    </form>
+                                                                </details>
+                                                                <!-- Puedes agregar aquí la lógica para mostrar respuestas si es necesario -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            `;
 
                                             $('#comentariosDiv').append(comentarioHTML);
                                             $('#comentario').val('');
@@ -146,7 +143,7 @@
 
                                 return formattedDate;
                             }
-                            </script>
+                        </script>
 
 
 
@@ -178,19 +175,17 @@
                         </div>
                 </div>
 
-                {{-- ------------------------------------------------------------------------------------------------------ --}}
 
 
 
                 <div id="comentariosDiv" class="space-y-4 w-full">
-                @foreach ($producto->comentarios as $comentario)
-                    @php
-                        $fecha = explode(' ', $comentario->created_at);
-                    @endphp
-                    @if ($comentario->comentario_id != null)
-                    @else
+                    @foreach ($producto->comentarios as $comentario)
+                        @php
+                            $fecha = explode(' ', $comentario->created_at);
+                        @endphp
+                        @if ($comentario->comentario_id != null)
 
-
+                        @else
                             <div  class="flex">
                                 <div class="flex-shrink-0 mr-3">
 
@@ -257,8 +252,6 @@
                                             @if ($comentario->respuestas)
                                                 <div class="space-y-4">
                                                     @foreach ($comentario->respuestas as $respuesta)
-
-
                                                         <div class="flex mt-6">
                                                             <div
                                                                 class="flex-1 bg-gray-100 rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
@@ -275,26 +268,22 @@
                                                                 </p>
 
                                                                 @if (Auth::user()->rol == "admin")
-                                                                <div class="mt-4">
+                                                                    <div class="mt-4">
 
-                                                                    <form action="/comentarios/{{ $respuesta->id }}" method="post">
-                                                                        @csrf
-                                                                        @method('DELETE')
-                                                                        <button onclick="return confirm('¿Seguro? Borrarás el comentario de esta película')"
-                                                                                type="submit" class="px-4 py-1 text-sm text-white bg-red-600 rounded">Borrar
-                                                                        </button>
-                                                                    </form>
+                                                                        <form action="/comentarios/{{ $respuesta->id }}" method="post">
+                                                                            @csrf
+                                                                            @method('DELETE')
+                                                                            <button onclick="return confirm('¿Seguro? Borrarás el comentario de esta película')"
+                                                                                    type="submit" class="px-4 py-1 text-sm text-white bg-red-600 rounded">Borrar
+                                                                            </button>
+                                                                        </form>
 
-                                                                </div>
+                                                                    </div>
                                                                 @endif
 
                                                             </div>
 
-
-
                                                         </div>
-
-
                                                     @endforeach
                                                 </div>
                                             @endif
@@ -303,21 +292,16 @@
                                 </div>
                             </div>
 
-                    @endif
-                @endforeach
+                        @endif
+                    @endforeach
+                </div>
 
-                        </div>
 
 
+                </x-plantilla>
+
+            </div>
         </div>
-    </div>
-    </div>
-    </div>
-    </x-plantilla>
-
-    </div>
-    </div>
-    </div>
     </div>
 
     <script>

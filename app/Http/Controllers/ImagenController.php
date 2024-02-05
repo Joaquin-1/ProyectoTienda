@@ -8,6 +8,7 @@ use App\Models\Imagen;
 
 class ImagenController extends Controller
 {
+    //Este controlador me lo creó indirectamente cuando queria crear la migracion y el modelo para "imagens".
     /**
      * Display a listing of the resource.
      *

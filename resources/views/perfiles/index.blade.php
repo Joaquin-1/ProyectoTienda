@@ -1,4 +1,3 @@
-
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold leading-tight">
@@ -32,28 +31,25 @@
 
 
             @if (Auth::user()->rol == "admin")
-            <div class="mt-8 ml-8">
-                <h2 class="text-2xl font-bold mb-4">Futuras Películas</h2>
+                <div class="mt-8 ml-8">
+                    <h2 class="text-2xl font-bold mb-4">Futuras Películas</h2>
 
-                @foreach($futuraspeliculas as $pelicula)
-                    <!-- Detalles de la película -->
-                    <div class="flex items-center mt-4">
-                        <img class="h-16 w-12 mr-4" src="{{ URL($pelicula->imagen_url) }}" alt="{{ $pelicula->nombre }}">
-                        <p class="text-lg">{{ $pelicula->nombre }}</p>
+                    @foreach($futuraspeliculas as $pelicula)
+                        <!-- Detalles de la película -->
+                        <div class="flex items-center mt-4">
+                            <img class="h-16 w-12 mr-4" src="{{ URL($pelicula->imagen_url) }}" alt="{{ $pelicula->nombre }}">
+                            <p class="text-lg">{{ $pelicula->nombre }}</p>
 
-                        <!-- Enlace para editar película -->
-                        <div class="ml-2 text-center">
-                            <a href="/futuraspeliculas/{{ $pelicula->id }}/edit" class="px-3 py-1 text-sm text-white bg-blue-600 rounded">Editar</a>
+                            <!-- Enlace para editar película -->
+                            <div class="ml-2 text-center">
+                                <a href="/futuraspeliculas/{{ $pelicula->id }}/edit" class="px-3 py-1 text-sm text-white bg-blue-600 rounded">Editar</a>
+                            </div>
                         </div>
-                    </div>
-                @endforeach
-            </div>
+                    @endforeach
+                </div>
             @endif
-
+        </div>
     </div>
-
-
-
 
 </x-app-layout>
 

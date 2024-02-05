@@ -14,8 +14,11 @@ class ContactoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //Envia todos los datos de la tabla contactos a su vista correspondiente
     public function index()
     {
+        //Le he puesto un paginador de 5
         // $contactos = Contacto::all();
         $contactos = Contacto::paginate(5);
 
@@ -30,6 +33,8 @@ class ContactoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //Crea un nuevo contacto y te manda a la vista de crearContacto
     public function create()
     {
         $contacto = new Contacto();
@@ -45,6 +50,8 @@ class ContactoController extends Controller
      * @param  \App\Http\Requests\StoreContactoRequest  $request
      * @return \Illuminate\Http\Response
      */
+    //Recoge los datos de la vista de crearContacto y los valida, si todo esta correcto se guarda en la tabla contactos y te redirige
+    //a la vista del index
     public function store(StoreContactoRequest $request)
     {
         $validados = request()->validate([
@@ -96,6 +103,11 @@ class ContactoController extends Controller
      * @param  \App\Models\Contacto  $contacto
      * @return \Illuminate\Http\Response
      */
+
+    //En este caso no hay funcion "edit" porque no utilzo una vista para editar los contactos.
+    //Funcion dedicada solo al admin
+    //Esta funcion valida la respuesta que el admin ponga en la pregunta que seleccione y si es correcto actualiza
+    //la tabla contactos agregando el dato a la tabla nullable "respuesta"
     public function update($id)
     {
 
@@ -119,6 +131,8 @@ class ContactoController extends Controller
      * @param  \App\Models\Contacto  $contacto
      * @return \Illuminate\Http\Response
      */
+    //Funcion dedicada solo al admin
+    //Esta funcion le permite borrar una pregunta hecha por un usuario
     public function destroy(Contacto $contacto)
     {
 
