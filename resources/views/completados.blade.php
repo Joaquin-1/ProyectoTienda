@@ -89,7 +89,7 @@
                                     @endforeach
                                 @endforeach
 
-                                {{ $facturas->links() }}
+
 
                             </tbody>
                         </table>

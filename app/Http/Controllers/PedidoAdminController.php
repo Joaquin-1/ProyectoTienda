@@ -28,7 +28,7 @@ class PedidoAdminController extends Controller
         //aplicacion
         $query = Factura::query();
 
-        $facturas = $query->paginate(5);
+        $facturas = $query->paginate(4);
         return view('completados', [
             'facturas' => $facturas
         ]);

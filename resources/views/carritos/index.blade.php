@@ -109,7 +109,7 @@
 
                                     <button class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-xl rounded-xl" type="submit"> Proceder con la compra</button>
 
-                                @endif
+
 
                                 </form>
                             </div>
@@ -165,7 +165,7 @@
                                     <button type="submit" class="bg-orange-600 text-white px-6 py-2 mt-5 text-xl rounded-xl">Cambiar dirección</button>
                                 </form>
                             </div>
-
+                            @endif
 
                         @endif
                     </x-plantilla>
